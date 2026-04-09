@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#16a34a', // Bold Green
-        secondary: '#0d9488', // Teal
+        primary: 'rgb(0, 82, 57)', // rgb(0,82,57)
+        secondary: '#4285F4', // Google Blue
         light: {
           900: '#ffffff',
           800: '#f8fafc',
