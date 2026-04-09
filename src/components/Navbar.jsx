@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, User, Code, Layers, Briefcase, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -7,12 +7,12 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', icon: Home },
+    { name: 'About', href: '#about', icon: User },
+    { name: 'Skills', href: '#skills', icon: Code },
+    { name: 'Projects', href: '#projects', icon: Layers },
+    { name: 'Experience', href: '#experience', icon: Briefcase },
+    { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
   useEffect(() => {
@@ -31,19 +31,24 @@ const Navbar = () => {
         </a>
         
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-gray-600 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider"
-            >
-              {link.name}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="group flex items-center gap-1.5 text-gray-800 hover:text-primary transition-colors text-sm font-bold uppercase tracking-wider relative py-1"
+              >
+                <Icon size={16} />
+                <span>{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            );
+          })}
           <a 
             href="#contact" 
-            className="px-5 py-2 border border-primary text-primary rounded hover:bg-primary hover:text-dark-900 transition-all font-medium"
+            className="px-5 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all font-bold tracking-wide"
           >
             Hire Me
           </a>
@@ -67,16 +72,21 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full glass bg-white/95 border-b border-gray-200 md:hidden flex flex-col items-center py-6 space-y-6"
           >
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-primary text-lg font-medium"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex items-center gap-3 text-gray-800 hover:text-primary text-lg font-bold uppercase tracking-wider relative"
+                >
+                  <Icon size={20} />
+                  <span>{link.name}</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
