@@ -11,8 +11,7 @@ const Projects = () => {
     // Fallback data is implemented directly in case API fails
     const fetchProjects = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${apiUrl}/api/projects`);
+        const response = await fetch('/api/projects');
         if (response.ok) {
           const data = await response.json();
           setProjects(data);
