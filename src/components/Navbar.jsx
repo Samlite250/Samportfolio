@@ -24,7 +24,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'}`}>
+    <header className={`fixed top-0 w-full z-[999] transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-3' : 'bg-white/90 backdrop-blur-sm py-5'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#home" className="text-2xl font-bold font-sans text-gray-900 hover:text-primary transition-colors duration-500">
           Sam<span className="text-primary animate-pulse">.dev</span>
@@ -56,37 +56,68 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-gray-900"
+          className="md:hidden text-gray-900 hover:text-primary transition-colors z-[1001] relative"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav - Full Screen Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full glass bg-white/95 border-b border-gray-200 md:hidden flex flex-col items-center py-6 space-y-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[1000] bg-white flex flex-col md:hidden"
           >
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="group flex items-center gap-3 text-gray-800 hover:text-primary text-lg font-bold uppercase tracking-wider relative"
-                >
-                  <Icon size={20} />
-                  <span>{link.name}</span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              );
-            })}
+            {/* Top bar of overlay */}
+            <div className="flex justify-between items-center px-6 py-5 border-b border-gray-200">
+              <a href="#home" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-gray-900">
+                Sam<span className="text-primary">.dev</span>
+              </a>
+              <button onClick={() => setMobileMenuOpen(false)} className="text-gray-900 hover:text-primary transition-colors">
+                <X size={30} />
+              </button>
+            </div>
+
+            {/* Nav Links */}
+            <div className="flex flex-col items-start justify-center flex-1 px-10 space-y-2">
+              {navLinks.map((link, index) => {
+                const Icon = link.icon;
+                return (
+                  <motion.a 
+                    key={link.name} 
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.07 }}
+                    className="group flex items-center gap-4 text-gray-800 hover:text-primary text-2xl font-bold uppercase tracking-widest py-4 w-full border-b border-gray-100 relative"
+                  >
+                    <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                      <Icon size={18} />
+                    </span>
+                    <span>{link.name}</span>
+                    <span className="ml-auto text-gray-300 group-hover:text-primary transition-colors">→</span>
+                  </motion.a>
+                );
+              })}
+            </div>
+
+            {/* Footer of overlay */}
+            <div className="px-10 pb-10">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full py-4 text-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary/90 transition-all"
+              >
+                Hire Me
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
