@@ -21,11 +21,11 @@ const Hero = () => {
               Ndayambaje.
             </span>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-400 mb-6">
-            I build things for the web.
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-400 mb-6 uppercase tracking-widest">
+            Full Stack Developer
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
-            I'm a Final Year Undergraduate and Full-Stack Software Engineer specializing in building exceptional digital experiences. Currently, I'm focused on building scalable, user-centric web platforms.
+            I specialize in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
           
           <div className="flex flex-wrap gap-4 items-center">

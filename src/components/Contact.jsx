@@ -116,7 +116,7 @@ const Contact = () => {
                   href="https://wa.me/1234567890" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="text-sm font-medium text-green-500 hover:text-green-400 flex items-center transition-colors"
+                  className="text-sm font-medium text-primary hover:text-secondary flex items-center transition-colors"
                 >
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 2.17.68 4.18 1.83 5.82L3 21l3.35-.83A9.957 9.957 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.07 13.56c-.19.53-.9 1.05-1.55 1.15-.55.08-1.28.25-3.66-.73-2.88-1.18-4.73-4.13-4.88-4.33-.14-.2-1.16-1.54-1.16-2.94 0-1.4.73-2.13.99-2.43.23-.26.5-.32.67-.32.17 0 .34.01.49.01.17 0 .4-.06.6.43.22.53.75 1.83.82 1.96.06.13.1.28.02.43-.08.15-.12.25-.24.4-.12.14-.25.32-.35.42-.12.13-.26.27-.12.51.14.25.64 1.06 1.38 1.71.95.83 1.74 1.09 2 1.22.25.13.4.11.55-.06.16-.18.68-.8.86-1.07.18-.28.36-.23.59-.14.23.08 1.48.7 1.74.83.25.13.42.19.49.3.06.11.06.66-.13 1.19z" clipRule="evenodd"></path></svg>
                   Connect on WhatsApp
