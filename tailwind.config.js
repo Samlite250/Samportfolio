@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#3b82f6',
-        secondary: '#8b5cf6',
+        primary: '#16a34a', // Bold Green
+        secondary: '#0d9488', // Teal
         light: {
           900: '#ffffff',
           800: '#f8fafc',
