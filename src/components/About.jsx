@@ -24,7 +24,7 @@ const About = () => {
             className="space-y-6 text-gray-600 text-lg leading-relaxed"
           >
             <p>
-              Hello! My name is Samuel and I enjoy creating things that live on the internet. My interest in web development started back in high school when I decided to try editing custom Tumblr themes &mdash; turns out hacking together HTML & CSS taught me a lot about HTML & CSS!
+              Hello! My name is Sam and I enjoy creating things that live on the internet. My interest in web development started back in high school when I decided to try editing custom Tumblr themes &mdash; turns out hacking together HTML & CSS taught me a lot about HTML & CSS!
             </p>
             <p>
               Fast-forward to today, and I've had the privilege of working at a start-up, a huge corporation, and a student-led design agency. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.

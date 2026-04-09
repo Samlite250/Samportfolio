@@ -1,6 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+
+const TypewriterText = ({ texts }) => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    const fullText = texts[currentIndex];
+    
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+      }, 50);
+    } else {
+      timer = setTimeout(() => {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+      }, 100);
+    }
+
+    if (!isDeleting && currentText === fullText) {
+      timer = setTimeout(() => setIsDeleting(true), 1500);
+    } else if (isDeleting && currentText === '') {
+      setIsDeleting(false);
+      setCurrentIndex((prev) => (prev + 1) % texts.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentIndex, texts]);
+
+  return (
+    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+      {currentText}
+      <span className="animate-pulse text-gray-900">|</span>
+    </span>
+  );
+};
+
 
 const Hero = () => {
   return (
@@ -16,13 +54,10 @@ const Hero = () => {
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900">
-            Samuel <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Ndayambaje.
-            </span>
+            Sam <br/>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 mb-6 uppercase tracking-widest">
-            Full Stack Developer
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
+            I'm a <TypewriterText texts={['Front-End Developer', 'Back-End Developer', 'Web Designer', 'Database Manager']} />
           </h2>
           <p className="text-gray-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
             I specialize in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
@@ -62,7 +97,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-primary/20 rounded-2xl group-hover:bg-transparent transition-colors duration-300 z-10"></div>
             <img 
               src="/images/profile.jpg" 
-              alt="Samuel Ndayambaje" 
+              alt="Sam" 
               className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           </div>

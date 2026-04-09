@@ -27,7 +27,7 @@ const Navbar = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#home" className="text-2xl font-bold font-sans text-gray-900 hover:text-primary transition-colors duration-500">
-          Samuel<span className="text-primary animate-pulse">.dev</span>
+          Sam<span className="text-primary animate-pulse">.dev</span>
         </a>
         
         {/* Desktop Nav */}

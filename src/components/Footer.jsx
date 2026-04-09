@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
 
         <p className="text-gray-500 text-sm font-mono flex items-center gap-2">
-          Designed & Built with <Heart size={14} className="text-primary" /> by Samuel Ndayambaje
+          Designed & Built with <Heart size={14} className="text-primary" /> by Sam
         </p>
         <p className="text-gray-600 text-xs font-mono mt-2">
           &copy; {new Date().getFullYear()} All Rights Reserved
