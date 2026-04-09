@@ -48,15 +48,15 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-primary font-mono text-lg mb-4">05. What's Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Get In Touch</h2>
-          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Get In Touch</h2>
+          <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
             Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
           </p>
 
           <form onSubmit={handleSubmit} className="text-left max-w-xl mx-auto space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-2">Name</label>
                 <input 
                   type="text" 
                   id="name" 
@@ -64,11 +64,11 @@ const Contact = () => {
                   value={formData.name} 
                   onChange={handleChange} 
                   required
-                  className="w-full px-4 py-3 bg-dark-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary text-white transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary text-gray-900 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">Email</label>
                 <input 
                   type="email" 
                   id="email" 
@@ -76,13 +76,13 @@ const Contact = () => {
                   value={formData.email} 
                   onChange={handleChange} 
                   required
-                  className="w-full px-4 py-3 bg-dark-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary text-white transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary text-gray-900 transition-colors"
                 />
               </div>
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-600 mb-2">Message</label>
               <textarea 
                 id="message" 
                 name="message" 
@@ -90,7 +90,7 @@ const Contact = () => {
                 value={formData.message} 
                 onChange={handleChange} 
                 required
-                className="w-full px-4 py-3 bg-dark-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary text-white transition-colors resize-none"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary text-gray-900 transition-colors resize-none"
               ></textarea>
             </div>
 
@@ -103,7 +103,7 @@ const Contact = () => {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full px-8 py-4 bg-primary/10 text-primary border border-primary font-bold rounded-lg hover:bg-primary hover:text-dark-900 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-900 flex justify-center items-center"
+              className="w-full px-8 py-4 bg-primary/10 text-primary border border-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white flex justify-center items-center"
             >
               {loading ? (
                 <span className="w-6 h-6 border-2 border-primary border-t-transparent flex-shrink-0 animate-spin rounded-full"></span>

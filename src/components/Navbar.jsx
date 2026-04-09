@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold font-sans text-white hover:text-primary transition-colors duration-500">
+        <a href="#home" className="text-2xl font-bold font-sans text-gray-900 hover:text-primary transition-colors duration-500">
           Samuel<span className="text-primary animate-pulse">.dev</span>
         </a>
         
@@ -36,7 +36,7 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href}
-              className="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider"
+              className="text-gray-600 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider"
             >
               {link.name}
             </a>
@@ -51,7 +51,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-white"
+          className="md:hidden text-gray-900"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -65,14 +65,14 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full glass bg-dark-900/95 border-b border-white/10 md:hidden flex flex-col items-center py-6 space-y-6"
+            className="absolute top-full left-0 w-full glass bg-white/95 border-b border-gray-200 md:hidden flex flex-col items-center py-6 space-y-6"
           >
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-200 hover:text-primary text-lg font-medium"
+                className="text-gray-700 hover:text-primary text-lg font-medium"
               >
                 {link.name}
               </a>

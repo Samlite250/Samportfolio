@@ -15,36 +15,36 @@ const Hero = () => {
           className="order-2 md:order-1"
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900">
             Samuel <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Ndayambaje.
             </span>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-400 mb-6 uppercase tracking-widest">
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 mb-6 uppercase tracking-widest">
             Full Stack Developer
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+          <p className="text-gray-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
             I specialize in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
           
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="#projects" className="px-8 py-3 bg-primary text-dark-900 font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
               View Projects <ArrowRight size={18} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-600 text-white rounded hover:border-primary hover:text-primary hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-400 text-gray-700 rounded hover:border-primary hover:text-primary hover:-translate-y-1 transition-all flex items-center gap-2">
               Download CV <Download size={18} />
             </a>
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a href="https://github.com/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors hover:-translate-y-1">
+            <a href="https://github.com/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-primary transition-colors hover:-translate-y-1">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors hover:-translate-y-1">
+            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-primary transition-colors hover:-translate-y-1">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:contact@example.com" className="text-gray-400 hover:text-primary transition-colors hover:-translate-y-1">
+            <a href="mailto:contact@example.com" className="text-gray-500 hover:text-primary transition-colors hover:-translate-y-1">
               <Mail size={24} />
             </a>
           </div>

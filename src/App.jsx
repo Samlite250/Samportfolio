@@ -12,13 +12,13 @@ function App() {
   return (
     <div className="relative min-h-screen">
       {/* Background elements */}
-      <div className="fixed inset-0 z-0 bg-dark-900">
+      <div className="fixed inset-0 z-0 bg-light-800">
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
       </div>
       
-      {/* Vignette Overlay mimicking Vincent's box-shadow */}
-      <div className="fixed inset-0 pointer-events-none z-[100] shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]"></div>
+      {/* Vignette Overlay removed for light mode */}
+      <div className="fixed inset-0 pointer-events-none z-[100] shadow-[inset_0_0_150px_rgba(255,255,255,0.4)]"></div>
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />

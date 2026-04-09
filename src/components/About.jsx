@@ -21,7 +21,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6 text-gray-400 text-lg leading-relaxed"
+            className="space-y-6 text-gray-600 text-lg leading-relaxed"
           >
             <p>
               Hello! My name is Samuel and I enjoy creating things that live on the internet. My interest in web development started back in high school when I decided to try editing custom Tumblr themes &mdash; turns out hacking together HTML & CSS taught me a lot about HTML & CSS!
@@ -43,12 +43,12 @@ const About = () => {
             className="relative"
           >
             <div className="glass-card p-8 rounded-2xl relative z-10">
-              <h3 className="text-2xl font-semibold mb-4 text-white">Education</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Education</h3>
               <ul className="space-y-6">
                 <li className="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-primary before:rounded-full">
-                  <h4 className="font-medium text-white">Bachelor of Science in Software Engineering</h4>
+                  <h4 className="font-medium text-gray-900">Bachelor of Science in Software Engineering</h4>
                   <p className="text-primary text-sm mt-1">University Name &bullet; 2021 - Present</p>
-                  <p className="text-gray-400 text-sm mt-2">Final year undergraduate focusing on full-stack development, distributed systems, and modern web architectures.</p>
+                  <p className="text-gray-600 text-sm mt-2">Final year undergraduate focusing on full-stack development, distributed systems, and modern web architectures.</p>
                 </li>
               </ul>
             </div>

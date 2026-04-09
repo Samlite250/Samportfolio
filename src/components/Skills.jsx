@@ -43,12 +43,12 @@ const Skills = () => {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold text-white mb-6 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-6 group-hover:text-primary transition-colors">
                 {category.title}
               </h3>
               <ul className="space-y-3">
                 {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center text-gray-400">
+                  <li key={sIdx} className="flex items-center text-gray-600">
                     <span className="w-2 h-2 rounded-full bg-secondary mr-3"></span>
                     {skill}
                   </li>

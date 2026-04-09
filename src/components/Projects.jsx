@@ -87,7 +87,7 @@ const Projects = () => {
                 {/* Project Image */}
                 <div className="w-full md:w-3/5 h-64 sm:h-80 md:h-[400px] relative group overflow-hidden rounded-xl">
                   {/* Fallback pattern if image is missing */}
-                  <div className="absolute inset-0 bg-dark-800 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-light-700 flex items-center justify-center">
                     <span className="text-gray-600 font-mono text-xl">{project.title} Image Placeholder</span>
                   </div>
                   {project.image_url && (
@@ -106,25 +106,25 @@ const Projects = () => {
                 {/* Project Info */}
                 <div className={`w-full md:w-2/5 flex flex-col ${idx % 2 !== 0 ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
                   <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 hover:text-primary transition-colors">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 hover:text-primary transition-colors">
                     <a href={project.live_url} target="_blank" rel="noreferrer">{project.title}</a>
                   </h3>
                   
-                  <div className={`glass-card p-6 rounded-xl mb-6 text-gray-400 z-20 ${idx % 2 !== 0 ? 'md:-mr-12' : 'md:-ml-12'}`}>
+                  <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 z-20 ${idx % 2 !== 0 ? 'md:-mr-12' : 'md:-ml-12'}`}>
                     <p>{project.description}</p>
                   </div>
 
-                  <ul className={`flex flex-wrap gap-4 text-sm font-mono text-gray-500 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
+                  <ul className={`flex flex-wrap gap-4 text-sm font-mono text-gray-600 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
                     {project.tech_stack.map((tech, tIdx) => (
                       <li key={tIdx}>{tech}</li>
                     ))}
                   </ul>
 
                   <div className="flex gap-4">
-                    <a href={project.github_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors">
+                    <a href={project.github_url} target="_blank" rel="noreferrer" className="text-gray-600 hover:text-primary transition-colors">
                       <Github size={22} />
                     </a>
-                    <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors">
+                    <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-600 hover:text-primary transition-colors">
                       <ExternalLink size={22} />
                     </a>
                   </div>
