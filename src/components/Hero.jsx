@@ -14,15 +14,15 @@ const TypewriterText = ({ texts }) => {
     if (isDeleting) {
       timer = setTimeout(() => {
         setCurrentText(fullText.substring(0, currentText.length - 1));
-      }, 50);
+      }, 90);
     } else {
       timer = setTimeout(() => {
         setCurrentText(fullText.substring(0, currentText.length + 1));
-      }, 100);
+      }, 160);
     }
 
     if (!isDeleting && currentText === fullText) {
-      timer = setTimeout(() => setIsDeleting(true), 1500);
+      timer = setTimeout(() => setIsDeleting(true), 2500);
     } else if (isDeleting && currentText === '') {
       setIsDeleting(false);
       setCurrentIndex((prev) => (prev + 1) % texts.length);
