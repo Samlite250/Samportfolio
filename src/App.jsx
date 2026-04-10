@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Stats from './components/Stats';
 import About from './components/About';
 import Skills from './components/Skills';
 import Services from './components/Services';
@@ -25,7 +24,6 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Hero />
-          <Stats />
           <About />
           <Skills />
           <Services />
