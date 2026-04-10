@@ -69,9 +69,9 @@ const Projects = () => {
               className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
               {/* Project Image */}
-              <div className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl shadow-lg">
-                <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
-                  <span className="text-gray-400 font-mono text-sm">{project.title}</span>
+              <div className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl shadow-2xl shadow-gray-200 border border-gray-100">
+                <div className="absolute inset-0 bg-gray-50 flex items-center justify-center">
+                  <span className="text-gray-300 font-mono text-sm">{project.title}</span>
                 </div>
                 {project.image_url && (
                   <img
