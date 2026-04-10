@@ -1,17 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Code2, GraduationCap, Laptop, Sparkles } from 'lucide-react';
+import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers } from 'lucide-react';
 
 const skills = [
   { name: 'JavaScript (ES6+)', icon: <Code2 size={16} /> },
-  { name: 'React.js', icon: <Sparkles size={16} /> },
+  { name: 'React.js', icon: <Cpu size={16} /> },
   { name: 'Node.js', icon: <Laptop size={16} /> },
-  { name: 'Tailwind CSS', icon: <Sparkles size={16} /> },
-  { name: 'Supabase', icon: <Sparkles size={16} /> },
-  { name: 'PostgreSQL', icon: <Sparkles size={16} /> },
+  { name: 'Tailwind CSS', icon: <Monitor size={16} /> },
+  { name: 'Supabase', icon: <Layers size={16} /> },
+  { name: 'PostgreSQL', icon: <Layers size={16} /> },
   { name: 'Git & GitHub', icon: <Code2 size={16} /> },
   { name: 'RESTful APIs', icon: <Laptop size={16} /> },
-  { name: 'UI/UX Design', icon: <Sparkles size={16} /> }
+  { name: 'UI/UX Design', icon: <Monitor size={16} /> }
 ];
 
 const education = [
@@ -52,9 +52,9 @@ const About = () => {
               className="flex items-center gap-4 mb-4"
             >
               <div className="h-px w-12 bg-primary"></div>
-              <span className="text-primary font-mono font-bold tracking-widest text-sm uppercase">01. Professional Bio</span>
+              <span className="text-primary font-mono font-bold tracking-widest text-sm uppercase">01. My Professional Bio</span>
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
               Crafting Digital Solutions <br />
               <span className="text-gradient underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
             </h2>
@@ -94,7 +94,7 @@ const About = () => {
               </div>
               <div className="p-4 bg-light-800 rounded-xl border border-gray-100 group hover:shadow-md transition-all">
                 <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-3 group-hover:scale-110 transition-transform">
-                    <Sparkles size={24} />
+                    <Zap size={24} />
                 </div>
                 <h4 className="font-bold text-gray-900">Performance</h4>
                 <p className="text-sm text-gray-500 mt-1">SEO & Speed Focused</p>
@@ -110,7 +110,7 @@ const About = () => {
               viewport={{ once: true }}
               className="glass-card p-8 rounded-2xl relative"
             >
-              <div className="absolute top-4 right-4 text-primary/10"><Sparkles size={48} /></div>
+              <div className="absolute top-4 right-4 text-primary/10"><Cpu size={48} /></div>
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                  Technological Stack
               </h3>
@@ -134,7 +134,7 @@ const About = () => {
                    <p className="opacity-80 text-sm">Check my latest web designs</p>
                 </div>
                 <a href="#projects" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
-                    <Sparkles size={24} />
+                    <Monitor size={24} />
                 </a>
             </div>
           </div>
