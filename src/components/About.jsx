@@ -87,7 +87,7 @@ const About = () => {
               <div className="absolute inset-0 rounded-2xl border-2 border-primary translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
               {/* Your photo */}
               <img
-                src="/images/profile.jpeg"
+                src="/images/second-image.jpeg"
                 alt="Profile"
                 className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 transition-all duration-500"
                 style={{ filter: 'brightness(1.05) contrast(1.05) saturate(1.1)' }}
