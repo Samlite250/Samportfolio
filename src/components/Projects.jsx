@@ -27,7 +27,7 @@ const realProjects = [
     id: 3,
     title: 'Market Pro — E-Commerce',
     description:
-      'A scalable full-stack e-commerce platform with product listings, a shopping cart, user authentication, order management, and an admin panel. Supports multiple payment gateways including USDT TRC-20 and mobile money integrations.',
+      'A professional-grade e-commerce solution featuring real-time product management, advanced filtering, and integrated payment gateways. Built with performance in mind to deliver a high-speed shopping experience.',
     tech_stack: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     image_url: '/images/projects/marketpro.png',
     live_url: 'https://marketplace-app-livid-three.vercel.app/',
