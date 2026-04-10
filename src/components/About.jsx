@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers } from 'lucide-react';
+import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers, Languages, Heart } from 'lucide-react';
 
 const skills = [
   { name: 'JavaScript (ES6+)', icon: <Code2 size={16} /> },
   { name: 'React.js', icon: <Cpu size={16} /> },
-  { name: 'Node.js', icon: <Laptop size={16} /> },
+  { name: 'Node.js & PHP', icon: <Laptop size={16} /> },
   { name: 'Tailwind CSS', icon: <Monitor size={16} /> },
   { name: 'Figma', icon: <Layers size={16} /> },
   { name: 'MySQL / PostgreSQL', icon: <Layers size={16} /> },
@@ -32,6 +32,15 @@ const education = [
     tags: ['Fundamentals', 'Databases', 'Algorithms']
   },
 ];
+
+const personalInterests = {
+  languages: [
+    { name: 'English', level: 'Professional' },
+    { name: 'French', level: 'Intermediate' },
+    { name: 'Kinyarwanda', level: 'Native' }
+  ],
+  hobbies: ['Mobile App Development', 'Learning New Tech', 'Football', 'Music & Coding']
+};
 
 const About = () => {
   return (
@@ -77,10 +86,10 @@ const About = () => {
                 I am a Software Engineer focused on turning technical complexity into elegant, user-friendly solutions.
               </p>
               <p>
-                My journey began early in secondary school. Mastering Software Development from Level 3 to Level 5 gave me the solid technical foundation I leverage today at university.
+                My journey began early in secondary school. Mastering Software Development from Level 3 to Level 5 gave me a solid technical foundation in languages like <span className="text-primary font-semibold">PHP</span> and JavaScript.
               </p>
               <p>
-                Currently at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I architect scalable platforms—from real estate systems to campus social networks—prioritizing performance and clean code.
+                Currently at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I architect scalable platforms. My next big step is going deeper into <span className="text-secondary font-bold underline decoration-secondary/30">Mobile App Development</span> to build powerful cross-platform experiences.
               </p>
             </div>
 
@@ -176,6 +185,45 @@ const About = () => {
              ))}
           </div>
         </div>
+
+        {/* Languages & Hobbies Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 grid md:grid-cols-2 gap-12"
+        >
+          {/* Languages */}
+          <div className="bg-light-800 p-8 rounded-3xl border border-gray-100">
+            <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <Languages className="text-primary" size={24} /> Spoken Languages
+            </h4>
+            <div className="space-y-4">
+              {personalInterests.languages.map(lang => (
+                <div key={lang.name} className="flex items-center justify-between">
+                  <span className="font-semibold text-gray-700">{lang.name}</span>
+                  <span className="text-xs font-mono font-bold bg-white px-3 py-1 rounded-full text-primary shadow-sm border border-gray-50">
+                    {lang.level}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Hobbies */}
+          <div className="bg-light-800 p-8 rounded-3xl border border-gray-100">
+            <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <Heart className="text-secondary" size={24} /> Passions & Hobbies
+            </h4>
+            <div className="flex flex-wrap gap-3">
+              {personalInterests.hobbies.map(hobby => (
+                <span key={hobby} className="px-5 py-2 bg-white rounded-xl shadow-sm border border-gray-50 text-gray-600 font-medium hover:text-primary transition-colors cursor-default">
+                  {hobby}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>
