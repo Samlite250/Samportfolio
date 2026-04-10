@@ -44,7 +44,7 @@ const Services = () => {
             <div className="h-1 w-12 bg-primary"></div>
             <span className="text-primary font-mono font-bold uppercase tracking-widest text-sm">Services I Offer</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
             Comprehensive Digital <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Solutions & Engineering</span>
           </h2>
