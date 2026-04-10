@@ -84,10 +84,14 @@ const Projects = () => {
                   />
                 )}
                 {project.status && (
-                  <div className="absolute top-4 left-4 z-30">
-                    <span className="px-3 py-1 bg-gray-900/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/20">
-                      {project.status}
-                    </span>
+                  <div className="absolute top-6 left-6 z-30">
+                    <div className="relative group/badge">
+                      <div className="absolute -inset-0.5 bg-primary/30 blur rounded-lg animate-pulse"></div>
+                      <span className="relative px-4 py-2 bg-gray-900 text-white text-[11px] font-black uppercase tracking-[0.2em] rounded-lg border border-white/10 shadow-xl flex items-center gap-2">
+                        <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>
