@@ -36,10 +36,10 @@ const education = [
 const personalInterests = {
   languages: [
     { name: 'English', level: 'Professional' },
-    { name: 'French', level: 'Intermediate' },
-    { name: 'Kinyarwanda', level: 'Native' }
+    { name: 'Kinyarwanda', level: 'Native' },
+    { name: 'Swahili', level: 'Conversational' }
   ],
-  hobbies: ['Mobile App Development', 'Learning New Tech', 'Football', 'Music & Coding']
+  hobbies: ['Mobile App Development', 'Learning New Tech', 'High-Speed Driving', 'Music & Coding']
 };
 
 const About = () => {
@@ -187,14 +187,15 @@ const About = () => {
         </div>
 
         {/* Languages & Hobbies Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-24 grid md:grid-cols-2 gap-12"
-        >
+        <div className="mt-24 grid md:grid-cols-2 gap-12">
           {/* Languages */}
-          <div className="bg-light-800 p-8 rounded-3xl border border-gray-100">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-light-800 p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-all"
+          >
             <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <Languages className="text-primary" size={24} /> Spoken Languages
             </h4>
@@ -208,22 +209,28 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Hobbies */}
-          <div className="bg-light-800 p-8 rounded-3xl border border-gray-100">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-light-800 p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-all"
+          >
             <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <Heart className="text-secondary" size={24} /> Passions & Hobbies
             </h4>
             <div className="flex flex-wrap gap-3">
               {personalInterests.hobbies.map(hobby => (
-                <span key={hobby} className="px-5 py-2 bg-white rounded-xl shadow-sm border border-gray-50 text-gray-600 font-medium hover:text-primary transition-colors cursor-default">
+                <span key={hobby} className="px-5 py-2 bg-white rounded-xl shadow-sm border border-gray-50 text-gray-600 font-medium hover:text-primary transition-all cursor-default hover:scale-105">
                   {hobby}
                 </span>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
       </div>
     </section>
