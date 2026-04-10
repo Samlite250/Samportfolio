@@ -16,38 +16,37 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // 1. Send to Formspree for immediate email delivery
-      // I'll use a direct submission hook. If they haven't verified yet, Formspree handles the UI.
-      const formspreeResponse = await fetch('https://formspree.io/f/xvgoverp', { 
+      // 1. Send to FormSubmit (Direct to samlite250@gmail.com)
+      const emailResponse = await fetch('https://formsubmit.co/ajax/samlite250@gmail.com', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.message
+          message: formData.message,
+          _subject: `New Portfolio Contact: ${formData.name}`
         })
       });
 
-      // 2. Background attempt for Supabase (dont block if it fails)
+      // 2. Background attempt for local Supabase logging
       fetch(`/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       }).catch(err => console.error("Backup log failed", err));
 
-      if (formspreeResponse.ok) {
-        setStatus({ type: 'success', message: 'Message sent! Please check your email inbox for a Formspree confirmation if this is your first time.' });
+      if (emailResponse.ok) {
+        setStatus({ type: 'success', message: 'Message sent successfully! Check your email inbox (samlite250@gmail.com) to see it.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
-        const data = await formspreeResponse.json();
-        throw new Error(data.error || 'Failed to send');
+        throw new Error('Email service delay');
       }
     } catch (error) {
       console.error("Submission error:", error);
-      setStatus({ type: 'error', message: 'Something went wrong. Please try using the WhatsApp link below for immediate contact!' });
+      setStatus({ type: 'error', message: 'There was a tiny hiccup. Please use the WhatsApp link below for immediate contact!' });
     } finally {
       setLoading(false);
     }
