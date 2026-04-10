@@ -39,7 +39,7 @@ const personalInterests = {
     { name: 'Kinyarwanda', level: 'Native' },
     { name: 'Swahili', level: 'Conversational' }
   ],
-  hobbies: ['Mobile App Development', 'Learning New Tech', 'High-Speed Driving', 'Music & Coding']
+  hobbies: ['Mobile App Development', 'Learning New Tech', 'Car Driving', 'Music & Coding']
 };
 
 const About = () => {
