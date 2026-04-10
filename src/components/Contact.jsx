@@ -39,7 +39,7 @@ const Contact = () => {
       }).catch(err => console.error("Backup log failed", err));
 
       if (emailResponse.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully! Check your email inbox (samlite250@gmail.com) to see it.' });
+        setStatus({ type: 'success', message: 'Message successfully delivered to Sam! Thank you for reaching out—you will receive a response in your email shortly.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
         throw new Error('Email service delay');
@@ -111,9 +111,22 @@ const Contact = () => {
               </div>
 
               {status.message && (
-                <p className={`text-sm font-bold ${status.type === 'success' ? 'text-primary' : 'text-red-500'}`}>
-                  {status.message}
-                </p>
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className={`p-4 rounded-xl flex items-start gap-3 text-sm font-bold ${
+                    status.type === 'success' 
+                      ? 'bg-primary/10 text-primary border border-primary/20' 
+                      : 'bg-red-50 text-red-600 border border-red-100'
+                  }`}
+                >
+                  {status.type === 'success' ? (
+                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  ) : (
+                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  )}
+                  <p>{status.message}</p>
+                </motion.div>
               )}
 
               <div className="pt-2 space-y-4">
