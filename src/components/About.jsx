@@ -198,7 +198,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+            className="p-8 bg-light-800 rounded-2xl border border-gray-100 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
             <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/20 transition-colors">
               <Languages size={48} />
@@ -224,7 +224,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+            className="p-8 bg-light-800 rounded-2xl border border-gray-100 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
             <div className="absolute top-8 right-8 text-gray-200 group-hover:text-secondary/20 transition-colors">
               <Heart size={48} />

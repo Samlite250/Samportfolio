@@ -92,7 +92,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <div className="relative group w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
+          <div className="relative group w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96 shadow-2xl shadow-gray-200 rounded-2xl">
             <div className="absolute inset-0 rounded-2xl border-2 border-primary translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
             <div className="absolute inset-0 bg-primary/20 rounded-2xl group-hover:bg-transparent transition-colors duration-300 z-10"></div>
             <img 
