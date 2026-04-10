@@ -6,6 +6,23 @@ const skills = [
   'Tailwind CSS', 'Supabase', 'PostgreSQL',
 ];
 
+const education = [
+  {
+    degree: 'Bachelor of Science in Software Engineering',
+    school: 'University  (Name)',
+    period: '2023 – Present',
+    description:
+      'Pursuing a degree in Software Engineering with focus on full-stack web development, distributed systems, databases, and modern software architectures.',
+  },
+  {
+    degree: 'Software Development — Level 3, 4 & 5',
+    school: 'Secondary School (TVET/Vocational)',
+    period: '2020 – 2023',
+    description:
+      'Studied Software Development from Level 3 through Level 5. Built a strong foundation in programming fundamentals, web technologies, databases, and software engineering principles.',
+  },
+];
+
 const About = () => {
   return (
     <section id="about" className="py-24">
@@ -30,15 +47,15 @@ const About = () => {
             className="space-y-6 text-gray-600 text-lg leading-relaxed"
           >
             <p>
-              Hello! I'm a passionate full-stack developer who loves crafting
-              elegant digital experiences. My journey into tech started with
-              curiosity about how websites work &mdash; and I've never stopped
-              exploring since.
+              Hello! I'm a passionate full-stack software developer whose journey
+              into tech began in secondary school, where I studied Software
+              Development from Level 3 all the way through Level 5. That early
+              start gave me a rock-solid foundation before pursuing my university degree.
             </p>
             <p>
-              I specialize in building scalable web platforms with clean,
-              maintainable code. Whether it's a sleek UI or a robust backend
-              API, I bring both precision and creativity to every project.
+              Today I build scalable web platforms — from real estate systems and
+              e-commerce marketplaces to campus social networks. I bring both
+              precision and creativity to every line of code I write.
             </p>
             <p>
               Here are a few technologies I've been working with recently:
@@ -81,25 +98,36 @@ const About = () => {
 
         </div>
 
-        {/* Education Card below */}
+        {/* Education Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 glass-card p-8 rounded-2xl"
+          className="mt-20 glass-card p-8 rounded-2xl"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-gray-900">Education</h3>
-          <ul className="space-y-6">
-            <li className="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-primary before:rounded-full">
-              <h4 className="font-medium text-gray-900 text-lg">Bachelor of Science in Software Engineering</h4>
-              <p className="text-primary text-sm mt-1">University Name &bull; 2021 – Present</p>
-              <p className="text-gray-600 text-sm mt-2 max-w-2xl">
-                Final year undergraduate focusing on full-stack development,
-                distributed systems, and modern web architectures.
-              </p>
-            </li>
-          </ul>
+          <h3 className="text-2xl font-semibold mb-8 text-gray-900">🎓 Education</h3>
+
+          <div className="relative border-l-2 border-primary/30 pl-8 space-y-10 ml-2">
+            {education.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                className="relative"
+              >
+                {/* Timeline dot */}
+                <span className="absolute -left-[2.65rem] top-1.5 w-4 h-4 rounded-full bg-primary border-2 border-white shadow"></span>
+
+                <p className="text-primary font-mono text-xs mb-1 uppercase tracking-widest">{item.period}</p>
+                <h4 className="font-semibold text-gray-900 text-lg">{item.degree}</h4>
+                <p className="text-primary/80 text-sm font-medium mt-0.5">{item.school}</p>
+                <p className="text-gray-500 text-sm mt-2 max-w-2xl">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
       </div>
