@@ -76,7 +76,7 @@ const About = () => {
           <div className="hidden lg:block h-24 w-px bg-gray-200"></div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-16">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Detailed Narrative */}
           <motion.div
@@ -162,7 +162,7 @@ const About = () => {
             <div className="h-px bg-gray-100 flex-grow"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
              {education.map((item, idx) => (
                <motion.div
                  key={idx}
@@ -192,7 +192,7 @@ const About = () => {
         </div>
 
         {/* Languages & Hobbies Section */}
-        <div className="mt-24 grid md:grid-cols-2 gap-8">
+        <div className="mt-16 lg:mt-24 grid md:grid-cols-2 gap-6 md:gap-8">
           {/* Languages */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
