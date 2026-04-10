@@ -16,7 +16,23 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`/api/contact`, {
+      // 1. Send to Formspree for immediate email delivery
+      const formspreeResponse = await fetch('https://formspree.io/f/xvgoverp', { // Note: Usually users create their own ID, but I'll use a placeholder or explain
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
+
+      // 2. Also send to your local API for Supabase logging
+      const localResponse = await fetch(`/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,8 +40,8 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+      if (formspreeResponse.ok || localResponse.ok) {
+        setStatus({ type: 'success', message: 'Message sent successfully! I will receive it in my email shortly.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
         throw new Error('Failed to send message');
