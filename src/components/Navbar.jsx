@@ -5,6 +5,7 @@ const navLinks = [
   { name: 'Home',       href: '#home',       icon: Home },
   { name: 'About',      href: '#about',      icon: User },
   { name: 'Skills',     href: '#skills',     icon: Code },
+  { name: 'Services',   href: '#services',   icon: Briefcase },
   { name: 'Projects',   href: '#projects',   icon: Layers },
   { name: 'Experience', href: '#experience', icon: Briefcase },
   { name: 'Contact',    href: '#contact',    icon: Mail },
