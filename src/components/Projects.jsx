@@ -74,15 +74,13 @@ const Projects = () => {
                   <span className="text-gray-400 font-mono text-sm">{project.title}</span>
                 </div>
                 {project.image_url && (
-                  <>
-                    <div className="absolute inset-0 bg-primary/20 mix-blend-multiply group-hover:bg-transparent transition-all duration-500 z-10"></div>
-                    <img
-                      src={project.image_url}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 z-0"
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
-                  </>
+                  <img
+                    src={project.image_url}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 z-0"
+                    style={{ filter: 'brightness(1.03) contrast(1.05) saturate(1.08)' }}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
                 )}
               </div>
 

@@ -94,11 +94,11 @@ const Hero = () => {
         >
           <div className="relative group w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
             <div className="absolute inset-0 rounded-2xl border-2 border-primary translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
-            <div className="absolute inset-0 bg-primary/20 rounded-2xl group-hover:bg-transparent transition-colors duration-300 z-10"></div>
             <img 
               src="/images/profile.jpeg" 
               alt="Sam" 
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 transition-all duration-500"
+              style={{ filter: 'brightness(1.05) contrast(1.05) saturate(1.1)' }}
             />
           </div>
         </motion.div>
