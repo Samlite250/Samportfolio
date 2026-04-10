@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 const realProjects = [
   {
@@ -10,6 +10,7 @@ const realProjects = [
       'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Node.js'],
     image_url: '/images/projects/portfolio.png',
+    live_url: 'https://samportfolio-beta.vercel.app',
     github_url: 'https://github.com/Samlite250/Samportfolio.git',
   },
   {
@@ -19,6 +20,7 @@ const realProjects = [
       'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'PostgreSQL'],
     image_url: '/images/projects/burikantu.jpeg',
+    live_url: 'https://burikantu-real-estate.vercel.app',
     github_url: 'https://github.com/Samlite250/Burikantu-Real-Estate.git',
   },
   {
@@ -28,6 +30,7 @@ const realProjects = [
       'A scalable full-stack e-commerce platform with product listings, a shopping cart, user authentication, order management, and an admin panel. Supports multiple payment gateways including USDT TRC-20 and mobile money integrations.',
     tech_stack: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     image_url: '/images/projects/project2.jpg',
+    live_url: '#',
     github_url: 'https://github.com/Samlite250/Marketplace',
   },
   {
@@ -37,6 +40,7 @@ const realProjects = [
       'A university and campus social platform that connects students, facilitates campus event discovery, resource sharing, and inter-campus networking. Features university listings, event management, and a clean intuitive dashboard for students.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL'],
     image_url: '/images/projects/project3.jpg',
+    live_url: '#',
     github_url: 'https://github.com/Samlite250/Campus-connect',
   },
 ];
@@ -97,11 +101,17 @@ const Projects = () => {
                   ))}
                 </ul>
 
-                <div className={`flex gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
+                <div className={`flex flex-wrap gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
                   {project.github_url !== '#' && (
-                    <a href={project.github_url} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 bg-primary/5 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300" aria-label="View on GitHub">
-                      <Github size={20} />
-                      <span className="font-medium">View Description</span>
+                    <a href={project.github_url} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 bg-primary/5 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300" aria-label="View Code">
+                      <Github size={18} />
+                      <span className="font-medium">Source</span>
+                    </a>
+                  )}
+                  {project.live_url !== '#' && (
+                    <a href={project.live_url} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300" aria-label="View Website">
+                      <ExternalLink size={18} />
+                      <span className="font-medium">View Website</span>
                     </a>
                   )}
                 </div>
