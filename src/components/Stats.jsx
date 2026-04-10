@@ -14,22 +14,22 @@ const Stats = () => {
     <div className="relative z-20 py-8 -mt-16 mb-16">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="bg-white border border-gray-100 rounded-[2rem] shadow-2xl shadow-gray-200/50 p-6 md:p-0 flex flex-col md:flex-row items-stretch divide-y md:divide-y-0 md:divide-x divide-gray-100 overflow-hidden"
+          className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-0"
         >
           {stats.map((stat, idx) => (
-            <div key={idx} className="flex-1 px-8 py-10 flex flex-col items-center justify-center group hover:bg-gray-50/50 transition-all duration-300">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:shadow-md transition-all">
+            <div key={idx} className="flex-1 flex flex-col items-center justify-center group transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="p-2.5 bg-primary/5 rounded-xl group-hover:bg-primary/10 transition-all">
                    {stat.icon}
                 </span>
-                <span className="text-3xl md:text-4xl font-extrabold text-gray-900 group-hover:text-primary transition-colors">
+                <span className="text-4xl md:text-5xl font-black text-gray-900 group-hover:text-primary transition-colors">
                   {stat.value}
                 </span>
               </div>
-              <div className="text-[10px] md:text-xs font-black text-gray-400 uppercase tracking-[0.2em] text-center">
+              <div className="text-[10px] md:text-xs font-black text-gray-400 uppercase tracking-[0.3em] text-center">
                 {stat.label}
               </div>
             </div>
