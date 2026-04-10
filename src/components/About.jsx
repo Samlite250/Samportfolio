@@ -7,11 +7,11 @@ const skills = [
   { name: 'React.js', icon: <Cpu size={16} /> },
   { name: 'Node.js', icon: <Laptop size={16} /> },
   { name: 'Tailwind CSS', icon: <Monitor size={16} /> },
+  { name: 'MySQL / PostgreSQL', icon: <Layers size={16} /> },
   { name: 'Supabase', icon: <Layers size={16} /> },
-  { name: 'PostgreSQL', icon: <Layers size={16} /> },
   { name: 'Git & GitHub', icon: <Code2 size={16} /> },
-  { name: 'RESTful APIs', icon: <Laptop size={16} /> },
-  { name: 'UI/UX Design', icon: <Monitor size={16} /> }
+  { name: 'Adobe Creative Suite', icon: <Monitor size={16} /> },
+  { name: 'Microsoft Office', icon: <Monitor size={16} /> }
 ];
 
 const education = [
