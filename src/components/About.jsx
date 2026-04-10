@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers, Languages, Heart } from 'lucide-react';
+import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers, Languages, Heart, Smartphone, Car, Music } from 'lucide-react';
 
 const skills = [
   { name: 'JavaScript (ES6+)', icon: <Code2 size={16} /> },
@@ -39,7 +39,12 @@ const personalInterests = {
     { name: 'Kinyarwanda', level: 'Native' },
     { name: 'Swahili', level: 'Conversational' }
   ],
-  hobbies: ['Mobile App Development', 'Learning New Tech', 'Car Driving', 'Music & Coding']
+  hobbies: [
+    { name: 'Mobile App Dev', icon: <Smartphone size={14} /> },
+    { name: 'New Tech', icon: <Zap size={14} /> },
+    { name: 'Car Driving', icon: <Car size={14} /> },
+    { name: 'Music & Coding', icon: <Music size={14} /> }
+  ]
 };
 
 const About = () => {
@@ -229,8 +234,9 @@ const About = () => {
             </h4>
             <div className="flex flex-wrap gap-3">
               {personalInterests.hobbies.map(hobby => (
-                <span key={hobby} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 bg-white px-3 py-1.5 rounded border border-gray-100 group-hover:border-primary/20 transition-colors">
-                  {hobby}
+                <span key={hobby.name} className="flex items-center gap-2 text-[10px] uppercase tracking-tighter font-bold text-gray-500 bg-white px-3 py-1.5 rounded border border-gray-100 group-hover:border-primary/20 transition-all hover:text-primary">
+                  {hobby.icon}
+                  {hobby.name}
                 </span>
               ))}
             </div>
