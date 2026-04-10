@@ -51,8 +51,8 @@ const About = () => {
               viewport={{ once: true }}
               className="flex items-center gap-6 mb-6"
             >
-              <div className="h-1 w-20 bg-primary rounded-full"></div>
-              <span className="text-primary font-mono font-black tracking-[0.2em] text-lg md:text-xl uppercase">01. My Professional Bio</span>
+              <div className="h-1.5 w-32 bg-primary rounded-full"></div>
+              <span className="text-primary font-mono font-black tracking-[0.3em] text-xl md:text-2xl uppercase">01. My Professional Bio</span>
             </motion.div>
             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
               Crafting Digital Solutions <br />
