@@ -77,7 +77,7 @@ const Projects = () => {
                   <img
                     src={project.image_url}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 z-0"
+                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-all duration-700 z-0"
                     style={{ filter: 'brightness(1.03) contrast(1.05) saturate(1.08)' }}
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />
