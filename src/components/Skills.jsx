@@ -9,7 +9,7 @@ const Skills = () => {
     },
     {
       title: 'Backend & APIs',
-      skills: ['Node.js', 'Express', 'RESTful APIs', 'Python', 'Firebase']
+      skills: ['Node.js', 'RESTful APIs', 'Python', 'Firebase']
     },
     {
       title: 'Database Management',
@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: 'Professional Tools',
-      skills: ['Git & GitHub', 'Adobe Creative Suite', 'Microsoft Office 365', 'Vercel']
+      skills: ['Git & GitHub', 'Figma', 'Adobe Creative Suite', 'Microsoft Office 365']
     }
   ];
 
