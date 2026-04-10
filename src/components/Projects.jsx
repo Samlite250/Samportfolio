@@ -25,12 +25,12 @@ const realProjects = [
   },
   {
     id: 3,
-    title: 'MarketPlace — E-Commerce',
+    title: 'Market Pro — E-Commerce',
     description:
       'A scalable full-stack e-commerce platform with product listings, a shopping cart, user authentication, order management, and an admin panel. Supports multiple payment gateways including USDT TRC-20 and mobile money integrations.',
     tech_stack: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     image_url: '/images/projects/project2.jpg',
-    live_url: '#',
+    live_url: 'https://marketplace-app-livid-three.vercel.app/',
     github_url: 'https://github.com/Samlite250/Marketplace',
   },
   {
