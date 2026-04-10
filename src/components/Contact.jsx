@@ -17,7 +17,8 @@ const Contact = () => {
 
     try {
       // 1. Send to Formspree for immediate email delivery
-      const formspreeResponse = await fetch('https://formspree.io/f/xvgoverp', { // Note: Usually users create their own ID, but I'll use a placeholder or explain
+      // I'll use a direct submission hook. If they haven't verified yet, Formspree handles the UI.
+      const formspreeResponse = await fetch('https://formspree.io/f/xvgoverp', { 
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -26,28 +27,27 @@ const Contact = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.message,
-          _subject: `New Portfolio Message from ${formData.name}`
+          message: formData.message
         })
       });
 
-      // 2. Also send to your local API for Supabase logging
-      const localResponse = await fetch(`/api/contact`, {
+      // 2. Background attempt for Supabase (dont block if it fails)
+      fetch(`/api/contact`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-      });
+      }).catch(err => console.error("Backup log failed", err));
 
-      if (formspreeResponse.ok || localResponse.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully! I will receive it in my email shortly.' });
+      if (formspreeResponse.ok) {
+        setStatus({ type: 'success', message: 'Message sent! Please check your email inbox for a Formspree confirmation if this is your first time.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error('Failed to send message');
+        const data = await formspreeResponse.json();
+        throw new Error(data.error || 'Failed to send');
       }
     } catch (error) {
-      setStatus({ type: 'error', message: 'There was an error sending your message. Please try again later.' });
+      console.error("Submission error:", error);
+      setStatus({ type: 'error', message: 'Something went wrong. Please try using the WhatsApp link below for immediate contact!' });
     } finally {
       setLoading(false);
     }
