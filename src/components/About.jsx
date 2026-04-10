@@ -89,7 +89,7 @@ const About = () => {
               <img
                 src="/images/second-image.jpeg"
                 alt="Profile"
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 transition-all duration-500"
+                className="absolute inset-0 w-full h-full object-contain rounded-2xl z-0 transition-all duration-500"
                 style={{ filter: 'brightness(1.05) contrast(1.05) saturate(1.1)' }}
               />
             </div>
