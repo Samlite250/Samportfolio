@@ -12,7 +12,7 @@ const Footer = () => {
             <a href="#home" className="text-lg font-black text-gray-900 leading-none mb-1">
               Sam<span className="text-primary">.dev</span>
             </a>
-            <p className="text-gray-900 text-[10px] font-bold uppercase tracking-[0.15em] leading-none">
+            <p className="text-gray-900 text-[9px] font-bold uppercase tracking-[0.15em] leading-none">
               &copy; 2026 All rights reserved by Samcodings Acc.
             </p>
           </div>
