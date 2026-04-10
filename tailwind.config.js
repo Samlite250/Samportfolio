@@ -11,7 +11,7 @@ export default {
         secondary: '#4285F4', // Google Blue
         light: {
           900: '#ffffff',
-          800: '#f8fafc',
+          800: '#f7f7f7', // Subtly off-white for a cleaner look
           700: '#f1f5f9',
         },
         dark: {
