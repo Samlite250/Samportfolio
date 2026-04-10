@@ -10,7 +10,7 @@ const skills = [
   { name: 'Figma', icon: <Layers size={16} /> },
   { name: 'MySQL / PostgreSQL', icon: <Layers size={16} /> },
   { name: 'Git & GitHub', icon: <Code2 size={16} /> },
-  { name: 'Adobe Creative Suite', icon: <Monitor size={16} /> },
+  { name: 'AI Skills', icon: <Monitor size={16} /> },
   { name: 'Microsoft Office', icon: <Monitor size={16} /> }
 ];
 

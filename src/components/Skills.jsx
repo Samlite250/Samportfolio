@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: 'Professional Tools',
-      skills: ['Git & GitHub', 'Figma', 'Adobe Creative Suite', 'Microsoft Office 365']
+      skills: ['Git & GitHub', 'Figma', 'AI Skills', 'Microsoft Office 365']
     }
   ];
 
