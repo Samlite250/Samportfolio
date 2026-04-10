@@ -73,13 +73,13 @@ const Hero = () => {
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a href="https://github.com/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Github size={24} />
             </a>
             <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:contact@example.com" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="mailto:samlite250@gmail.com" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Mail size={24} />
             </a>
           </div>

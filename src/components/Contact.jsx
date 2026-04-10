@@ -113,7 +113,7 @@ const Contact = () => {
             </button>
             <div className="pt-4 flex justify-center">
                <a 
-                  href="https://wa.me/1234567890" 
+                  href="https://wa.me/250790268691?text=Hello%20Sam!%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20a%20potential%20project%20with%20you." 
                   target="_blank" 
                   rel="noreferrer"
                   className="text-sm font-medium text-primary hover:text-secondary flex items-center transition-colors"

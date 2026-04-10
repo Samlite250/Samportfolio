@@ -10,7 +10,7 @@ const realProjects = [
       'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Node.js'],
     image_url: '/images/projects/portfolio.png',
-    github_url: 'https://github.com/Samlite250/Samportfolio',
+    github_url: 'https://github.com/Samlite250/Samportfolio.git',
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const realProjects = [
       'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'PostgreSQL'],
     image_url: '/images/projects/burikantu.jpeg',
-    github_url: 'https://github.com/Samlite250/Burikantuhomes',
+    github_url: 'https://github.com/Samlite250/Burikantu-Real-Estate.git',
   },
   {
     id: 3,
