@@ -187,23 +187,25 @@ const About = () => {
         </div>
 
         {/* Languages & Hobbies Section */}
-        <div className="mt-24 grid md:grid-cols-2 gap-12">
+        <div className="mt-24 grid md:grid-cols-2 gap-8">
           {/* Languages */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-light-800 p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-all"
+            className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Languages className="text-primary" size={24} /> Spoken Languages
+            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/10 transition-colors">
+              <Languages size={40} />
+            </div>
+            <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
+               Spoken Languages
             </h4>
             <div className="space-y-4">
               {personalInterests.languages.map(lang => (
                 <div key={lang.name} className="flex items-center justify-between">
                   <span className="font-semibold text-gray-700">{lang.name}</span>
-                  <span className="text-xs font-mono font-bold bg-white px-3 py-1 rounded-full text-primary shadow-sm border border-gray-50">
+                  <span className="text-[10px] uppercase tracking-tighter font-bold text-primary bg-primary/5 px-3 py-1 rounded border border-primary/10">
                     {lang.level}
                   </span>
                 </div>
@@ -213,18 +215,21 @@ const About = () => {
 
           {/* Hobbies */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-light-800 p-8 rounded-3xl border border-gray-100 hover:shadow-lg transition-all"
+            transition={{ delay: 0.1 }}
+            className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <h4 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Heart className="text-secondary" size={24} /> Passions & Hobbies
+            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-secondary/10 transition-colors">
+              <Heart size={40} />
+            </div>
+            <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
+               Passions & Hobbies
             </h4>
             <div className="flex flex-wrap gap-3">
               {personalInterests.hobbies.map(hobby => (
-                <span key={hobby} className="px-5 py-2 bg-white rounded-xl shadow-sm border border-gray-50 text-gray-600 font-medium hover:text-primary transition-all cursor-default hover:scale-105">
+                <span key={hobby} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 bg-white px-3 py-1.5 rounded border border-gray-100 group-hover:border-primary/20 transition-colors">
                   {hobby}
                 </span>
               ))}
