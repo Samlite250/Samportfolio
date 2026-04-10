@@ -54,9 +54,9 @@ const About = () => {
               <div className="h-px w-12 bg-primary"></div>
               <span className="text-primary font-mono font-bold tracking-widest text-sm uppercase">01. Professional Bio</span>
             </motion.div>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
               Crafting Digital Solutions <br />
-              <span className="text-gradient">With Purpose & Precision</span>
+              <span className="text-gradient underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
             </h2>
           </div>
           <div className="hidden lg:block h-24 w-px bg-gray-200"></div>
@@ -74,17 +74,13 @@ const About = () => {
           >
             <div className="prose prose-lg text-gray-600 leading-relaxed font-medium">
               <p className="text-xl text-gray-800 leading-snug">
-                I am a Software Engineer dedicated to bridging the gap between complex technical challenges and clean user-centric results.
+                I am a Software Engineer focused on turning technical complexity into elegant, user-friendly solutions.
               </p>
               <p>
-                My professional foundation was built early, starting in secondary school where I dedicated three transformative years to mastering 
-                Software Development from Level 3 through Level 5. This specialized path allowed me to enter university already equipped 
-                with the tools of the trade.
+                My journey began early in secondary school. Mastering Software Development from Level 3 to Level 5 gave me the solid technical foundation I leverage today at university.
               </p>
               <p>
-                Now at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I push the limits of modern web technologies. 
-                Whether architecting real estate platforms, engineering high-performance e-commerce systems, or building academic networks, 
-                my focus remains on scalability and performance.
+                Currently at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I architect scalable platforms—from real estate systems to campus social networks—prioritizing performance and clean code.
               </p>
             </div>
 
