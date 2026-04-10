@@ -9,7 +9,7 @@ const skills = [
 const education = [
   {
     degree: 'Bachelor of Science in Software Engineering',
-    school: 'University  (Name)',
+    school: 'Kigali Independent University (ULK)',
     period: '2023 – Present',
     description:
       'Pursuing a degree in Software Engineering with focus on full-stack web development, distributed systems, databases, and modern software architectures.',

@@ -19,7 +19,7 @@ const realProjects = [
     description:
       'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'PostgreSQL'],
-    image_url: '/images/projects/burikantu.png',
+    image_url: '/images/projects/burikantu.jpeg',
     live_url: '#',
     github_url: '#',
   },
