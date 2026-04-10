@@ -1,10 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { BookOpen, Code2, GraduationCap, Laptop, Sparkles } from 'lucide-react';
 
 const skills = [
-  'JavaScript (ES6+)', 'React.js', 'Node.js',
-  'Tailwind CSS', 'Supabase', 'PostgreSQL',
-  'Git & GitHub', 'RESTful APIs', 'UI/UX Design'
+  { name: 'JavaScript (ES6+)', icon: <Code2 size={16} /> },
+  { name: 'React.js', icon: <Sparkles size={16} /> },
+  { name: 'Node.js', icon: <Laptop size={16} /> },
+  { name: 'Tailwind CSS', icon: <Sparkles size={16} /> },
+  { name: 'Supabase', icon: <Sparkles size={16} /> },
+  { name: 'PostgreSQL', icon: <Sparkles size={16} /> },
+  { name: 'Git & GitHub', icon: <Code2 size={16} /> },
+  { name: 'RESTful APIs', icon: <Laptop size={16} /> },
+  { name: 'UI/UX Design', icon: <Sparkles size={16} /> }
 ];
 
 const education = [
@@ -13,109 +20,167 @@ const education = [
     school: 'Kigali Independent University (ULK)',
     period: '2023 – Present',
     description:
-      'Currently pursuing a degree in Software Engineering with a deep focus on full-stack web development, distributed systems, and scalable modern architectures.',
+      'Currently mastering advanced software engineering principles, distributed systems, and scalable cloud architectures.',
+    tags: ['Full-Stack', 'Cloud', 'Architecture']
   },
   {
     degree: 'Software Development — Level 3, 4 & 5',
     school: 'Secondary School (TVET/Vocational)',
     period: '2020 – 2023',
     description:
-      'Successfully completed Level 3 through Level 5 in Software Development. Gained early expertise in coding fundamentals, database management, and system analysis.',
+      'Gained deep technical roots in programming and logic via an intensive 3-year vocational software development track.',
+    tags: ['Fundamentals', 'Databases', 'Algorithms']
   },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-24">
-      <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+    <section id="about" className="py-24 relative overflow-hidden bg-white">
+      {/* Decorative background element */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-        <div className="flex items-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mr-6">
-            <span className="text-primary font-mono text-xl mr-2">01.</span>
-            About Me
-          </h2>
-          <div className="h-px bg-gray-300 flex-grow max-w-xs"></div>
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-4"
+            >
+              <div className="h-px w-12 bg-primary"></div>
+              <span className="text-primary font-mono font-bold tracking-widest text-sm uppercase">01. Professional Bio</span>
+            </motion.div>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+              Crafting Digital Solutions <br />
+              <span className="text-gradient">With Purpose & Precision</span>
+            </h2>
+          </div>
+          <div className="hidden lg:block h-24 w-px bg-gray-200"></div>
         </div>
 
-        <div className="space-y-16">
+        <div className="grid lg:grid-cols-12 gap-16">
           
-          {/* Main Bio Text */}
+          {/* Detailed Narrative */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-12"
+            className="lg:col-span-7 space-y-8"
           >
-            <div className="md:col-span-2 space-y-6 text-gray-600 text-lg leading-relaxed">
-              <p>
-                Hello! I'm a passionate full-stack software developer whose journey
-                into tech began in secondary school. Studying Software Development 
-                from Level 3 through Level 5 at an early age gave me a rock-solid 
-                foundation before pursuing my formal university degree.
+            <div className="prose prose-lg text-gray-600 leading-relaxed font-medium">
+              <p className="text-xl text-gray-800 leading-snug">
+                I am a Software Engineer dedicated to bridging the gap between complex technical challenges and clean user-centric results.
               </p>
               <p>
-                Today, I specialize in building scalable web platforms—ranging from 
-                complex real estate systems and e-commerce marketplaces to 
-                interactive campus social networks. I am committed to writing clean, 
-                maintainable code and creating seamless user experiences.
+                My professional foundation was built early, starting in secondary school where I dedicated three transformative years to mastering 
+                Software Development from Level 3 through Level 5. This specialized path allowed me to enter university already equipped 
+                with the tools of the trade.
+              </p>
+              <p>
+                Now at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I push the limits of modern web technologies. 
+                Whether architecting real estate platforms, engineering high-performance e-commerce systems, or building academic networks, 
+                my focus remains on scalability and performance.
               </p>
             </div>
 
-            {/* Skills Highlight */}
-            <div className="space-y-4">
-              <h3 className="text-gray-900 font-bold text-xl mb-4">Core Skills</h3>
-              <ul className="grid grid-cols-1 gap-3">
+            <div className="pt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="p-4 bg-light-800 rounded-xl border border-gray-100 group hover:shadow-md transition-all">
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                    <Code2 size={24} />
+                </div>
+                <h4 className="font-bold text-gray-900">Clean Code</h4>
+                <p className="text-sm text-gray-500 mt-1">SOLID & Maintainable</p>
+              </div>
+              <div className="p-4 bg-light-800 rounded-xl border border-gray-100 group hover:shadow-md transition-all">
+                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-3 group-hover:scale-110 transition-transform">
+                    <Sparkles size={24} />
+                </div>
+                <h4 className="font-bold text-gray-900">Performance</h4>
+                <p className="text-sm text-gray-500 mt-1">SEO & Speed Focused</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Core Expertise Side Panel */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="glass-card p-8 rounded-2xl relative"
+            >
+              <div className="absolute top-4 right-4 text-primary/10"><Sparkles size={48} /></div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                 Technological Stack
+              </h3>
+              <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="flex items-center gap-2 text-gray-700 text-base font-medium"
+                  <span
+                    key={skill.name}
+                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-100 rounded-full text-sm font-semibold text-gray-700 shadow-sm hover:border-primary/30 hover:shadow-md transition-all cursor-default"
                   >
-                    <span className="text-primary text-sm">▹</span>
-                    {skill}
-                  </li>
+                    <span className="text-primary">{skill.icon}</span>
+                    {skill.name}
+                  </span>
                 ))}
-              </ul>
+              </div>
+            </motion.div>
+
+            {/* Quick Experience Link Card */}
+            <div className="p-8 bg-primary rounded-2xl text-white shadow-xl shadow-primary/20 flex items-center justify-between">
+                <div>
+                   <h4 className="text-xl font-bold mb-1">Passionate about UI?</h4>
+                   <p className="opacity-80 text-sm">Check my latest web designs</p>
+                </div>
+                <a href="#projects" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
+                    <Sparkles size={24} />
+                </a>
             </div>
-          </motion.div>
-
-          {/* Education Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card p-10 rounded-2xl shadow-sm border border-gray-100"
-          >
-            <h3 className="text-2xl font-semibold mb-10 text-gray-900 flex items-center gap-3">
-              <span className="text-2xl">🎓</span> Education Journey
-            </h3>
-
-            <div className="relative border-l-2 border-primary/20 pl-8 space-y-12 ml-2">
-              {education.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.15 }}
-                  className="relative"
-                >
-                  {/* Timeline dot */}
-                  <span className="absolute -left-[2.65rem] top-1.5 w-4.5 h-4.5 rounded-full bg-primary border-4 border-white shadow-sm transition-transform hover:scale-125"></span>
-
-                  <p className="text-primary font-mono text-sm mb-1 uppercase tracking-widest">{item.period}</p>
-                  <h4 className="font-bold text-gray-900 text-xl">{item.degree}</h4>
-                  <p className="text-primary/90 font-semibold mt-1">{item.school}</p>
-                  <p className="text-gray-500 text-base mt-4 max-w-3xl italic">
-                    {item.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
 
         </div>
+
+        {/* Education Reimagined */}
+        <div className="mt-24">
+          <div className="flex items-center gap-4 mb-12">
+            <h3 className="text-2xl font-bold text-gray-900">Education Journey</h3>
+            <div className="h-px bg-gray-100 flex-grow"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+             {education.map((item, idx) => (
+               <motion.div
+                 key={idx}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: idx * 0.1 }}
+                 className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+               >
+                 <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/10 transition-colors">
+                    <GraduationCap size={40} />
+                 </div>
+                 <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg mb-4">
+                    {item.period}
+                 </div>
+                 <h4 className="text-xl font-extrabold text-gray-900">{item.degree}</h4>
+                 <p className="text-primary font-semibold text-sm mt-1 mb-6">{item.school}</p>
+                 <p className="text-gray-500 font-medium mb-6">{item.description}</p>
+                 <div className="flex flex-wrap gap-2">
+                    {item.tags.map(tag => (
+                      <span key={tag} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 bg-white px-2 py-1 rounded border border-gray-100">{tag}</span>
+                    ))}
+                 </div>
+               </motion.div>
+             ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
