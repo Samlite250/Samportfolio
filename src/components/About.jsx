@@ -200,8 +200,8 @@ const About = () => {
             viewport={{ once: true }}
             className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/10 transition-colors">
-              <Languages size={40} />
+            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/20 transition-colors">
+              <Languages size={48} />
             </div>
             <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
                Spoken Languages
@@ -209,8 +209,8 @@ const About = () => {
             <div className="space-y-4">
               {personalInterests.languages.map(lang => (
                 <div key={lang.name} className="flex items-center justify-between">
-                  <span className="font-semibold text-gray-700">{lang.name}</span>
-                  <span className="text-[10px] uppercase tracking-tighter font-bold text-primary bg-primary/5 px-3 py-1 rounded border border-primary/10">
+                  <span className="font-bold text-gray-800 text-base">{lang.name}</span>
+                  <span className="text-xs uppercase tracking-wider font-black text-primary bg-primary/10 px-4 py-1.5 rounded-lg border border-primary/20">
                     {lang.level}
                   </span>
                 </div>
@@ -226,16 +226,16 @@ const About = () => {
             transition={{ delay: 0.1 }}
             className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-secondary/10 transition-colors">
-              <Heart size={40} />
+            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-secondary/20 transition-colors">
+              <Heart size={48} />
             </div>
             <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
                Passions & Hobbies
             </h4>
             <div className="flex flex-wrap gap-3">
               {personalInterests.hobbies.map(hobby => (
-                <span key={hobby.name} className="flex items-center gap-2 text-[10px] uppercase tracking-tighter font-bold text-gray-500 bg-white px-3 py-1.5 rounded border border-gray-100 group-hover:border-primary/20 transition-all hover:text-primary">
-                  {hobby.icon}
+                <span key={hobby.name} className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-black text-gray-700 bg-white px-4 py-2.5 rounded-xl border-2 border-gray-100 group-hover:border-primary/40 transition-all hover:text-primary hover:shadow-md">
+                  <span className="text-primary">{hobby.icon}</span>
                   {hobby.name}
                 </span>
               ))}
