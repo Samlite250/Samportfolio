@@ -39,9 +39,10 @@ const realProjects = [
     description:
       'A university and campus social platform that connects students, facilitates campus event discovery, resource sharing, and inter-campus networking. Features university listings, event management, and a clean intuitive dashboard for students.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL'],
-    image_url: '/images/projects/project3.jpg',
+    image_url: '/images/projects/campus-connect.webp',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/Campus-connect',
+    status: 'In Development'
   },
 ];
 
@@ -81,6 +82,13 @@ const Projects = () => {
                     style={{ contrast: '1.2', brightness: '1.05' }}
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />
+                )}
+                {project.status && (
+                  <div className="absolute top-4 left-4 z-30">
+                    <span className="px-3 py-1 bg-gray-900/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/20">
+                      {project.status}
+                    </span>
+                  </div>
                 )}
               </div>
 
