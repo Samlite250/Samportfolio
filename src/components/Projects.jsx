@@ -69,7 +69,7 @@ const Projects = () => {
               className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
               {/* Project Image */}
-              <div className="w-full md:w-3/5 h-64 sm:h-80 md:h-[400px] relative group overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl shadow-lg">
                 <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
                   <span className="text-gray-400 font-mono text-sm">{project.title}</span>
                 </div>
@@ -77,7 +77,7 @@ const Projects = () => {
                   <img
                     src={project.image_url}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-all duration-700 z-0"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 z-0"
                     style={{ filter: 'brightness(1.03) contrast(1.05) saturate(1.08)' }}
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />

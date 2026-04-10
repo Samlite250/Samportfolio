@@ -98,7 +98,7 @@ const Hero = () => {
             <img 
               src="/images/profile.jpeg" 
               alt="Sam" 
-              className="absolute inset-0 w-full h-full object-contain rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           </div>
         </motion.div>
