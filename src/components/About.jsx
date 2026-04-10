@@ -1,63 +1,107 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const skills = [
+  'JavaScript (ES6+)', 'React.js', 'Node.js',
+  'Tailwind CSS', 'Supabase', 'PostgreSQL',
+];
+
 const About = () => {
   return (
     <section id="about" className="py-24">
       <div className="container mx-auto px-6 md:px-12">
-        
-        <div className="flex items-center mb-12">
+
+        <div className="flex items-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mr-6">
-            <span className="text-primary font-mono text-xl mr-2">01.</span> 
+            <span className="text-primary font-mono text-xl mr-2">01.</span>
             About Me
           </h2>
-          <div className="h-px bg-gray-700 flex-grow max-w-xs"></div>
+          <div className="h-px bg-gray-300 flex-grow max-w-xs"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+
+          {/* Text + Skills */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-6 text-gray-600 text-lg leading-relaxed"
           >
             <p>
-              Hello! My name is Sam and I enjoy creating things that live on the internet. My interest in web development started back in high school when I decided to try editing custom Tumblr themes &mdash; turns out hacking together HTML & CSS taught me a lot about HTML & CSS!
+              Hello! I'm a passionate full-stack developer who loves crafting
+              elegant digital experiences. My journey into tech started with
+              curiosity about how websites work &mdash; and I've never stopped
+              exploring since.
             </p>
             <p>
-              Fast-forward to today, and I've had the privilege of working at a start-up, a huge corporation, and a student-led design agency. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.
+              I specialize in building scalable web platforms with clean,
+              maintainable code. Whether it's a sleek UI or a robust backend
+              API, I bring both precision and creativity to every project.
             </p>
             <p>
-              I recently launched a course that covers everything you need to build a web app with the Spotify API using Node & React.
+              Here are a few technologies I've been working with recently:
             </p>
+
+            <ul className="grid grid-cols-2 gap-2 mt-2">
+              {skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="flex items-center gap-2 text-gray-700 text-base font-medium"
+                >
+                  <span className="text-primary text-sm">▹</span>
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* Additional visual element or image */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          {/* Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center"
           >
-            <div className="glass-card p-8 rounded-2xl relative z-10">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Education</h3>
-              <ul className="space-y-6">
-                <li className="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-primary before:rounded-full">
-                  <h4 className="font-medium text-gray-900">Bachelor of Science in Software Engineering</h4>
-                  <p className="text-primary text-sm mt-1">University Name &bullet; 2021 - Present</p>
-                  <p className="text-gray-600 text-sm mt-2">Final year undergraduate focusing on full-stack development, distributed systems, and modern web architectures.</p>
-                </li>
-              </ul>
+            <div className="relative group w-64 h-64 md:w-80 md:h-80">
+              {/* Offset border frame */}
+              <div className="absolute inset-0 rounded-2xl border-2 border-primary translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
+              {/* Color overlay */}
+              <div className="absolute inset-0 bg-primary/20 rounded-2xl group-hover:bg-transparent transition-colors duration-300 z-10"></div>
+              {/* Your photo */}
+              <img
+                src="/images/profile.jpeg"
+                alt="Profile"
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
+              />
             </div>
-            
-            {/* Decorative background blur */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[80px] rounded-full z-0"></div>
           </motion.div>
 
         </div>
+
+        {/* Education Card below */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 glass-card p-8 rounded-2xl"
+        >
+          <h3 className="text-2xl font-semibold mb-6 text-gray-900">Education</h3>
+          <ul className="space-y-6">
+            <li className="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-primary before:rounded-full">
+              <h4 className="font-medium text-gray-900 text-lg">Bachelor of Science in Software Engineering</h4>
+              <p className="text-primary text-sm mt-1">University Name &bull; 2021 – Present</p>
+              <p className="text-gray-600 text-sm mt-2 max-w-2xl">
+                Final year undergraduate focusing on full-stack development,
+                distributed systems, and modern web architectures.
+              </p>
+            </li>
+          </ul>
+        </motion.div>
+
       </div>
     </section>
   );
