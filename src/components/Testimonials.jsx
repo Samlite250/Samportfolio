@@ -36,6 +36,10 @@ const brands = [
   { name: 'Global Tech', icon: <Square size={24} className="mr-2" /> },
 ];
 
+// Duplicate arrays for infinite scrolling effect
+const scrollableTestimonials = [...testimonials, ...testimonials, ...testimonials];
+const scrollableBrands = [...brands, ...brands, ...brands, ...brands, ...brands, ...brands];
+
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50/50 dark:bg-dark-900/50 transition-colors duration-300">
@@ -43,10 +47,10 @@ const Testimonials = () => {
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full mb-16 md:mb-24">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6">
           <div className="max-w-xl">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -67,80 +71,83 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8 relative items-stretch">
-          {testimonials.map((testimonial, idx) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
-              className="glass-card p-8 md:p-10 rounded-3xl flex flex-col relative group overflow-hidden border border-gray-200 dark:border-dark-700 bg-white/80 dark:bg-dark-800/80 hover:-translate-y-2 hover:shadow-2xl shadow-gray-200 dark:shadow-none transition-all duration-500"
+      {/* Auto-scrolling Testimonials Marquee */}
+      <div className="w-full overflow-hidden relative">
+        <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] pointer-events-auto py-4">
+          {scrollableTestimonials.map((testimonial, idx) => (
+            <div 
+              key={idx} 
+              className="w-[85vw] md:w-[450px] shrink-0 mx-4"
             >
-              {/* Subtle top border accent */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="glass-card p-8 md:p-10 rounded-3xl flex flex-col relative group overflow-hidden border border-gray-200 dark:border-dark-700 bg-white/80 dark:bg-dark-800/80 hover:-translate-y-2 hover:shadow-2xl shadow-gray-200 dark:shadow-none transition-all duration-500 h-full">
+                
+                {/* Subtle top border accent */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Quote Icon Backdrop */}
-              <Quote className="absolute top-8 right-8 text-gray-100 dark:text-dark-700/50 group-hover:text-primary/10 transition-colors duration-500 -z-10" size={80} />
-              
-              {/* Stars */}
-              <div className="flex gap-1 mb-8">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} fill="currentColor" className="text-yellow-400" />
-                ))}
-              </div>
+                {/* Quote Icon Backdrop */}
+                <Quote className="absolute top-8 right-8 text-gray-100 dark:text-dark-700/50 group-hover:text-primary/10 transition-colors duration-500 -z-10" size={80} />
+                
+                {/* Stars */}
+                <div className="flex gap-1 mb-8">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} fill="currentColor" className="text-yellow-400" />
+                  ))}
+                </div>
 
-              {/* Text Content */}
-              <p className="text-gray-600 dark:text-gray-300 mb-10 relative z-10 font-medium leading-relaxed text-lg">
-                "{testimonial.content}"
-              </p>
-              
-              {/* Author Profile */}
-              <div className="mt-auto pt-6 border-t border-gray-100 dark:border-dark-700 flex items-center gap-4">
-                <div className="relative">
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name} 
-                    className="w-14 h-14 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-colors duration-300"
-                  />
-                  <div className="absolute -bottom-1 -right-1 bg-white dark:bg-dark-800 rounded-full">
-                    <BadgeCheck size={16} className="text-blue-500" />
+                {/* Text Content */}
+                <p className="text-gray-600 dark:text-gray-300 mb-10 relative z-10 font-medium leading-relaxed text-lg flex-grow">
+                  "{testimonial.content}"
+                </p>
+                
+                {/* Author Profile */}
+                <div className="mt-auto pt-6 border-t border-gray-100 dark:border-dark-700 flex items-center gap-4">
+                  <div className="relative">
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name} 
+                      className="w-14 h-14 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-colors duration-300"
+                    />
+                    <div className="absolute -bottom-1 -right-1 bg-white dark:bg-dark-800 rounded-full">
+                      <BadgeCheck size={16} className="text-blue-500" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 dark:text-white font-extrabold text-lg flex items-center gap-2">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap">
+                      {testimonial.role} <span className="text-primary font-bold">@ {testimonial.company}</span>
+                    </p>
                   </div>
                 </div>
-                <div>
-                  <h4 className="text-gray-900 dark:text-white font-extrabold text-lg flex items-center gap-2">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                    {testimonial.role} <span className="text-primary font-bold">@ {testimonial.company}</span>
-                  </p>
-                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
+        
+        {/* Left/Right fading edge masks for clean overlap */}
+        <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-gray-50 dark:from-dark-900 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-gray-50 dark:from-dark-900 to-transparent pointer-events-none"></div>
+      </div>
 
-        {/* Brand Bar */}
-        <div className="mt-24 pt-12 border-t border-gray-200 dark:border-dark-700">
-          <p className="text-center font-mono text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 font-bold mb-8">Trusted by growing companies and startups</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            {brands.map((brand, idx) => (
-              <motion.div 
+      {/* Auto-scrolling Brand Bar Marquee */}
+      <div className="mt-24 pt-12 border-t border-gray-200 dark:border-dark-700 container mx-auto px-6 overflow-hidden relative">
+        <p className="text-center font-mono text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 font-bold mb-8">Trusted by growing companies and startups</p>
+        
+        <div className="w-full relative overflow-hidden flex items-center">
+          <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] pointer-events-auto">
+            {scrollableBrands.map((brand, idx) => (
+              <div 
                 key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + (idx * 0.1) }}
-                className="flex items-center text-gray-500 dark:text-gray-400 font-bold text-xl md:text-2xl hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="flex items-center text-gray-500 dark:text-gray-400 font-bold text-xl md:text-2xl hover:text-gray-900 dark:hover:text-white transition-colors opacity-60 grayscale hover:grayscale-0 mx-8 md:mx-16 whitespace-nowrap"
               >
                 {brand.icon} {brand.name}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
