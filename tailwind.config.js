@@ -8,17 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'rgb(0, 82, 57)', // rgb(0,82,57)
-        secondary: '#4285F4', // Google Blue
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
         light: {
           900: '#ffffff',
-          800: '#f7f7f7', // Subtly off-white for a cleaner look
-          700: '#f1f5f9',
+          800: '#fafafa',
+          700: '#f4f4f5',
         },
         dark: {
-          900: '#212121',
-          800: '#141414',
-          700: '#1f1f1f',
+          900: '#0a0a0a',
+          800: '#121212',
+          700: '#262626',
         }
       },
       fontFamily: {
