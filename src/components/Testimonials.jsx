@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Quote, Star, BadgeCheck, Hexagon, Triangle, Circle, Square } from 'lucide-react';
+import { Quote, Star, BadgeCheck, Hexagon, Triangle, Circle, Square, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -26,6 +26,14 @@ const testimonials = [
     company: 'Creative Studio',
     content: 'As a designer, I am very picky about implementation. Samuel nailed every single animation, hover state, and padding requirement I had. The intersection of design and engineering is where he truly shines!',
     avatar: 'https://i.pravatar.cc/150?u=elena',
+  },
+  {
+    id: 4,
+    name: 'Michael Chang',
+    role: 'CEO',
+    company: 'NextGen Systems',
+    content: 'Bringing Samuel onboard was the best decision we made for our platform upgrade. He wrote pristine code, scaled our databases efficiently, and always communicated complexities in a way everyone could understand.',
+    avatar: 'https://i.pravatar.cc/150?u=michael',
   }
 ];
 
@@ -34,20 +42,32 @@ const brands = [
   { name: 'Innovate IO', icon: <Triangle size={24} className="mr-2" /> },
   { name: 'Creative Studio', icon: <Circle size={24} className="mr-2" /> },
   { name: 'Global Tech', icon: <Square size={24} className="mr-2" /> },
+  { name: 'NextGen', icon: <Triangle size={24} className="mr-2" /> },
 ];
 
-// Duplicate arrays for infinite scrolling effect
-const scrollableTestimonials = [...testimonials, ...testimonials, ...testimonials];
-const scrollableBrands = [...brands, ...brands, ...brands, ...brands, ...brands, ...brands];
+const scrollableBrands = [...brands, ...brands, ...brands, ...brands, ...brands];
 
 const Testimonials = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = window.innerWidth > 768 ? 480 : 320;
+      if (direction === 'left') {
+        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50/50 dark:bg-dark-900/50 transition-colors duration-300">
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full mb-16 md:mb-24">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full mb-16 md:mb-20">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end gap-6">
@@ -65,29 +85,50 @@ const Testimonials = () => {
               Feedback from <br className="hidden md:block" /> Industry Partners.
             </h2>
           </div>
-          <div className="hidden md:flex gap-2">
-            {[1, 2, 3].map(i => (
-              <div key={i} className={`w-3 h-3 rounded-full ${i === 1 ? 'bg-primary' : 'bg-gray-200 dark:bg-dark-700'}`}></div>
-            ))}
+          <div className="hidden md:flex gap-4">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-12 h-12 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="w-12 h-12 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95"
+            >
+              <ChevronRight size={24} />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Auto-scrolling Testimonials Marquee */}
-      <div className="w-full overflow-hidden relative">
-        <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] pointer-events-auto py-4">
-          {scrollableTestimonials.map((testimonial, idx) => (
-            <div 
+      {/* Manual Scroll Testimonials Slider */}
+      <div className="w-full relative group">
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-6 md:px-12 items-stretch"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <style>{`
+            #testimonials .flex::-webkit-scrollbar { display: none; }
+          `}</style>
+          
+          {testimonials.map((testimonial, idx) => (
+            <motion.div 
               key={idx} 
-              className="w-[85vw] md:w-[450px] shrink-0 mx-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="w-[85vw] md:w-[450px] shrink-0 mx-4 snap-center"
             >
-              <div className="glass-card p-8 md:p-10 rounded-3xl flex flex-col relative group overflow-hidden border border-gray-200 dark:border-dark-700 bg-white/80 dark:bg-dark-800/80 hover:-translate-y-2 hover:shadow-2xl shadow-gray-200 dark:shadow-none transition-all duration-500 h-full">
+              <div className="glass-card p-8 md:p-10 rounded-3xl flex flex-col relative overflow-hidden border border-gray-200 dark:border-dark-700 bg-white/80 dark:bg-dark-800/80 hover:-translate-y-2 hover:shadow-2xl shadow-gray-200 dark:shadow-none transition-all duration-500 h-full group/card">
                 
                 {/* Subtle top border accent */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Quote Icon Backdrop */}
-                <Quote className="absolute top-8 right-8 text-gray-100 dark:text-dark-700/50 group-hover:text-primary/10 transition-colors duration-500 -z-10" size={80} />
+                <Quote className="absolute top-8 right-8 text-gray-100 dark:text-dark-700/50 group-hover/card:text-primary/10 transition-colors duration-500 -z-10" size={80} />
                 
                 {/* Stars */}
                 <div className="flex gap-1 mb-8">
@@ -107,7 +148,7 @@ const Testimonials = () => {
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name} 
-                      className="w-14 h-14 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-colors duration-300"
+                      className="w-14 h-14 rounded-full object-cover border-2 border-transparent group-hover/card:border-primary transition-colors duration-300"
                     />
                     <div className="absolute -bottom-1 -right-1 bg-white dark:bg-dark-800 rounded-full">
                       <BadgeCheck size={16} className="text-blue-500" />
@@ -123,13 +164,9 @@ const Testimonials = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-        
-        {/* Left/Right fading edge masks for clean overlap */}
-        <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-gray-50 dark:from-dark-900 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-gray-50 dark:from-dark-900 to-transparent pointer-events-none"></div>
       </div>
 
       {/* Auto-scrolling Brand Bar Marquee */}
@@ -137,7 +174,7 @@ const Testimonials = () => {
         <p className="text-center font-mono text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 font-bold mb-8">Trusted by growing companies and startups</p>
         
         <div className="w-full relative overflow-hidden flex items-center">
-          <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] pointer-events-auto">
+          <div className="flex w-max animate-marquee-reverse pointer-events-auto">
             {scrollableBrands.map((brand, idx) => (
               <div 
                 key={idx}
