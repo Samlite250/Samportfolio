@@ -31,7 +31,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-white/50 relative overflow-hidden">
+    <section id="services" className="py-24 bg-white/50 dark:bg-dark-900/50 relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6 md:px-12">
         
         <div className="max-w-3xl mb-16">
@@ -44,7 +44,7 @@ const Services = () => {
             <div className="h-1 w-12 bg-primary"></div>
             <span className="text-primary font-mono font-bold uppercase tracking-widest text-sm">Services I Offer</span>
           </motion.div>
-          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
             Comprehensive Digital <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Solutions & Engineering</span>
           </h2>
@@ -58,29 +58,29 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/50 hover:border-primary/40 transition-all hover:translate-y-[-8px] group"
+              className="p-8 bg-white dark:bg-dark-800 border border-gray-100 dark:border-dark-700 rounded-3xl shadow-xl shadow-gray-100/50 dark:shadow-none hover:border-primary/40 dark:hover:border-primary/40 transition-all hover:translate-y-[-8px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl inline-block group-hover:scale-110 transition-transform duration-300">
+              <div className="mb-6 p-4 bg-gray-50 dark:bg-dark-900 rounded-2xl inline-block group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{service.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
                 {service.description}
               </p>
               
               <div className="flex flex-wrap gap-2 mb-8">
                 {service.tags.map(tag => (
-                  <span key={tag} className="text-[10px] uppercase font-bold text-gray-400 bg-gray-50 px-2.5 py-1 rounded">
+                  <span key={tag} className="text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-dark-900 px-2.5 py-1 rounded">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="pt-6 border-t border-gray-50 flex items-center justify-between">
-                <span className="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+              <div className="pt-6 border-t border-gray-50 dark:border-dark-700 flex items-center justify-between">
+                 <span className="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                   <CheckCircle size={14} /> Solutions
                 </span>
-                <ArrowRight className="text-gray-300 group-hover:text-primary transition-colors" size={18} />
+                <ArrowRight className="text-gray-300 dark:text-gray-600 group-hover:text-primary dark:group-hover:text-primary transition-colors" size={18} />
               </div>
             </motion.div>
           ))}

@@ -68,12 +68,12 @@ const About = () => {
               <div className="h-1.5 w-32 bg-primary rounded-full"></div>
               <span className="text-primary font-mono font-black tracking-[0.3em] text-xl md:text-2xl uppercase">01. My Professional Bio</span>
             </motion.div>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
               Crafting Digital Solutions <br />
               <span className="text-gradient underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
             </h2>
           </div>
-          <div className="hidden lg:block h-24 w-px bg-gray-200"></div>
+          <div className="hidden lg:block h-24 w-px bg-gray-200 dark:bg-dark-700"></div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
@@ -86,8 +86,8 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-8"
           >
-            <div className="prose prose-lg text-gray-600 leading-relaxed font-medium">
-              <p className="text-xl text-gray-800 leading-snug">
+            <div className="prose prose-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+              <p className="text-xl text-gray-800 dark:text-gray-200 leading-snug">
                 I am a Software Engineer focused on turning technical complexity into elegant, user-friendly solutions.
               </p>
               <p>
@@ -99,19 +99,19 @@ const About = () => {
             </div>
 
             <div className="pt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-light-800 rounded-xl border border-gray-100 group hover:shadow-md transition-all">
+              <div className="p-4 bg-light-800 dark:bg-dark-800 rounded-xl border border-gray-100 dark:border-dark-700 group hover:shadow-md transition-all">
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                     <Code2 size={24} />
                 </div>
-                <h4 className="font-bold text-gray-900">Clean Code</h4>
-                <p className="text-sm text-gray-500 mt-1">SOLID & Maintainable</p>
+                <h4 className="font-bold text-gray-900 dark:text-white">Clean Code</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SOLID & Maintainable</p>
               </div>
-              <div className="p-4 bg-light-800 rounded-xl border border-gray-100 group hover:shadow-md transition-all">
+              <div className="p-4 bg-light-800 dark:bg-dark-800 rounded-xl border border-gray-100 dark:border-dark-700 group hover:shadow-md transition-all">
                 <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-3 group-hover:scale-110 transition-transform">
                     <Zap size={24} />
                 </div>
-                <h4 className="font-bold text-gray-900">Performance</h4>
-                <p className="text-sm text-gray-500 mt-1">SEO & Speed Focused</p>
+                <h4 className="font-bold text-gray-900 dark:text-white">Performance</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SEO & Speed Focused</p>
               </div>
             </div>
           </motion.div>
@@ -125,14 +125,14 @@ const About = () => {
               className="glass-card p-8 rounded-2xl relative"
             >
               <div className="absolute top-4 right-4 text-primary/10"><Cpu size={48} /></div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                  Technological Stack
               </h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <span
                     key={skill.name}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-100 rounded-full text-sm font-semibold text-gray-700 shadow-sm hover:border-primary/30 hover:shadow-md transition-all cursor-default"
+                    className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-dark-900 border border-gray-100 dark:border-dark-700 rounded-full text-sm font-semibold text-gray-700 shadow-sm hover:border-primary/30 hover:shadow-md transition-all cursor-default"
                   >
                     <span className="text-primary">{skill.icon}</span>
                     {skill.name}
@@ -147,7 +147,7 @@ const About = () => {
                    <h4 className="text-xl font-bold mb-1">Passionate about UI?</h4>
                    <p className="opacity-80 text-sm">Check my latest web designs</p>
                 </div>
-                <a href="#projects" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
+                <a href="#projects" className="w-12 h-12 bg-white dark:bg-dark-900/20 rounded-full flex items-center justify-center hover:bg-white dark:bg-dark-900/40 transition-colors">
                     <Monitor size={24} />
                 </a>
             </div>
@@ -158,7 +158,7 @@ const About = () => {
         {/* Education Reimagined */}
         <div className="mt-24">
           <div className="flex items-center gap-4 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900">Education Journey</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Education Journey</h3>
             <div className="h-px bg-gray-100 flex-grow"></div>
           </div>
 
@@ -170,20 +170,20 @@ const About = () => {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: idx * 0.1 }}
-                 className="p-8 bg-light-800 rounded-2xl border border-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+                 className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
                >
-                 <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/10 transition-colors">
+                 <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-primary/10 transition-colors">
                     <GraduationCap size={40} />
                  </div>
                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg mb-4">
                     {item.period}
                  </div>
-                 <h4 className="text-xl font-extrabold text-gray-900">{item.degree}</h4>
+                 <h4 className="text-xl font-extrabold text-gray-900 dark:text-white">{item.degree}</h4>
                  <p className="text-primary font-semibold text-sm mt-1 mb-6">{item.school}</p>
-                 <p className="text-gray-500 font-medium mb-6">{item.description}</p>
+                 <p className="text-gray-500 dark:text-gray-400 font-medium mb-6">{item.description}</p>
                  <div className="flex flex-wrap gap-2">
                     {item.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 bg-white px-2 py-1 rounded border border-gray-100">{tag}</span>
+                      <span key={tag} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 dark:text-gray-600 bg-white dark:bg-dark-900 px-2 py-1 rounded border border-gray-100 dark:border-dark-700">{tag}</span>
                     ))}
                  </div>
                </motion.div>
@@ -198,18 +198,18 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 bg-light-800 rounded-2xl border border-gray-100 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+            className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-primary/20 transition-colors">
+            <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-primary/20 transition-colors">
               <Languages size={48} />
             </div>
-            <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
+            <h4 className="text-xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                Spoken Languages
             </h4>
             <div className="space-y-4">
               {personalInterests.languages.map(lang => (
                 <div key={lang.name} className="flex items-center justify-between">
-                  <span className="font-bold text-gray-800 text-base">{lang.name}</span>
+                  <span className="font-bold text-gray-800 dark:text-gray-200 text-base">{lang.name}</span>
                   <span className="text-xs uppercase tracking-wider font-black text-primary bg-primary/10 px-4 py-1.5 rounded-lg border border-primary/20">
                     {lang.level}
                   </span>
@@ -224,17 +224,17 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="p-8 bg-light-800 rounded-2xl border border-gray-100 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
+            className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
           >
-            <div className="absolute top-8 right-8 text-gray-200 group-hover:text-secondary/20 transition-colors">
+            <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-secondary/20 transition-colors">
               <Heart size={48} />
             </div>
-            <h4 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-3">
+            <h4 className="text-xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                Passions & Hobbies
             </h4>
             <div className="flex flex-wrap gap-3">
               {personalInterests.hobbies.map(hobby => (
-                <span key={hobby.name} className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-black text-gray-700 bg-white px-4 py-2.5 rounded-xl border-2 border-gray-100 group-hover:border-primary/40 transition-all hover:text-primary hover:shadow-md">
+                <span key={hobby.name} className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-black text-gray-700 bg-white dark:bg-dark-900 px-4 py-2.5 rounded-xl border-2 border-gray-100 dark:border-dark-700 group-hover:border-primary/40 transition-all hover:text-primary hover:shadow-md">
                   <span className="text-primary">{hobby.icon}</span>
                   {hobby.name}
                 </span>

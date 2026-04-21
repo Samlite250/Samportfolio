@@ -22,7 +22,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-light-800/10">
+    <section id="skills" className="py-24 bg-light-800/10 dark:bg-dark-900">
       <div className="container mx-auto px-6 md:px-12">
         
         <div className="flex items-center mb-16">
@@ -30,7 +30,7 @@ const Skills = () => {
             <span className="text-primary font-mono text-xl mr-2">02.</span> 
             Technical Expertise
           </h2>
-          <div className="h-px bg-gray-300 flex-grow max-w-xs"></div>
+          <div className="h-px bg-gray-300 dark:bg-dark-700 flex-grow max-w-xs"></div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -41,15 +41,15 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all duration-300 h-full border border-gray-100"
+              className="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all duration-300 h-full border border-gray-100 dark:border-dark-700"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6 group-hover:text-primary transition-colors flex items-center gap-2">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-primary transition-colors flex items-center gap-2">
                 <span className="w-1.5 h-6 bg-primary rounded-full"></span>
                 {category.title}
               </h3>
               <ul className="space-y-4">
                 {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center text-gray-600 font-medium">
+                  <li key={sIdx} className="flex items-center text-gray-600 dark:text-gray-300 font-medium">
                     <span className="text-primary mr-2">▹</span>
                     {skill}
                   </li>

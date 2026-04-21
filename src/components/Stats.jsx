@@ -25,11 +25,11 @@ const Stats = () => {
                 <span className="p-2.5 bg-primary/5 rounded-xl group-hover:bg-primary/10 transition-all">
                    {stat.icon}
                 </span>
-                <span className="text-4xl md:text-5xl font-black text-gray-900 group-hover:text-primary transition-colors">
+                <span className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                   {stat.value}
                 </span>
               </div>
-              <div className="text-[10px] md:text-xs font-black text-gray-400 uppercase tracking-[0.3em] text-center">
+              <div className="text-[10px] md:text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] text-center">
                 {stat.label}
               </div>
             </div>

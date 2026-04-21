@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="relative min-h-screen">
       {/* Background elements */}
-      <div className="fixed inset-0 z-0 bg-light-800">
+      <div className="fixed inset-0 z-0 bg-light-800 dark:bg-dark-900 transition-colors duration-300">
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
       </div>

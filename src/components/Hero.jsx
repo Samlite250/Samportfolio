@@ -34,7 +34,7 @@ const TypewriterText = ({ texts }) => {
   return (
     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
       {currentText}
-      <span className="animate-pulse text-gray-900">|</span>
+      <span className="animate-pulse text-gray-900 dark:text-white">|</span>
     </span>
   );
 };
@@ -53,13 +53,13 @@ const Hero = () => {
           className="order-2 md:order-1"
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
             Sam <br/>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
             I'm a <TypewriterText texts={['Front-End Developer', 'Back-End Developer', 'Web Designer', 'Database Manager']} />
           </h2>
-          <p className="text-gray-600 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
             I specialize in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
           
@@ -67,19 +67,19 @@ const Hero = () => {
             <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
               View Projects <ArrowRight size={18} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-400 text-gray-700 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
               Download CV <Download size={18} />
             </a>
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:samlite250@gmail.com" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="mailto:samlite250@gmail.com" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
               <Mail size={24} />
             </a>
           </div>
