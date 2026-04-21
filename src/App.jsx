@@ -19,7 +19,7 @@ function App() {
         <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
       </div>
       
-      <div className="fixed inset-0 pointer-events-none z-[100] shadow-[inset_0_0_150px_rgba(255,255,255,0.4)]"></div>
+      <div className="fixed inset-0 pointer-events-none z-[100] shadow-[inset_0_0_150px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_0_150px_rgba(0,0,0,0.8)] transition-shadow duration-300"></div>
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
