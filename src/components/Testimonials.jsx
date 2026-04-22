@@ -48,6 +48,19 @@ const brands = [
 const scrollableBrands = [...brands, ...brands, ...brands, ...brands, ...brands];
 
 const Testimonials = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = window.innerWidth > 768 ? 480 : 320;
+      if (direction === 'left') {
+        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50/50 dark:bg-dark-900/50 transition-colors duration-300">
       
@@ -75,9 +88,39 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* Grid Testimonials Layout */}
-      <div className="w-full relative z-10 container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      {/* Sliding Testimonials Layout */}
+      <div className="w-full relative group z-10">
+        
+        {/* Floating Scroll Navigation */}
+        <div className="absolute inset-y-0 left-0 md:left-4 flex items-center z-20 pointer-events-none">
+          <button 
+            onClick={() => scroll('left')}
+            className="pointer-events-auto ml-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        </div>
+        
+        <div className="absolute inset-y-0 right-0 md:right-4 flex items-center z-20 pointer-events-none">
+          <button 
+            onClick={() => scroll('right')}
+            className="pointer-events-auto mr-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-6 md:px-12 items-stretch"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <style>{`
+            #testimonials .flex::-webkit-scrollbar { display: none; }
+          `}</style>
+          
           {testimonials.map((testimonial, idx) => (
             <motion.div 
               key={idx} 
@@ -85,7 +128,7 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="h-full"
+              className="w-[85vw] md:w-[450px] shrink-0 mx-4 snap-center"
             >
               <div className="bg-white dark:bg-dark-800 p-8 md:p-10 rounded-2xl flex flex-col relative h-full border border-gray-100 dark:border-dark-700 shadow-xl shadow-gray-200/40 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                 
