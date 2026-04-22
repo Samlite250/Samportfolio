@@ -185,14 +185,14 @@ const Projects = () => {
       {/* Case Study Modal */}
       <AnimatePresence>
         {activeProject && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 md:p-6 overflow-y-auto">
             {/* Backdrop */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveProject(null)}
-              className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"
+              className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm"
             />
             
             {/* Modal Content */}
@@ -200,11 +200,12 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="relative w-full max-w-4xl bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-dark-700 overflow-hidden my-8"
+              className="relative w-full max-w-4xl bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-dark-700 overflow-hidden my-8 md:my-12"
             >
               <button 
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 z-50 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full backdrop-blur-md transition-colors"
+                className="fixed top-4 right-4 md:absolute md:top-4 md:right-4 z-[1050] p-2 bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-colors border border-white/10 shadow-lg"
+                aria-label="Close modal"
               >
                 <X size={24} />
               </button>

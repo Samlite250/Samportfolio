@@ -85,25 +85,33 @@ const Testimonials = () => {
               Feedback from <br className="hidden md:block" /> Industry Partners.
             </h2>
           </div>
-          <div className="hidden md:flex gap-4">
-            <button 
-              onClick={() => scroll('left')}
-              className="w-12 h-12 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={() => scroll('right')}
-              className="w-12 h-12 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
         </div>
       </div>
 
       {/* Manual Scroll Testimonials Slider */}
       <div className="w-full relative group">
+        
+        {/* Floating Scroll Navigation */}
+        <div className="absolute inset-y-0 left-0 md:left-4 flex items-center z-20 pointer-events-none">
+          <button 
+            onClick={() => scroll('left')}
+            className="pointer-events-auto ml-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        </div>
+        
+        <div className="absolute inset-y-0 right-0 md:right-4 flex items-center z-20 pointer-events-none">
+          <button 
+            onClick={() => scroll('right')}
+            className="pointer-events-auto mr-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
         <div 
           ref={scrollRef}
           className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-6 md:px-12 items-stretch"
