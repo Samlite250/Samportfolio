@@ -144,12 +144,10 @@ const Testimonials = () => {
                 
                 {/* Author Profile */}
                 <div className="mt-auto flex items-center gap-4">
-                  <div className="relative">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.name} 
-                      className="w-12 h-12 rounded-full object-cover grayscale-[0.6] group-hover:grayscale-0 transition-all duration-500 ring-2 ring-gray-100 dark:ring-dark-700 group-hover:ring-primary/30"
-                    />
+                  <div className="relative shrink-0">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 ring-2 ring-transparent group-hover:bg-primary group-hover:ring-primary/30 transition-all duration-500">
+                      <span className="text-primary group-hover:text-white text-lg md:text-xl font-bold font-mono">{testimonial.name.charAt(0)}</span>
+                    </div>
                   </div>
                   <div>
                     <h4 className="text-gray-900 dark:text-white font-bold text-base flex items-center gap-2">
