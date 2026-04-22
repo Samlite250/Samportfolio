@@ -200,68 +200,68 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="relative w-full max-w-4xl bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-dark-700 overflow-hidden my-8 md:my-12"
+              className="relative w-full max-w-3xl bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-dark-700 overflow-hidden my-6 md:my-8"
             >
               <button 
                 onClick={() => setActiveProject(null)}
                 className="fixed top-4 right-4 md:absolute md:top-4 md:right-4 z-[1050] p-2 bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-colors border border-white/10 shadow-lg"
                 aria-label="Close modal"
               >
-                <X size={24} />
+                <X size={20} />
               </button>
 
-              <div className="h-64 md:h-80 relative">
+              <div className="h-48 md:h-56 relative">
                 <img src={activeProject.image_url} alt={activeProject.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 md:left-10 z-10">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">{activeProject.title}</h3>
-                  <div className="flex gap-3">
+                <div className="absolute bottom-4 left-4 md:left-8 z-10">
+                  <h3 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{activeProject.title}</h3>
+                  <div className="flex gap-2">
                     {activeProject.live_url !== '#' && (
-                      <a href={activeProject.live_url} target="_blank" rel="noreferrer" className="text-sm font-bold text-primary hover:text-white bg-primary/10 hover:bg-primary px-3 py-1 rounded transition-colors">Live Site</a>
+                      <a href={activeProject.live_url} target="_blank" rel="noreferrer" className="text-xs font-bold text-primary hover:text-white bg-primary/10 hover:bg-primary px-3 py-1.5 rounded transition-colors">Live Site</a>
                     )}
                     {activeProject.github_url !== '#' && (
-                      <a href={activeProject.github_url} target="_blank" rel="noreferrer" className="text-sm font-bold text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-dark-700 hover:bg-gray-300 dark:hover:bg-dark-600 px-3 py-1 rounded transition-colors">Source Code</a>
+                      <a href={activeProject.github_url} target="_blank" rel="noreferrer" className="text-xs font-bold text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-dark-700 hover:bg-gray-300 dark:hover:bg-dark-600 px-3 py-1.5 rounded transition-colors">Source Code</a>
                     )}
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 md:p-10">
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="p-5 md:p-8">
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                       <span className="text-primary font-mono text-sm leading-none mt-1">01.</span> The Problem
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                       <span className="text-primary font-mono text-xs leading-none mt-0.5">01.</span> The Problem
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.problem}</p>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                       <span className="text-primary font-mono text-sm leading-none mt-1">02.</span> Solution & Architecture
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                       <span className="text-primary font-mono text-xs leading-none mt-0.5">02.</span> Solution & Architecture
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.solution}</p>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.solution}</p>
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                       <span className="text-primary font-mono text-sm leading-none mt-1">03.</span> Challenges Faced
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                       <span className="text-primary font-mono text-xs leading-none mt-0.5">03.</span> Challenges Faced
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.challenges}</p>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.challenges}</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                       <span className="text-primary font-mono text-sm leading-none mt-1">04.</span> Impact & Results
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                       <span className="text-primary font-mono text-xs leading-none mt-0.5">04.</span> Impact & Results
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.impact}</p>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.impact}</p>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4">Technologies Used</h4>
-                  <ul className="flex flex-wrap gap-3">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">Technologies Used</h4>
+                  <ul className="flex flex-wrap gap-2">
                     {activeProject.tech_stack.map((tech, i) => (
-                      <li key={i} className="px-4 py-2 bg-gray-50 dark:bg-dark-800 text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-dark-700 rounded-lg text-sm font-mono">{tech}</li>
+                      <li key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-dark-800 text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-dark-700 rounded-lg text-xs font-mono">{tech}</li>
                     ))}
                   </ul>
                 </div>
