@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight, Eye } from 'lucide-react';
 
 const TypewriterText = ({ texts }) => {
   const [currentText, setCurrentText] = useState('');
@@ -67,8 +67,8 @@ const Hero = () => {
             <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
               View Projects <ArrowRight size={18} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
-              Download CV <Download size={18} />
+            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
+              View CV <Eye size={18} />
             </a>
           </div>
 
