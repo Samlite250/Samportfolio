@@ -64,10 +64,10 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 items-center">
-            <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2 shadow-lg shadow-primary/30">
               View Projects <ArrowRight size={18} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-primary text-primary font-bold rounded hover:bg-primary/5 hover:-translate-y-1 transition-all flex items-center gap-2 shadow-sm">
               View CV <Eye size={18} />
             </a>
           </div>
