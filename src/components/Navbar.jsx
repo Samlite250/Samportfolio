@@ -39,7 +39,16 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-300 bg-white dark:bg-dark-900 ${scrolled ? 'shadow-md dark:shadow-dark-900/50' : 'border-b border-gray-100 dark:border-dark-800'}`}>
+    <>
+      {/* Skip to main content - Accessibility & SEO */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-primary focus:text-white focus:font-bold focus:rounded-lg focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
+
+      <header role="banner" className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-300 bg-white dark:bg-dark-900 ${scrolled ? 'shadow-md dark:shadow-dark-900/50' : 'border-b border-gray-100 dark:border-dark-800'}`}>
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -48,7 +57,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-7">
           {navLinks.map(({ name, href, icon: Icon }) => (
             <a
               key={name}
@@ -118,7 +127,8 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </header>
+      </header>
+    </>
   );
 };
 

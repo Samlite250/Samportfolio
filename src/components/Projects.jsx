@@ -83,7 +83,7 @@ const Projects = () => {
   }, [activeProject]);
 
   return (
-    <section id="projects" className="py-24 relative bg-white dark:bg-dark-900 transition-colors duration-300">
+    <section id="projects" aria-label="Featured Projects" className="py-24 relative bg-white dark:bg-dark-900 transition-colors duration-300">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
         <div className="flex items-center mb-16">

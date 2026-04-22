@@ -53,7 +53,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" aria-label="Contact Samuel Ndayambaje" className="py-24">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
         
         <motion.div 

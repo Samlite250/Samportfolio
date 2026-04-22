@@ -23,7 +23,7 @@ function App() {
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main id="main-content" className="flex-grow" role="main" aria-label="Samuel Ndayambaje Portfolio Content">
           <Hero />
           <About />
           <Skills />

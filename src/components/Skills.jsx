@@ -22,7 +22,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-light-800/10 dark:bg-dark-900">
+    <section id="skills" aria-label="Technical Skills" className="py-24 bg-light-800/10 dark:bg-dark-900">
       <div className="container mx-auto px-6 md:px-12">
         
         <div className="flex items-center mb-16">

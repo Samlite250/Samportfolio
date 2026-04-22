@@ -31,7 +31,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-white/50 dark:bg-dark-900/50 relative overflow-hidden transition-colors duration-300">
+    <section id="services" aria-label="Services Offered" className="py-24 bg-white/50 dark:bg-dark-900/50 relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6 md:px-12">
         
         <div className="max-w-3xl mb-16">

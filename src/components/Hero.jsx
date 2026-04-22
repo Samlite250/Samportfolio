@@ -42,7 +42,7 @@ const TypewriterText = ({ texts }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10">
+    <section id="home" aria-label="Hero - Introduction" className="min-h-screen flex items-center justify-center pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
         
         {/* Text Content */}
@@ -73,13 +73,13 @@ const Hero = () => {
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1" aria-label="GitHub Profile">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1" aria-label="LinkedIn Profile">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:samlite250@gmail.com" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="mailto:samlite250@gmail.com" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors hover:-translate-y-1" aria-label="Email Me">
               <Mail size={24} />
             </a>
           </div>
@@ -97,7 +97,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-primary/20 rounded-2xl group-hover:bg-transparent transition-colors duration-300 z-10"></div>
             <img 
               src="/images/profile.png" 
-              alt="Sam" 
+              alt="Samuel Ndayambaje - Full-Stack Software Engineer Profile" 
               className="absolute inset-0 w-full h-full object-cover rounded-2xl z-0 grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           </div>

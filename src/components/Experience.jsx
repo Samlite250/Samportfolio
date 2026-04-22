@@ -26,7 +26,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" aria-label="Work Experience" className="py-24">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         
         <div className="flex items-center mb-16">
