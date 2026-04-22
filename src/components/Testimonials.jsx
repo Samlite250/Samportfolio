@@ -48,19 +48,6 @@ const brands = [
 const scrollableBrands = [...brands, ...brands, ...brands, ...brands, ...brands];
 
 const Testimonials = () => {
-  const scrollRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = window.innerWidth > 768 ? 480 : 320;
-      if (direction === 'left') {
-        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
-  };
-
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50/50 dark:bg-dark-900/50 transition-colors duration-300">
       
@@ -88,39 +75,9 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* Manual Scroll Testimonials Slider */}
-      <div className="w-full relative group">
-        
-        {/* Floating Scroll Navigation */}
-        <div className="absolute inset-y-0 left-0 md:left-4 flex items-center z-20 pointer-events-none">
-          <button 
-            onClick={() => scroll('left')}
-            className="pointer-events-auto ml-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft size={24} />
-          </button>
-        </div>
-        
-        <div className="absolute inset-y-0 right-0 md:right-4 flex items-center z-20 pointer-events-none">
-          <button 
-            onClick={() => scroll('right')}
-            className="pointer-events-auto mr-2 w-10 h-10 md:w-14 md:h-14 bg-white/90 dark:bg-dark-800/90 backdrop-blur-md border border-gray-200 dark:border-dark-700 rounded-full flex items-center justify-center text-gray-900 dark:text-white shadow-xl hover:bg-primary hover:text-white hover:border-primary hover:scale-110 transition-all active:scale-95"
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
-        <div 
-          ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-6 md:px-12 items-stretch"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          <style>{`
-            #testimonials .flex::-webkit-scrollbar { display: none; }
-          `}</style>
-          
+      {/* Grid Testimonials Layout */}
+      <div className="w-full relative z-10 container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {testimonials.map((testimonial, idx) => (
             <motion.div 
               key={idx} 
@@ -128,46 +85,44 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="w-[85vw] md:w-[450px] shrink-0 mx-4 snap-center"
+              className="h-full"
             >
-              <div className="glass-card p-8 md:p-10 rounded-3xl flex flex-col relative overflow-hidden border border-gray-200 dark:border-dark-700 bg-white/80 dark:bg-dark-800/80 hover:-translate-y-2 hover:shadow-2xl shadow-gray-200 dark:shadow-none transition-all duration-500 h-full group/card">
+              <div className="bg-white dark:bg-dark-800 p-8 md:p-10 rounded-2xl flex flex-col relative h-full border border-gray-100 dark:border-dark-700 shadow-xl shadow-gray-200/40 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                 
-                {/* Subtle top border accent */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+                {/* Minimalist Top Accent */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Quote Icon Backdrop */}
-                <Quote className="absolute top-8 right-8 text-gray-100 dark:text-dark-700/50 group-hover/card:text-primary/10 transition-colors duration-500 -z-10" size={80} />
-                
-                {/* Stars */}
-                <div className="flex gap-1 mb-8">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={18} fill="currentColor" className="text-yellow-400" />
-                  ))}
+                {/* Quote Layout */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} fill="currentColor" className="text-primary/90" />
+                    ))}
+                  </div>
+                  <Quote size={28} className="text-gray-200 dark:text-dark-600" />
                 </div>
 
                 {/* Text Content */}
-                <p className="text-gray-600 dark:text-gray-300 mb-10 relative z-10 font-medium leading-relaxed text-lg flex-grow">
+                <p className="text-gray-600 dark:text-gray-300 mb-8 relative z-10 font-medium leading-relaxed text-lg flex-grow">
                   "{testimonial.content}"
                 </p>
                 
                 {/* Author Profile */}
-                <div className="mt-auto pt-6 border-t border-gray-100 dark:border-dark-700 flex items-center gap-4">
+                <div className="mt-auto flex items-center gap-4">
                   <div className="relative">
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name} 
-                      className="w-14 h-14 rounded-full object-cover border-2 border-transparent group-hover/card:border-primary transition-colors duration-300"
+                      className="w-12 h-12 rounded-full object-cover grayscale-[0.6] group-hover:grayscale-0 transition-all duration-500 ring-2 ring-gray-100 dark:ring-dark-700 group-hover:ring-primary/30"
                     />
-                    <div className="absolute -bottom-1 -right-1 bg-white dark:bg-dark-800 rounded-full">
-                      <BadgeCheck size={16} className="text-blue-500" />
-                    </div>
                   </div>
                   <div>
-                    <h4 className="text-gray-900 dark:text-white font-extrabold text-lg flex items-center gap-2">
+                    <h4 className="text-gray-900 dark:text-white font-bold text-base flex items-center gap-2">
                       {testimonial.name}
+                      <BadgeCheck size={16} className="text-primary" />
                     </h4>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap">
-                      {testimonial.role} <span className="text-primary font-bold">@ {testimonial.company}</span>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                      {testimonial.role} <span className="text-gray-300 dark:text-dark-600 mx-1">•</span> <span className="font-semibold text-gray-700 dark:text-gray-300">{testimonial.company}</span>
                     </p>
                   </div>
                 </div>
