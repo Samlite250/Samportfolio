@@ -2,7 +2,7 @@
 
 A modern, fully-responsive Full-Stack Software Engineer portfolio built with React, Vite, and Tailwind CSS. Features dark/light mode, smooth Framer Motion animations, a Supabase-powered contact system, and a full suite of SEO optimizations.
 
-**Live URL:** [https://samportfolio-beta.vercel.app](https://samportfolio-beta.vercel.app)
+**Live URL:** [https://samportfolio-psi.vercel.app](https://samportfolio-psi.vercel.app)
 
 ---
 
@@ -63,16 +63,16 @@ To fully appear on Google, follow these steps **after deploying to Vercel**:
 
 ### 1. Google Search Console
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
-2. Add your property: `https://samportfolio-beta.vercel.app`
+2. Add your property: `https://samportfolio-psi.vercel.app`
 3. Verify ownership (choose **HTML tag** method — copy the tag value)
 4. Add the tag to `index.html` inside `<head>`: `<meta name="google-site-verification" content="YOUR_CODE_HERE" />`
-5. After verification, go to **Sitemaps** → Submit: `https://samportfolio-beta.vercel.app/sitemap.xml`
+5. After verification, go to **Sitemaps** → Submit: `https://samportfolio-psi.vercel.app/sitemap.xml`
 6. Request indexing of your URL under **URL Inspection**
 
 ### 2. Bing Webmaster Tools
 1. Go to [bing.com/webmasters](https://www.bing.com/webmasters)
-2. Add site: `https://samportfolio-beta.vercel.app`
-3. Submit sitemap: `https://samportfolio-beta.vercel.app/sitemap.xml`
+2. Add site: `https://samportfolio-psi.vercel.app`
+3. Submit sitemap: `https://samportfolio-psi.vercel.app/sitemap.xml`
 
 ### 3. LinkedIn & GitHub Profile
 - Make sure your LinkedIn/GitHub profiles link back to your portfolio URL — this creates backlinks that boost your domain authority.
