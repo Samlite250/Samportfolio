@@ -1,170 +1,141 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Send, MessageCircle, Mail, MapPin } from 'lucide-react';
+
+const REAL_EMAIL = 'nsengafabrice4@gmail.com';
+const REAL_WHATSAPP = '+250786776967';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState({ type: '', message: '' });
+  const [form, setForm]       = useState({ name: '', email: '', message: '' });
+  const [status, setStatus]   = useState({ type: '', text: '' });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus({ type: '', message: '' });
-
     try {
-      // 1. Send to FormSubmit (Direct to samlite250@gmail.com)
-      const emailResponse = await fetch('https://formsubmit.co/ajax/samlite250@gmail.com', {
+      const res = await fetch(`https://formsubmit.co/ajax/${REAL_EMAIL}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `New Portfolio Contact: ${formData.name}`
-        })
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, _subject: `Hey Fab — message from ${form.name}` }),
       });
-
-      // 2. Background attempt for local Supabase logging
-      fetch(`/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      }).catch(err => console.error("Backup log failed", err));
-
-      if (emailResponse.ok) {
-        setStatus({ type: 'success', message: 'Message successfully delivered to Sam! Thank you for reaching out—you will receive a response in your email shortly.' });
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Email service delay');
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      setStatus({ type: 'error', message: 'There was a tiny hiccup. Please use the WhatsApp link below for immediate contact!' });
+      if (res.ok) {
+        setStatus({ type: 'ok', text: "Got it — I'll reply within a day or two. Might be sooner if I'm not elbow-deep in a routing table." });
+        setForm({ name: '', email: '', message: '' });
+      } else throw new Error();
+    } catch {
+      setStatus({ type: 'err', text: `Form didn't go through. Email me directly at ${REAL_EMAIL}` });
     } finally {
       setLoading(false);
     }
   };
 
+  const inputCls = "w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all";
+
+  const waLink = `https://wa.me/${REAL_WHATSAPP.replace(/\D/g, '')}?text=Hey%20Fab!%20Saw%20your%20portfolio%20and%20wanted%20to%20chat.`;
+
   return (
-    <section id="contact" aria-label="Contact Samuel Ndayambaje" className="py-24">
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-primary font-mono text-lg mb-4">05. What's Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Get In Touch</h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-            Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-          </p>
+    <section id="contact" className="py-24 bg-[#f0f7ff]">
+      <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div className="mb-6">
+          <p className="section-label"><span className="w-8 h-px bg-primary inline-block" />06 — Contact</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">
+            Let's <span className="text-gradient">talk</span>
+          </h2>
+        </div>
+        <p className="text-gray-500 text-sm mb-12 max-w-lg leading-relaxed">
+          Whether you have a network that's misbehaving, a project coming up, or just want to
+          nerd out about BGP — drop me a message. I read everything and reply to everything
+          (eventually).
+        </p>
 
-          <div className="max-w-2xl mx-auto p-8 md:p-12 bg-white dark:bg-dark-800 border-2 border-gray-100 dark:border-dark-700 rounded-3xl shadow-xl shadow-primary/5">
-            <form onSubmit={handleSubmit} className="text-left space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-mono uppercase tracking-wider">Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 text-gray-900 dark:text-white transition-all font-medium"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-mono uppercase tracking-wider">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 text-gray-900 dark:text-white transition-all font-medium"
-                  />
-                </div>
+        <div className="grid md:grid-cols-5 gap-8">
+
+          <div className="md:col-span-2 space-y-4">
+            <a href={`mailto:${REAL_EMAIL}`} className="glass-card p-5 flex items-center gap-4 hover:border-primary/25 group transition-all block">
+              <div className="w-9 h-9 rounded-lg bg-primary/8 border border-primary/15 flex items-center justify-center flex-shrink-0">
+                <Mail size={16} className="text-primary" />
               </div>
-              
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-mono uppercase tracking-wider">Message</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows="5"
-                  value={formData.message} 
-                  onChange={handleChange} 
-                  required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 text-gray-900 dark:text-white transition-all font-medium resize-none"
-                ></textarea>
+                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">Email</p>
+                <p className="text-gray-700 text-sm group-hover:text-primary transition-colors break-all">{REAL_EMAIL}</p>
               </div>
+            </a>
 
-              {status.message && (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className={`p-4 rounded-xl flex items-start gap-3 text-sm font-bold ${
-                    status.type === 'success' 
-                      ? 'bg-primary/10 text-primary border border-primary/20' 
-                      : 'bg-red-50 text-red-600 border border-red-100'
-                  }`}
-                >
-                  {status.type === 'success' ? (
-                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  ) : (
-                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  )}
-                  <p>{status.message}</p>
-                </motion.div>
-              )}
-
-              <div className="pt-2 space-y-4">
-                <button 
-                  type="submit" 
-                  disabled={loading}
-                  className="w-full px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-4 focus:ring-primary/20 flex justify-center items-center gap-2"
-                >
-                  {loading ? (
-                    <span className="w-6 h-6 border-2 border-white border-t-transparent flex-shrink-0 animate-spin rounded-full"></span>
-                  ) : (
-                    'Send Message'
-                  )}
-                </button>
-                
-                <div className="flex items-center gap-4 py-2">
-                  <div className="h-px bg-gray-200 dark:bg-dark-700 flex-grow"></div>
-                  <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">or</span>
-                  <div className="h-px bg-gray-200 dark:bg-dark-700 flex-grow"></div>
-                </div>
-
-                <a 
-                  href="https://wa.me/250790268691?text=Hello%20Sam!%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20a%20potential%20project%20with%20you." 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-full h-14 px-6 flex items-center justify-center gap-3 bg-white dark:bg-dark-800 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-lg active:scale-95 group overflow-hidden"
-                >
-                  <svg className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                  </svg>
-                  <span className="text-sm md:text-base whitespace-nowrap">Connect on WhatsApp</span>
-                </a>
+            <div className="glass-card p-5 flex items-center gap-4">
+              <div className="w-9 h-9 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                <MapPin size={16} className="text-gray-400" />
               </div>
-            </form>
+              <div>
+                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">Based in</p>
+                <p className="text-gray-700 text-sm">Kigali, Rwanda 🇷🇼</p>
+              </div>
+            </div>
+
+            <a href={waLink} target="_blank" rel="noreferrer"
+              className="glass-card p-5 flex items-center gap-4 hover:border-orange-200 group transition-all block">
+              <div className="w-9 h-9 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center flex-shrink-0 group-hover:bg-green-100 transition-colors">
+                <MessageCircle size={16} className="text-green-600" />
+              </div>
+              <div>
+                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">WhatsApp</p>
+                <p className="text-gray-700 text-sm group-hover:text-green-600 transition-colors">{REAL_WHATSAPP}</p>
+              </div>
+            </a>
+
+            <p className="text-gray-400 text-xs italic leading-relaxed px-1">
+              Best time to reach me is evenings (EAT). I'm usually around unless there's a network on fire somewhere.
+            </p>
           </div>
 
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="md:col-span-3 glass-card p-7"
+          >
+            <form onSubmit={submit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">Your name</label>
+                  <input type="text" name="name" value={form.name} onChange={handle} required placeholder="e.g. John" className={inputCls} />
+                </div>
+                <div>
+                  <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">Your email</label>
+                  <input type="email" name="email" value={form.email} onChange={handle} required placeholder="john@company.com" className={inputCls} />
+                </div>
+              </div>
 
+              <div>
+                <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">What's up?</label>
+                <textarea name="message" rows={5} value={form.message} onChange={handle} required
+                  placeholder="Tell me about your project, what's broken, or anything else..."
+                  className={`${inputCls} resize-none`} />
+              </div>
+
+              {status.text && (
+                <p className={`text-sm px-4 py-3 rounded-xl border ${
+                  status.type === 'ok'
+                    ? 'text-primary bg-primary/5 border-primary/15'
+                    : 'text-red-500 bg-red-50 border-red-100'
+                }`}>
+                  {status.text}
+                </p>
+              )}
+
+              <button type="submit" disabled={loading}
+                className="w-full py-3 bg-primary text-white font-bold text-sm rounded-xl hover:bg-primary/90 neon-glow transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                {loading
+                  ? <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  : <><Send size={14} /> Send it</>
+                }
+              </button>
+            </form>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
