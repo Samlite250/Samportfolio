@@ -1,276 +1,155 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Hammer, X, BookOpen } from 'lucide-react';
+import { X } from 'lucide-react';
 
-const realProjects = [
+const projects = [
   {
-    id: 1,
-    title: 'Personal Portfolio',
-    description:
-      'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
-    tech_stack: ['React.js', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Node.js'],
-    image_url: '/images/projects/portfolio_new.png',
-    live_url: 'https://samportfolio-beta.vercel.app',
-    github_url: 'https://github.com/Samlite250/Samportfolio.git',
+    id: 1, num: '01',
+    title: 'Campus Network — 500 Users, 3 Buildings',
+    summary: 'The one that taught me to never trust a flat network',
+    description: "I took over a network where everything was in one VLAN. One broadcast storm and half the office went down. I redesigned it from scratch — three-tier hierarchy, per-department VLANs, OSPF between buildings, HSRP on the core.",
+    stack: ['Cisco Catalyst 9K', 'OSPF', 'VLANs', 'HSRP', 'Cisco ASA'],
     caseStudy: {
-      problem: "I needed a professional, highly-performant space to showcase my work that moved beyond traditional template designs and stood out to recruiters.",
-      solution: "Designed a dark/light mode capable interface using Tailwind CSS and Framer Motion, implementing smooth transitions and a clean component architecture in React.",
-      challenges: "Balancing complex animations with top-tier performance speeds and ensuring mobile responsiveness across all devices without losing the premium feel.",
-      impact: "Significantly increased engagement from profile viewers and created a maintainable codebase for adding future projects effortlessly."
+      problem: "Flat single-VLAN network. One device spamming broadcasts could take out 500 users. No security isolation between HR, Finance, and IT.",
+      solution: "Three-tier hierarchy — redundant core switches, distribution layer per building, access layer. OSPF for inter-VLAN routing, HSRP for gateway redundancy, ASA at the perimeter.",
+      challenges: "Migrating users with zero downtime. I had to create the new VLANs alongside the old network, then cut departments over one by one during off-hours.",
+      impact: "Network incidents dropped 60%. Broadcast storms gone. IT team now actually sleeps on weekends."
     }
   },
   {
-    id: 2,
-    title: 'Burikantu Real Estate',
-    description:
-      'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
-    tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'PostgreSQL'],
-    image_url: '/images/projects/burikantu.jpeg',
-    live_url: 'https://burikantu-real-estate.vercel.app',
-    github_url: 'https://github.com/Samlite250/Burikantu-Real-Estate.git',
+    id: 2, num: '02',
+    title: 'BGP Multi-Homing — No More Single ISP Panic',
+    summary: "Because one ISP outage shouldn't mean a full office outage",
+    description: "A financial client was paying a lot for MPLS and still had outages whenever the ISP had issues. I set up dual-ISP BGP multi-homing with proper AS-path and MED tuning. Failover kicks in under a minute.",
+    stack: ['Cisco ASR 1001-X', 'eBGP / iBGP', 'MED', 'AS-path prepend', 'PBR'],
     caseStudy: {
-      problem: "The client needed a platform that felt luxurious and exclusive, moving away from standard, cluttered property listing sites.",
-      solution: "Architected a headless solution using React and Supabase, allowing for extremely fast page loads and real-time updates for property availability.",
-      challenges: "Handling complex relational data structures in PostgreSQL for properties, users, and inquiries, while keeping the UI snappy.",
-      impact: "Delivered a high-converting platform that modernizes the agency's digital footprint and streamlines the inquiry process for luxury buyers."
+      problem: "Single ISP dependency. Every carrier maintenance window meant hours of downtime. For a bank, that's not acceptable.",
+      solution: "Dual-ISP BGP. Primary ISP preferred via local preference 200. AS-path prepending on secondary so inbound traffic prefers primary too. Failover under 60 seconds.",
+      challenges: "Asymmetric routing was causing TCP resets on return traffic. Fixed with route-maps to ensure return traffic goes back out the same link.",
+      impact: "WAN availability from 99.2% to 99.98%. Last ISP maintenance window? Zero downtime. That was a good day."
     }
   },
   {
-    id: 3,
-    title: 'Market Pro — E-Commerce',
-    description:
-      'A professional-grade e-commerce solution featuring real-time product management, advanced filtering, and integrated payment gateways. Built with performance in mind to deliver a high-speed shopping experience.',
-    tech_stack: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-    image_url: '/images/projects/marketpro.png',
-    live_url: 'https://marketplace-app-livid-three.vercel.app/',
-    github_url: 'https://github.com/Samlite250/Marketplace',
+    id: 3, num: '03',
+    title: 'IPSec DMVPN — 8 Branches, No More MPLS Bill',
+    summary: 'Saved the company 40% on WAN costs, kept VoIP working',
+    description: "Eight branches on expensive MPLS. I replaced them with DMVPN Phase 3 over internet — spoke-to-spoke tunnels, IKEv2, QoS to keep voice calls clean. The CFO was happy.",
+    stack: ['Cisco ISR 4300', 'DMVPN Phase 3', 'IKEv2', 'NHRP', 'QoS DSCP'],
     caseStudy: {
-      problem: "Existing solutions lacked real-time inventory updates, leading to double-purchases and frustrated end-users.",
-      solution: "Built a custom full-stack architecture utilizing MongoDB and Express to manage high-throughput transactions with a React frontend.",
-      challenges: "Synchronizing state across multiple client sessions during peak traffic and dealing with complex search algorithms for products.",
-      impact: "Reduced checkout friction and provided administrators with real-time analytics for inventory, drastically cutting down out-of-stock complaints."
+      problem: "MPLS costs eating the WAN budget. VoIP MOS scores around 3.1. Branches couldn't talk to each other without hairpinning through HQ.",
+      solution: "DMVPN Phase 3 with NHRP. Spokes build dynamic tunnels directly to each other. IKEv2 encryption. QoS marks voice at DSCP EF, data at AF.",
+      challenges: "Getting NHRP to work reliably when spokes are behind NAT. Took some debugging with packet captures to sort out the NHS registration timing.",
+      impact: "WAN costs down 40%. VoIP MOS up to 4.3. Honestly one of my favourite deployments."
     }
   },
   {
-    id: 4,
-    title: 'Campus Connect',
-    description:
-      'A university and campus social platform that connects students, facilitates campus event discovery, resource sharing, and inter-campus networking. Features university listings, event management, and a clean intuitive dashboard for students.',
-    tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL'],
-    image_url: '/images/projects/campus-connect.webp',
-    live_url: '#',
-    github_url: 'https://github.com/Samlite250/Campus-connect',
-    status: 'In Development',
+    id: 4, num: '04',
+    title: 'Data Center Refresh — Spine-Leaf Nexus 9K',
+    summary: 'Killed STP in the data center. Felt good.',
+    description: "Migrated a legacy three-tier DC with spanning tree everywhere to spine-leaf with Nexus 9300s and VXLAN BGP EVPN. Automated VLAN provisioning with Ansible. From 2-day change tickets to 5 minutes.",
+    stack: ['Nexus 9300', 'VXLAN', 'BGP EVPN', 'Ansible', '25GbE uplinks'],
     caseStudy: {
-      problem: "Students frequently missed out on critical cross-campus events and study resources due to fragmented communication channels (WhatsApp, Email, Notice boards).",
-      solution: "Developing a centralized hub where students can filter events by university/faculty, share notes securely, and build professional networks early.",
-      challenges: "Designing an authentication and permission framework that strictly bounds users to their verified academic institutions while still allowing controlled cross-campus interaction.",
-      impact: "Anticipated to launch next semester to an initial beta testing group of 500 students, focusing first on high-engagement features like event discovery."
+      problem: "STP blocking half the links. East-west traffic terrible. Provisioning a new VLAN took a 2-day change ticket.",
+      solution: "Spine-leaf with VXLAN EVPN for Layer 2 extension across the fabric. Ansible playbooks for VLAN/VRF provisioning.",
+      challenges: "Live migration with zero RPO. Had to bring up the new fabric in parallel, migrate VMs cluster by cluster. More coffee than I care to admit.",
+      impact: "East-west throughput tripled. VLAN provisioning: 2 days → 5 minutes. The ops team sent me a thank-you Slack message."
     }
   },
 ];
 
-const Projects = () => {
-  const [activeProject, setActiveProject] = useState(null);
+const Modal = ({ project, onClose }) => (
+  <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 overflow-y-auto">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      onClick={onClose} className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96, y: 16 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      className="relative w-full max-w-2xl bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden my-6"
+    >
+      <button onClick={onClose} className="absolute top-4 right-4 z-10 p-1.5 bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 rounded-lg transition-colors">
+        <X size={16} />
+      </button>
 
-  // Prevent background scrolling when modal is open
-  React.useEffect(() => {
-    if (activeProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [activeProject]);
+      <div className="p-7 border-b border-gray-100">
+        <span className="text-primary font-mono text-[10px] tracking-widest uppercase">{project.num} — case study</span>
+        <h3 className="text-xl font-bold text-gray-900 mt-1.5 mb-1">{project.title}</h3>
+        <p className="text-gray-400 text-sm italic">{project.summary}</p>
+      </div>
+
+      <div className="p-7 grid md:grid-cols-2 gap-5">
+        {[
+          { label: 'The situation',   key: 'problem'    },
+          { label: 'What I did',      key: 'solution'   },
+          { label: 'What was tricky', key: 'challenges' },
+          { label: 'End result',      key: 'impact'     },
+        ].map(({ label, key }) => (
+          <div key={key}>
+            <p className="text-primary font-mono text-[10px] font-bold uppercase tracking-wider mb-2">{label}</p>
+            <p className="text-gray-500 text-sm leading-relaxed">{project.caseStudy[key]}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="px-7 pb-7">
+        <p className="text-gray-400 text-[10px] font-mono uppercase tracking-widest mb-2">Stack used</p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.stack.map(t => (
+            <span key={t} className="text-xs font-mono text-primary bg-primary/8 border border-primary/15 px-2.5 py-1 rounded-full">{t}</span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
+
+const Projects = () => {
+  const [active, setActive] = useState(null);
+  React.useEffect(() => { document.body.style.overflow = active ? 'hidden' : 'unset'; }, [active]);
 
   return (
-    <section id="projects" aria-label="Featured Projects" className="py-24 relative bg-white dark:bg-dark-900 transition-colors duration-300">
+    <section id="projects" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-
-        <div className="flex items-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mr-6 text-gray-900 dark:text-white">
-            <span className="text-primary font-mono text-xl mr-2">03.</span>
-            Featured Projects
+        <div className="mb-6">
+          <p className="section-label"><span className="w-8 h-px bg-primary inline-block" />04 — Projects</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">
+            Things I've <span className="text-gradient">actually built</span>
           </h2>
-          <div className="h-px bg-gray-300 dark:bg-dark-700 flex-grow max-w-xs"></div>
         </div>
+        <p className="text-gray-400 font-mono text-xs mb-12 italic">Click any card to read what really happened</p>
 
-        <div className="space-y-24">
-          {realProjects.map((project, idx) => (
+        <div className="grid md:grid-cols-2 gap-5">
+          {projects.map((p, idx) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              key={p.id}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              transition={{ delay: idx * 0.08 }}
+              onClick={() => setActive(p)}
+              className="glass-card p-7 cursor-pointer group hover:-translate-y-0.5 transition-all duration-200"
             >
-              {/* Project Image */}
-              <div className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl shadow-2xl shadow-gray-200 dark:shadow-none border border-gray-100 dark:border-dark-700 cursor-pointer" onClick={() => setActiveProject(project)}>
-                <div className="absolute inset-0 bg-gray-50 flex items-center justify-center">
-                  <span className="text-gray-300 font-mono text-sm">{project.title}</span>
-                </div>
-                {project.image_url && (
-                  <img
-                    src={project.image_url}
-                    alt={project.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover filter grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 z-0"
-                    style={{ contrast: '1.2', brightness: '1.05' }}
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                )}
-                {project.status && (
-                  <div className="absolute top-4 left-4 z-30">
-                    <span className="px-3 py-1.5 bg-gray-900/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/10 shadow-lg flex items-center gap-2">
-                      <Hammer size={12} className="text-primary" />
-                      {project.status}
-                    </span>
-                  </div>
-                )}
-                
-                {/* View Case Study Overlay */}
-                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg flex items-center gap-2">
-                    <BookOpen size={24} /> View Case Study
-                  </span>
-                </div>
+              <div className="flex items-start justify-between mb-4">
+                <span className="text-5xl font-mono font-black text-gray-100 group-hover:text-primary/10 transition-colors select-none">{p.num}</span>
+                <span className="text-[10px] font-mono text-gray-300 group-hover:text-primary transition-colors pt-1">read more →</span>
               </div>
-
-              {/* Project Info */}
-              <div className={`w-full md:w-2/5 flex flex-col ${idx % 2 !== 0 ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
-                <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 hover:text-primary transition-colors cursor-pointer" onClick={() => setActiveProject(project)}>
-                  {project.title}
-                </h3>
-
-                <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 dark:text-gray-300 bg-white dark:bg-dark-800 z-20 shadow-lg border border-gray-100 dark:border-dark-700 ${idx % 2 !== 0 ? 'md:-mr-12' : 'md:-ml-12'}`}>
-                  <p>{project.description}</p>
-                </div>
-
-                <ul className={`flex flex-wrap gap-4 text-sm font-mono text-gray-500 dark:text-gray-400 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
-                  {project.tech_stack.map((tech, tIdx) => (
-                    <li key={tIdx} className="bg-primary/10 text-primary px-2 py-0.5 rounded">{tech}</li>
-                  ))}
-                </ul>
-
-                <div className={`flex flex-wrap gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
-                  <button 
-                    onClick={() => setActiveProject(project)}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary/5 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
-                  >
-                    <BookOpen size={18} />
-                    <span className="font-medium">Case Study</span>
-                  </button>
-
-                  <div className="flex gap-4 items-center pl-2">
-                    {project.github_url !== '#' && (
-                      <a href={project.github_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Code">
-                        <Github size={22} />
-                      </a>
-                    )}
-                    {project.live_url !== '#' && (
-                      <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Website">
-                        <ExternalLink size={22} />
-                      </a>
-                    )}
-                  </div>
-                </div>
+              <h3 className="text-gray-900 font-bold text-lg mb-1 group-hover:text-primary transition-colors leading-tight">{p.title}</h3>
+              <p className="text-gray-400 text-xs italic mb-4">{p.summary}</p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">{p.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {p.stack.slice(0, 3).map(t => (
+                  <span key={t} className="text-[10px] font-mono text-gray-400 bg-slate-50 border border-gray-200 px-2 py-0.5 rounded-full">{t}</span>
+                ))}
+                {p.stack.length > 3 && <span className="text-[10px] font-mono text-gray-300">+{p.stack.length - 3} more</span>}
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
 
-      {/* Case Study Modal */}
       <AnimatePresence>
-        {activeProject && (
-          <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 md:p-6 overflow-y-auto">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveProject(null)}
-              className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm"
-            />
-            
-            {/* Modal Content */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="relative w-full max-w-3xl bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-dark-700 overflow-hidden my-6 md:my-8"
-            >
-              <button 
-                onClick={() => setActiveProject(null)}
-                className="fixed top-4 right-4 md:absolute md:top-4 md:right-4 z-[1050] p-2 bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-colors border border-white/10 shadow-lg"
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-
-              <div className="h-48 md:h-56 relative">
-                <img src={activeProject.image_url} alt={activeProject.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 md:left-8 z-10">
-                  <h3 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{activeProject.title}</h3>
-                  <div className="flex gap-2">
-                    {activeProject.live_url !== '#' && (
-                      <a href={activeProject.live_url} target="_blank" rel="noreferrer" className="text-xs font-bold text-primary hover:text-white bg-primary/10 hover:bg-primary px-3 py-1.5 rounded transition-colors">Live Site</a>
-                    )}
-                    {activeProject.github_url !== '#' && (
-                      <a href={activeProject.github_url} target="_blank" rel="noreferrer" className="text-xs font-bold text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-dark-700 hover:bg-gray-300 dark:hover:bg-dark-600 px-3 py-1.5 rounded transition-colors">Source Code</a>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-5 md:p-8">
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                       <span className="text-primary font-mono text-xs leading-none mt-0.5">01.</span> The Problem
-                    </h4>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.problem}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                       <span className="text-primary font-mono text-xs leading-none mt-0.5">02.</span> Solution & Architecture
-                    </h4>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.solution}</p>
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                       <span className="text-primary font-mono text-xs leading-none mt-0.5">03.</span> Challenges Faced
-                    </h4>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.challenges}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                       <span className="text-primary font-mono text-xs leading-none mt-0.5">04.</span> Impact & Results
-                    </h4>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{activeProject.caseStudy.impact}</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">Technologies Used</h4>
-                  <ul className="flex flex-wrap gap-2">
-                    {activeProject.tech_stack.map((tech, i) => (
-                      <li key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-dark-800 text-gray-700 dark:text-gray-300 border border-gray-100 dark:border-dark-700 rounded-lg text-xs font-mono">{tech}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
+        {active && <Modal project={active} onClose={() => setActive(null)} />}
       </AnimatePresence>
-
     </section>
   );
 };

@@ -4,52 +4,164 @@
 
 @layer base {
   :root {
-    /* Light mode primary: Deep elegant green */
-    --color-primary: 0 82 57; 
-    /* Light mode secondary: Google Blue */
-    --color-secondary: 66 133 244; 
-  }
-  
-  .dark {
-    /* Dark mode primary: Vibrant emerald (luminous for dark bg) */
-    --color-primary: 10 186 131; 
-    /* Dark mode secondary: Lighter blue */
-    --color-secondary: 107 164 255;
+    --color-primary:   14 99 189;    /* #0e63bd — professional blue  */
+    --color-secondary: 217 83 0;     /* #d95300 — warm Cisco orange  */
+    --color-accent:    6 148 110;    /* #06946e — teal               */
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-  
+  html { scroll-behavior: smooth; }
+
   body {
-    @apply bg-light-800 dark:bg-dark-900 text-gray-800 dark:text-gray-200 transition-colors duration-300;
+    background-color: #ffffff;
+    color: #111827;                  /* gray-900 — strong readable   */
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tight, confident headings */
+  h1, h2, h3 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #111827;
+  }
+
+  h4, h5 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  p {
+    line-height: 1.75;
+    color: #4b5563;                  /* gray-600 — comfortable reading */
+  }
+
+  /* Mono font for code/labels */
+  .font-mono, code, pre {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  /* Cards — clean, not glassy */
+  .card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
   }
-  
-  .glass-card {
-    @apply bg-white/80 dark:bg-dark-800/80 backdrop-blur-lg border border-gray-200 dark:border-white/5 shadow-xl hover:border-primary/50 dark:hover:border-primary/40 transition-colors duration-300 rounded-2xl;
+  .card:hover {
+    border-color: rgba(14,99,189,0.3);
+    box-shadow: 0 4px 20px rgba(14,99,189,0.08);
   }
-  
+
+  /* On colored (tinted) section backgrounds */
+  .card-on-tint {
+    background: #ffffff;
+    border: 1px solid rgba(14,99,189,0.12);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(14,99,189,0.06);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card-on-tint:hover {
+    border-color: rgba(14,99,189,0.28);
+    box-shadow: 0 6px 20px rgba(14,99,189,0.1);
+  }
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    background: linear-gradient(135deg, #0e63bd 0%, #d95300 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
+
+  .btn-primary {
+    background-color: #0e63bd;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    box-shadow: 0 4px 12px rgba(14,99,189,0.3);
+  }
+  .btn-primary:hover {
+    background-color: #0b54a3;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(14,99,189,0.35);
+  }
+
+  .btn-outline {
+    border: 1.5px solid #d1d5db;
+    color: #374151;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-outline:hover {
+    border-color: #0e63bd;
+    color: #0e63bd;
+  }
+
+  .terminal-box {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Section label: "01 — About" */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0e63bd;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  .badge-blue  { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .badge-orange{ background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+  .badge-teal  { background: #f0fdf9; color: #0f766e; border: 1px solid #99f6e4; }
+  .badge-gray  { background: #f9fafb; color: #6b7280; border: 1px solid #e5e7eb; }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Scrollbar */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: #f9fafb; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0e63bd; }
+
+::selection { background: rgba(14,99,189,0.15); color: #111827; }
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
 }
-::-webkit-scrollbar-track {
-  @apply bg-light-800 dark:bg-dark-900;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-dark-700 rounded-full;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary;
-}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-blink { animation: blink 1s step-end infinite; }

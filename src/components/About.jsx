@@ -1,251 +1,134 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Code2, GraduationCap, Laptop, Monitor, Zap, Layers, Languages, Heart, Smartphone, Car, Music } from 'lucide-react';
+import { Shield, Wifi, GraduationCap, Server, Globe, Cpu } from 'lucide-react';
 
-const skills = [
-  { name: 'JavaScript (ES6+)', icon: <Code2 size={16} /> },
-  { name: 'React.js', icon: <Cpu size={16} /> },
-  { name: 'Node.js & PHP', icon: <Laptop size={16} /> },
-  { name: 'Tailwind CSS', icon: <Monitor size={16} /> },
-  { name: 'Figma', icon: <Layers size={16} /> },
-  { name: 'MySQL / PostgreSQL', icon: <Layers size={16} /> },
-  { name: 'Git & GitHub', icon: <Code2 size={16} /> },
-  { name: 'AI Skills', icon: <Monitor size={16} /> },
-  { name: 'Microsoft Office', icon: <Monitor size={16} /> }
+const certifications = [
+  { name: 'CCNA',           body: 'Cisco Systems',  year: '2022', cls: 'badge-orange' },
+  { name: 'Network+',       body: 'CompTIA',        year: '2021', cls: 'badge-blue'   },
+  { name: 'CCNP (in view)', body: 'Cisco Systems',  year: '2026', cls: 'badge-teal'   },
 ];
 
-const education = [
-  {
-    degree: 'Bachelor of Science in Software Engineering',
-    school: 'Kigali Independent University (ULK)',
-    period: '2023 – Present',
-    description:
-      'Currently mastering advanced software engineering principles, distributed systems, and scalable cloud architectures.',
-    tags: ['Full-Stack', 'Cloud', 'Architecture']
-  },
-  {
-    degree: 'Software Development — Level 3, 4 & 5',
-    school: 'Secondary School (TVET/Vocational)',
-    period: '2020 – 2023',
-    description:
-      'Gained deep technical roots in programming and logic via an intensive 3-year vocational software development track.',
-    tags: ['Fundamentals', 'Databases', 'Algorithms']
-  },
+const stack = [
+  'Cisco IOS / IOS-XE', 'BGP / OSPF / EIGRP', 'VLANs & 802.1Q',
+  'Cisco ASA / FTD', 'IPSec VPN', 'STP / RSTP',
+  'MPLS', 'GNS3 / Packet Tracer', 'Wireshark',
 ];
 
-const personalInterests = {
-  languages: [
-    { name: 'English', level: 'Professional' },
-    { name: 'Kinyarwanda', level: 'Native' },
-    { name: 'Swahili', level: 'Conversational' }
-  ],
-  hobbies: [
-    { name: 'Mobile App Dev', icon: <Smartphone size={14} /> },
-    { name: 'New Tech', icon: <Zap size={14} /> },
-    { name: 'Car Driving', icon: <Car size={14} /> },
-    { name: 'Music & Coding', icon: <Music size={14} /> }
-  ]
-};
+const languages = [
+  { lang: 'English',     level: 'Professional',   cls: 'badge-blue'  },
+  { lang: 'French',      level: 'Conversational', cls: 'badge-gray'  },
+  { lang: 'Kinyarwanda', level: 'Native',         cls: 'badge-teal'  },
+];
 
-const About = () => {
-  return (
-    <section id="about" aria-label="About Samuel Ndayambaje" className="py-24 relative overflow-hidden">
-      {/* Decorative background element */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+const About = () => (
+  <section id="about" className="py-24" style={{ background: '#f0f7ff' }}>
+    <div className="max-w-6xl mx-auto px-6 md:px-12">
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-          <div className="max-w-2xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-6 mb-6"
-            >
-              <div className="h-1.5 w-32 bg-primary rounded-full"></div>
-              <span className="text-primary font-mono font-black tracking-[0.3em] text-xl md:text-2xl uppercase">01. My Professional Bio</span>
-            </motion.div>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
-              Crafting Digital Solutions <br />
-              <span className="text-gradient underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
-            </h2>
+      <div className="mb-14">
+        <p className="section-label"><span className="w-8 h-px inline-block" style={{ background: '#0e63bd' }} />01 — About</p>
+        <h2 className="text-4xl md:text-5xl font-extrabold" style={{ color: '#111827' }}>
+          A bit about <span className="text-gradient">who I am</span>
+        </h2>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-7">
+
+        {/* Bio card */}
+        <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="lg:col-span-2 card-on-tint p-8 md:p-10">
+
+          <div className="flex items-center gap-4 mb-7">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: 'rgba(14,99,189,0.1)', border: '1px solid rgba(14,99,189,0.2)' }}>
+              <Cpu size={20} style={{ color: '#0e63bd' }} />
+            </div>
+            <div>
+              <h3 className="font-bold text-lg" style={{ color: '#111827' }}>Engineer Fab</h3>
+              <p className="font-mono text-xs" style={{ color: '#0e63bd' }}>CCNA · Routing & Switching · Kigali, Rwanda</p>
+            </div>
           </div>
-          <div className="hidden lg:block h-24 w-px bg-gray-200 dark:bg-dark-700"></div>
-        </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-          
-          {/* Detailed Narrative */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-8"
-          >
-            <div className="prose prose-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
-              <p className="text-xl text-gray-800 dark:text-gray-200 leading-snug">
-                I am a Software Engineer focused on turning technical complexity into elegant, user-friendly solutions.
-              </p>
-              <p>
-                My journey began early in secondary school. Mastering Software Development from Level 3 to Level 5 gave me a solid technical foundation in languages like <span className="text-primary font-semibold">PHP</span> and JavaScript.
-              </p>
-              <p>
-                Currently at <span className="text-primary font-semibold">Kigali Independent University (ULK)</span>, I architect scalable platforms. My next big step is going deeper into <span className="text-secondary font-bold underline decoration-secondary/30">Mobile App Development</span> to build powerful cross-platform experiences.
-              </p>
-            </div>
+          <div className="space-y-4">
+            <p className="text-base font-medium" style={{ color: '#1f2937', lineHeight: '1.8' }}>
+              Honestly? I fell into networking because I kept asking "why is the internet slow?" until someone handed me a Cisco Packet Tracer lab and said "figure it out." I did. Never stopped.
+            </p>
+            <p style={{ color: '#4b5563' }}>
+              These days I mostly live inside <strong style={{ color: '#0e63bd' }}>Cisco IOS</strong> — configuring OSPF multi-area designs, tuning BGP policies, building VLANs that don't leak, arguing with STP until it behaves. Routing & switching is my home turf.
+            </p>
+            <p style={{ color: '#4b5563' }}>
+              I've built everything from a 20-device branch office to a 500-user campus with redundant cores and full ASA perimeter security. The problems I like most are the ones where someone says <em style={{ color: '#d95300' }}>"it was working yesterday"</em> — those usually have interesting answers.
+            </p>
+            <p className="text-sm italic pl-4" style={{ color: '#9ca3af', borderLeft: '2px solid rgba(14,99,189,0.2)' }}>
+              Working toward my CCNP. Some days I think I'm close. Other days OSPF LSA types remind me there's always more to learn — which is honestly the part I like.
+            </p>
+          </div>
 
-            <div className="pt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-light-800 dark:bg-dark-800 rounded-xl border border-gray-100 dark:border-dark-700 group hover:shadow-md transition-all">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
-                    <Code2 size={24} />
-                </div>
-                <h4 className="font-bold text-gray-900 dark:text-white">Clean Code</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SOLID & Maintainable</p>
-              </div>
-              <div className="p-4 bg-light-800 dark:bg-dark-800 rounded-xl border border-gray-100 dark:border-dark-700 group hover:shadow-md transition-all">
-                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-3 group-hover:scale-110 transition-transform">
-                    <Zap size={24} />
-                </div>
-                <h4 className="font-bold text-gray-900 dark:text-white">Performance</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">SEO & Speed Focused</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Core Expertise Side Panel */}
-          <div className="lg:col-span-5 space-y-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="glass-card p-8 rounded-2xl relative"
-            >
-              <div className="absolute top-4 right-4 text-primary/10"><Cpu size={48} /></div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                 Technological Stack
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-dark-900 border border-gray-100 dark:border-dark-700 rounded-full text-sm font-semibold text-gray-700 shadow-sm hover:border-primary/30 hover:shadow-md transition-all cursor-default"
-                  >
-                    <span className="text-primary">{skill.icon}</span>
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Quick Experience Link Card */}
-            <div className="p-8 bg-primary rounded-2xl text-white shadow-xl shadow-primary/20 flex items-center justify-between">
+          <div className="grid grid-cols-2 gap-4 mt-8">
+            {[
+              { icon: <Shield size={17} style={{ color: '#0e63bd' }} />, label: 'Security-first',  sub: 'Default deny, explicit permit' },
+              { icon: <Server size={17} style={{ color: '#d95300' }} />, label: 'Redundancy nerd', sub: 'HSRP, ECMP, dual-ISP or bust'  },
+            ].map(({ icon, label, sub }) => (
+              <div key={label} className="flex items-center gap-3 p-4 rounded-xl" style={{ background: '#f8fafc', border: '1px solid #e5e7eb' }}>
+                <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center flex-shrink-0" style={{ border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>{icon}</div>
                 <div>
-                   <h4 className="text-xl font-bold mb-1">Passionate about UI?</h4>
-                   <p className="opacity-80 text-sm">Check my latest web designs</p>
+                  <p className="font-semibold text-sm" style={{ color: '#1f2937' }}>{label}</p>
+                  <p className="text-xs" style={{ color: '#9ca3af' }}>{sub}</p>
                 </div>
-                <a href="#projects" className="w-12 h-12 bg-white dark:bg-dark-900/20 rounded-full flex items-center justify-center hover:bg-white dark:bg-dark-900/40 transition-colors">
-                    <Monitor size={24} />
-                </a>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Sidebar */}
+        <div className="space-y-5">
+          {/* Certs */}
+          <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="card-on-tint p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <GraduationCap size={15} style={{ color: '#0e63bd' }} />
+              <h4 className="text-xs font-bold uppercase tracking-wider" style={{ color: '#374151' }}>Certs & Education</h4>
             </div>
-          </div>
-
-        </div>
-
-        {/* Education Reimagined */}
-        <div className="mt-24">
-          <div className="flex items-center gap-4 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Education Journey</h3>
-            <div className="h-px bg-gray-100 flex-grow"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-             {education.map((item, idx) => (
-               <motion.div
-                 key={idx}
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ delay: idx * 0.1 }}
-                 className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
-               >
-                 <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-primary/10 transition-colors">
-                    <GraduationCap size={40} />
-                 </div>
-                 <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg mb-4">
-                    {item.period}
-                 </div>
-                 <h4 className="text-xl font-extrabold text-gray-900 dark:text-white">{item.degree}</h4>
-                 <p className="text-primary font-semibold text-sm mt-1 mb-6">{item.school}</p>
-                 <p className="text-gray-500 dark:text-gray-400 font-medium mb-6">{item.description}</p>
-                 <div className="flex flex-wrap gap-2">
-                    {item.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase tracking-tighter font-bold text-gray-400 dark:text-gray-600 bg-white dark:bg-dark-900 px-2 py-1 rounded border border-gray-100 dark:border-dark-700">{tag}</span>
-                    ))}
-                 </div>
-               </motion.div>
-             ))}
-          </div>
-        </div>
-
-        {/* Languages & Hobbies Section */}
-        <div className="mt-16 lg:mt-24 grid md:grid-cols-2 gap-6 md:gap-8">
-          {/* Languages */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
-          >
-            <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-primary/20 transition-colors">
-              <Languages size={48} />
-            </div>
-            <h4 className="text-xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-               Spoken Languages
-            </h4>
-            <div className="space-y-4">
-              {personalInterests.languages.map(lang => (
-                <div key={lang.name} className="flex items-center justify-between">
-                  <span className="font-bold text-gray-800 dark:text-gray-200 text-base">{lang.name}</span>
-                  <span className="text-xs uppercase tracking-wider font-black text-primary bg-primary/10 px-4 py-1.5 rounded-lg border border-primary/20">
-                    {lang.level}
-                  </span>
+            {certifications.map(c => (
+              <div key={c.name} className="flex items-center justify-between py-2.5" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                <div>
+                  <p className={`badge ${c.cls} text-xs`}>{c.name}</p>
+                  <p className="text-xs mt-1" style={{ color: '#9ca3af' }}>{c.body}</p>
                 </div>
+                <span className="badge badge-gray">{c.year}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Stack */}
+          <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="card-on-tint p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <Wifi size={15} style={{ color: '#d95300' }} />
+              <h4 className="text-xs font-bold uppercase tracking-wider" style={{ color: '#374151' }}>What I work with</h4>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {stack.map(s => (
+                <span key={s} className="badge badge-gray cursor-default hover:badge-blue transition-colors text-xs">{s}</span>
               ))}
             </div>
           </motion.div>
 
-          {/* Hobbies */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="p-8 bg-light-800 dark:bg-dark-800 rounded-2xl border border-gray-100 dark:border-dark-700 shadow-2xl shadow-gray-100 hover:border-primary/40 transition-all hover:translate-y-[-4px] relative group"
-          >
-            <div className="absolute top-8 right-8 text-gray-200 dark:text-gray-700 group-hover:text-secondary/20 transition-colors">
-              <Heart size={48} />
+          {/* Languages */}
+          <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="card-on-tint p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <Globe size={15} style={{ color: '#06946e' }} />
+              <h4 className="text-xs font-bold uppercase tracking-wider" style={{ color: '#374151' }}>I speak</h4>
             </div>
-            <h4 className="text-xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-               Passions & Hobbies
-            </h4>
-            <div className="flex flex-wrap gap-3">
-              {personalInterests.hobbies.map(hobby => (
-                <span key={hobby.name} className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-black text-gray-700 bg-white dark:bg-dark-900 px-4 py-2.5 rounded-xl border-2 border-gray-100 dark:border-dark-700 group-hover:border-primary/40 transition-all hover:text-primary hover:shadow-md">
-                  <span className="text-primary">{hobby.icon}</span>
-                  {hobby.name}
-                </span>
-              ))}
-            </div>
+            {languages.map(l => (
+              <div key={l.lang} className="flex items-center justify-between py-2.5" style={{ borderBottom: '1px solid #f3f4f6' }}>
+                <span className="text-sm font-medium" style={{ color: '#374151' }}>{l.lang}</span>
+                <span className={`badge ${l.cls}`}>{l.level}</span>
+              </div>
+            ))}
           </motion.div>
         </div>
 
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

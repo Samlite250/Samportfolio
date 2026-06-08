@@ -8,33 +8,21 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Testimonials from './components/Testimonials';
 
 function App() {
   return (
-    <div className="relative min-h-screen">
-      {/* Background elements */}
-      <div className="fixed inset-0 z-0 bg-light-800 dark:bg-dark-900 transition-colors duration-300">
-        <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
-      </div>
-      
-      <div className="fixed inset-0 pointer-events-none z-[100] shadow-[inset_0_0_150px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_0_150px_rgba(0,0,0,0.8)] transition-shadow duration-300"></div>
-      
-      <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar />
-        <main id="main-content" className="flex-grow" role="main" aria-label="Samuel Ndayambaje Portfolio Content">
-          <Hero />
-          <About />
-          <Skills />
-          <Services />
-          <Projects />
-          <Experience />
-          <Testimonials />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Skills />
+        <Services />
+        <Projects />
+        <Experience />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
