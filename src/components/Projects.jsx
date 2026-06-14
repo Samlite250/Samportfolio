@@ -5,29 +5,31 @@ import { X } from 'lucide-react';
 const projects = [
   {
     id: 1, num: '01',
-    title: 'Campus Network — 500 Users, 3 Buildings',
-    summary: 'The one that taught me to never trust a flat network',
-    description: "I took over a network where everything was in one VLAN. One broadcast storm and half the office went down. I redesigned it from scratch — three-tier hierarchy, per-department VLANs, OSPF between buildings, HSRP on the core.",
-    stack: ['Cisco Catalyst 9K', 'OSPF', 'VLANs', 'HSRP', 'Cisco ASA'],
+    title: 'Jetra Services — International Mobility Platform',
+    summary: 'The most complete platform for international mobility',
+    description: "Features study abroad assistance, visa processing, flight booking, and international accommodation solutions. A comprehensive hub for travelers and students.",
+    stack: ['Next.js', 'Supabase', 'Vercel', 'Tailwind CSS'],
     caseStudy: {
-      problem: "Flat single-VLAN network. One device spamming broadcasts could take out 500 users. No security isolation between HR, Finance, and IT.",
-      solution: "Three-tier hierarchy — redundant core switches, distribution layer per building, access layer. OSPF for inter-VLAN routing, HSRP for gateway redundancy, ASA at the perimeter.",
-      challenges: "Migrating users with zero downtime. I had to create the new VLANs alongside the old network, then cut departments over one by one during off-hours.",
-      impact: "Network incidents dropped 60%. Broadcast storms gone. IT team now actually sleeps on weekends."
-    }
+      problem: "Traditional mobility services are fragmented, requiring users to jump between multiple agencies for visas, flights, and housing.",
+      solution: "A unified Next.js platform that aggregates all mobility services into a single, seamless user experience with Supabase backend management.",
+      challenges: "Integrating diverse service flows into a consistent UI while maintaining performance and security for user documents.",
+      impact: "Streamlined the mobility process for hundreds of users, providing a one-stop-shop for all international travel needs."
+    },
+    logo: '/images/jetra_services_logo.png'
   },
   {
     id: 2, num: '02',
-    title: 'BGP Multi-Homing — No More Single ISP Panic',
-    summary: "Because one ISP outage shouldn't mean a full office outage",
-    description: "A financial client was paying a lot for MPLS and still had outages whenever the ISP had issues. I set up dual-ISP BGP multi-homing with proper AS-path and MED tuning. Failover kicks in under a minute.",
-    stack: ['Cisco ASR 1001-X', 'eBGP / iBGP', 'MED', 'AS-path prepend', 'PBR'],
+    title: 'Gisenyi Gadgets — Premium E-commerce Mobile App',
+    summary: 'Shop Smart. Live Better. Your gadget hub.',
+    description: "A high-performance React Native e-commerce application featuring real-time inventory, secure checkout, and a specialized admin dashboard for vendors.",
+    stack: ['React Native', 'Expo', 'Supabase', 'Vite'],
     caseStudy: {
-      problem: "Single ISP dependency. Every carrier maintenance window meant hours of downtime. For a bank, that's not acceptable.",
-      solution: "Dual-ISP BGP. Primary ISP preferred via local preference 200. AS-path prepending on secondary so inbound traffic prefers primary too. Failover under 60 seconds.",
-      challenges: "Asymmetric routing was causing TCP resets on return traffic. Fixed with route-maps to ensure return traffic goes back out the same link.",
-      impact: "WAN availability from 99.2% to 99.98%. Last ISP maintenance window? Zero downtime. That was a good day."
-    }
+      problem: "Lack of localized, high-quality mobile e-commerce platforms for electronic gadgets in the region.",
+      solution: "Developed a cross-platform mobile app using React Native and Expo, backed by Supabase for real-time data sync and secure authentication.",
+      challenges: "Implementing a smooth, performant cart experience on mobile and ensuring real-time order tracking for users.",
+      impact: "Provided a modern, scalable shopping experience for the community, complete with a vendor management dashboard."
+    },
+    logo: '/images/gisenyi_gadgets_logo.png'
   },
   {
     id: 3, num: '03',
@@ -79,10 +81,10 @@ const Modal = ({ project, onClose }) => (
 
       <div className="p-7 grid md:grid-cols-2 gap-5">
         {[
-          { label: 'The situation',   key: 'problem'    },
-          { label: 'What I did',      key: 'solution'   },
+          { label: 'The situation', key: 'problem' },
+          { label: 'What I did', key: 'solution' },
           { label: 'What was tricky', key: 'challenges' },
-          { label: 'End result',      key: 'impact'     },
+          { label: 'End result', key: 'impact' },
         ].map(({ label, key }) => (
           <div key={key}>
             <p className="text-primary font-mono text-[10px] font-bold uppercase tracking-wider mb-2">{label}</p>
@@ -130,7 +132,11 @@ const Projects = () => {
               className="glass-card p-7 cursor-pointer group hover:-translate-y-0.5 transition-all duration-200"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="text-5xl font-mono font-black text-gray-100 group-hover:text-primary/10 transition-colors select-none">{p.num}</span>
+                {p.logo ? (
+                  <img src={p.logo} alt={p.title} className="w-12 h-12 rounded-lg object-contain bg-gray-50 p-1" />
+                ) : (
+                  <span className="text-5xl font-mono font-black text-gray-100 group-hover:text-primary/10 transition-colors select-none">{p.num}</span>
+                )}
                 <span className="text-[10px] font-mono text-gray-300 group-hover:text-primary transition-colors pt-1">read more →</span>
               </div>
               <h3 className="text-gray-900 font-bold text-lg mb-1 group-hover:text-primary transition-colors leading-tight">{p.title}</h3>

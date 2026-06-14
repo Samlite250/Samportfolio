@@ -3,24 +3,24 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, Terminal } from 'lucide-react';
 
 const roles = [
-  'I fix broken networks at 2am',
-  'Cisco routing & switching nerd',
-  'I make BGP do what I want',
-  'Infrastructure architect',
+  'Full Stack Web Developer',
+  'Mobile App Developer (React Native)',
+  'I build scalable cloud solutions',
+  'Next.js & Supabase enthusiast',
 ];
 
 const TypewriterText = ({ texts }) => {
-  const [current,  setCurrent]  = useState('');
-  const [idx,      setIdx]      = useState(0);
+  const [current, setCurrent] = useState('');
+  const [idx, setIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const full = texts[idx];
     let t;
     if (deleting) t = setTimeout(() => setCurrent(full.slice(0, current.length - 1)), 45);
-    else          t = setTimeout(() => setCurrent(full.slice(0, current.length + 1)), 90);
-    if (!deleting && current === full)  t = setTimeout(() => setDeleting(true), 2600);
-    if (deleting  && current === '')   { setDeleting(false); setIdx(p => (p + 1) % texts.length); }
+    else t = setTimeout(() => setCurrent(full.slice(0, current.length + 1)), 90);
+    if (!deleting && current === full) t = setTimeout(() => setDeleting(true), 2600);
+    if (deleting && current === '') { setDeleting(false); setIdx(p => (p + 1) % texts.length); }
     return () => clearTimeout(t);
   }, [current, deleting, idx, texts]);
 
@@ -82,9 +82,9 @@ const Hero = () => (
 
         <div className="flex gap-2">
           {[
-            { href: 'https://github.com/',             icon: Github,   label: 'GitHub'   },
-            { href: 'https://linkedin.com/',           icon: Linkedin, label: 'LinkedIn' },
-            { href: 'mailto:nsengafabrice4@gmail.com', icon: Mail,     label: 'Email'    },
+            { href: 'https://github.com/', icon: Github, label: 'GitHub' },
+            { href: 'https://linkedin.com/', icon: Linkedin, label: 'LinkedIn' },
+            { href: 'mailto:nsengafabrice4@gmail.com', icon: Mail, label: 'Email' },
           ].map(({ href, icon: Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
               className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 transition-colors hover:text-primary"
