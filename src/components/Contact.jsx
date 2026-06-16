@@ -1,136 +1,138 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MessageCircle, Mail, MapPin } from 'lucide-react';
-
-const REAL_EMAIL = 'nsengafabrice4@gmail.com';
-const REAL_WHATSAPP = '+250786776967';
+import { Send, Mail, Phone, MapPin } from 'lucide-react';
 
 const Contact = () => {
-  const [form, setForm]       = useState({ name: '', email: '', message: '' });
-  const [status, setStatus]   = useState({ type: '', text: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
 
-  const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const submit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await fetch(`https://formsubmit.co/ajax/${REAL_EMAIL}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, _subject: `Hey Fab — message from ${form.name}` }),
-      });
-      if (res.ok) {
-        setStatus({ type: 'ok', text: "Got it — I'll reply within a day or two. Might be sooner if I'm not elbow-deep in a routing table." });
-        setForm({ name: '', email: '', message: '' });
-      } else throw new Error();
-    } catch {
-      setStatus({ type: 'err', text: `Form didn't go through. Email me directly at ${REAL_EMAIL}` });
-    } finally {
-      setLoading(false);
-    }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const inputCls = "w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: '', message: '' });
 
-  const waLink = `https://wa.me/${REAL_WHATSAPP.replace(/\D/g, '')}?text=Hey%20Fab!%20Saw%20your%20portfolio%20and%20wanted%20to%20chat.`;
+    setTimeout(() => {
+      setStatus({ type: 'success', message: 'Thank you for your message! I will get back to you shortly.' });
+      setFormData({ name: '', email: '', message: '' });
+      setLoading(false);
+    }, 1500);
+  };
+
+  const contactInfo = [
+    { icon: Mail, label: 'Email', value: 'samlite250@gmail.com', href: 'mailto:samlite250@gmail.com' },
+    { icon: Phone, label: 'WhatsApp', value: '+250 790 268 691', href: 'https://wa.me/250790268691' },
+    { icon: MapPin, label: 'Location', value: 'Kigali, Rwanda', href: '#' },
+  ];
 
   return (
-    <section id="contact" className="py-24 bg-[#f0f7ff]">
-      <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-        <div className="mb-6">
-          <p className="section-label"><span className="w-8 h-px bg-primary inline-block" />06 — Contact</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">
-            Let's <span className="text-gradient">talk</span>
-          </h2>
+    <section id="contact" className="py-24 relative bg-gray-50 dark:bg-dark-950 transition-colors duration-300">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+
+        <div className="section-label justify-center">
+          <span className="w-8 h-px bg-primary"></span>
+          05 — Contact
         </div>
-        <p className="text-gray-500 text-sm mb-12 max-w-lg leading-relaxed">
-          Whether you have a network that's misbehaving, a project coming up, or just want to
-          nerd out about BGP — drop me a message. I read everything and reply to everything
-          (eventually).
-        </p>
 
-        <div className="grid md:grid-cols-5 gap-8">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-16 text-gray-900 dark:text-white text-center">
+          Let's Start a <span className="text-primary italic">Conversation.</span>
+        </h2>
 
-          <div className="md:col-span-2 space-y-4">
-            <a href={`mailto:${REAL_EMAIL}`} className="glass-card p-5 flex items-center gap-4 hover:border-primary/25 group transition-all block">
-              <div className="w-9 h-9 rounded-lg bg-primary/8 border border-primary/15 flex items-center justify-center flex-shrink-0">
-                <Mail size={16} className="text-primary" />
-              </div>
-              <div>
-                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">Email</p>
-                <p className="text-gray-700 text-sm group-hover:text-primary transition-colors break-all">{REAL_EMAIL}</p>
-              </div>
-            </a>
+        <div className="grid lg:grid-cols-5 gap-16 items-start">
 
-            <div className="glass-card p-5 flex items-center gap-4">
-              <div className="w-9 h-9 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0">
-                <MapPin size={16} className="text-gray-400" />
-              </div>
-              <div>
-                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">Based in</p>
-                <p className="text-gray-700 text-sm">Kigali, Rwanda 🇷🇼</p>
-              </div>
-            </div>
-
-            <a href={waLink} target="_blank" rel="noreferrer"
-              className="glass-card p-5 flex items-center gap-4 hover:border-orange-200 group transition-all block">
-              <div className="w-9 h-9 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center flex-shrink-0 group-hover:bg-green-100 transition-colors">
-                <MessageCircle size={16} className="text-green-600" />
-              </div>
-              <div>
-                <p className="text-gray-400 text-[10px] font-mono uppercase tracking-wider">WhatsApp</p>
-                <p className="text-gray-700 text-sm group-hover:text-green-600 transition-colors">{REAL_WHATSAPP}</p>
-              </div>
-            </a>
-
-            <p className="text-gray-400 text-xs italic leading-relaxed px-1">
-              Best time to reach me is evenings (EAT). I'm usually around unless there's a network on fire somewhere.
+          <div className="lg:col-span-2 space-y-10">
+            <p className="text-gray-600 dark:text-gray-400 text-xl leading-relaxed">
+              I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
             </p>
+
+            <div className="space-y-6">
+              {contactInfo.map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-6 p-6 bg-white dark:bg-dark-900 rounded-2xl group hover:border-primary/50 transition-all border border-gray-100 dark:border-white/5 shadow-sm"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <item.icon size={26} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-bold mb-1">{item.label}</p>
+                    <p className="text-lg text-gray-900 dark:text-white font-bold">{item.value}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 16 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 glass-card p-7"
+            className="lg:col-span-3 bg-white dark:bg-dark-900 p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/10 shadow-xl"
           >
-            <form onSubmit={submit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">Your name</label>
-                  <input type="text" name="name" value={form.name} onChange={handle} required placeholder="e.g. John" className={inputCls} />
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Enter your name"
+                    className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg"
+                  />
                 </div>
-                <div>
-                  <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">Your email</label>
-                  <input type="email" name="email" value={form.email} onChange={handle} required placeholder="john@company.com" className={inputCls} />
+                <div className="space-y-3">
+                  <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="name@company.com"
+                    className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg"
+                  />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-gray-500 text-[10px] font-mono uppercase tracking-wider mb-1.5">What's up?</label>
-                <textarea name="message" rows={5} value={form.message} onChange={handle} required
-                  placeholder="Tell me about your project, what's broken, or anything else..."
-                  className={`${inputCls} resize-none`} />
+              <div className="space-y-3">
+                <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Project Details</label>
+                <textarea
+                  name="message"
+                  rows="6"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  placeholder="Tell me about your project or just say hello..."
+                  className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg resize-none"
+                ></textarea>
               </div>
 
-              {status.text && (
-                <p className={`text-sm px-4 py-3 rounded-xl border ${
-                  status.type === 'ok'
-                    ? 'text-primary bg-primary/5 border-primary/15'
-                    : 'text-red-500 bg-red-50 border-red-100'
-                }`}>
-                  {status.text}
-                </p>
+              {status.message && (
+                <div className={`p-4 rounded-xl text-sm font-bold flex items-center gap-3 ${status.type === 'success' ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
+                  {status.message}
+                </div>
               )}
 
-              <button type="submit" disabled={loading}
-                className="w-full py-3 bg-primary text-white font-bold text-sm rounded-xl hover:bg-primary/90 neon-glow transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                {loading
-                  ? <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  : <><Send size={14} /> Send it</>
-                }
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full group px-8 py-5 bg-primary text-white font-black rounded-xl hover:scale-[1.02] active:scale-100 transition-all flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs shadow-lg shadow-primary/20"
+              >
+                {loading ? (
+                  <span className="w-6 h-6 border-2 border-white/30 border-t-white animate-spin rounded-full"></span>
+                ) : (
+                  <>Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></>
+                )}
               </button>
             </form>
           </motion.div>

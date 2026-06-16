@@ -1,82 +1,81 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const experiences = [
-  {
-    role: 'Senior Network Engineer', company: 'TechConnect Solutions',
-    period: 'Jan 2023 – Present', type: 'Full-time',
-    achievements: [
-      'Designed and deployed Cisco-based enterprise networks for 10+ corporate clients across East Africa.',
-      'Engineered BGP multi-homed WAN solutions eliminating single-ISP dependency for financial sector clients.',
-      'Reduced network incidents by 45% through automated Ansible-based configuration management.',
-      'Mentored 3 junior engineers on Cisco IOS troubleshooting and best practices.',
-    ]
-  },
-  {
-    role: 'Network Engineer', company: 'DataLink ISP',
-    period: 'Jun 2021 – Dec 2022', type: 'Full-time',
-    achievements: [
-      'Managed BGP peering sessions with 4 Tier-1 upstream carriers — maintained 99.9% WAN uptime.',
-      'Deployed DMVPN and SD-WAN solutions for 25+ enterprise SME customers across the region.',
-      'Led NOC escalation team — average P1 incident resolution time reduced to under 28 minutes.',
-      'Configured QoS policies on Cisco ISR fleet to prioritize VoIP across MPLS circuits.',
-    ]
-  },
-  {
-    role: 'Junior Network Technician', company: 'NetServ Africa',
-    period: 'Jan 2020 – May 2021', type: 'Full-time',
-    achievements: [
-      'Deployed and configured Cisco Catalyst switches, ISR routers, and Meraki wireless APs.',
-      'Completed structured cabling and data center rack installations for 5 greenfield projects.',
-      'Assisted in network audit documentation — produced IP addressing, VLAN, and topology diagrams.',
-    ]
-  },
-];
+const Experience = () => {
+  const experiences = [
+    {
+      role: 'Full-Stack Developer Intern',
+      company: 'Tech Solutions Inc.',
+      period: 'Jan 2023 - Present',
+      description: [
+        'Developed and maintained scalable web applications using React and Node.js.',
+        'Collaborated with cross-functional teams to design and implement new features.',
+        'Optimized database queries in PostgreSQL, reducing load times by 30%.'
+      ]
+    },
+    {
+      role: 'Freelance Web Developer',
+      company: 'Self-Employed',
+      period: 'Jun 2021 - Dec 2022',
+      description: [
+        'Built custom portfolio and e-commerce websites for small businesses.',
+        'Implemented responsive designs and modern UI/UX principles.',
+        'Integrated third-party APIs and payment gateways (Stripe, PayPal).'
+      ]
+    }
+  ];
 
-const Experience = () => (
-  <section id="experience" className="py-24 bg-[#fff8f0]">
-    <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-      <div className="mb-16">
-        <p className="section-label"><span className="w-8 h-px bg-primary inline-block" />05 — Experience</p>
-        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">
-          Work <span className="text-gradient">history</span>
-        </h2>
-      </div>
+  return (
+    <section id="experience" className="py-24">
+      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+        
+        <div className="flex items-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mr-6">
+            <span className="text-primary font-mono text-xl mr-2">04.</span> 
+            Where I've Worked
+          </h2>
+          <div className="h-px bg-gray-300 flex-grow max-w-xs"></div>
+        </div>
 
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/30 via-primary/15 to-transparent" />
-
-        <div className="space-y-10 pl-8">
+        <div className="space-y-12 pl-4 md:pl-0">
           {experiences.map((exp, idx) => (
-            <motion.div
+            <motion.div 
               key={idx}
-              initial={{ opacity: 0, x: -16 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.15 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              className="relative pl-8 md:pl-0 md:flex gap-8 group"
             >
-              <div className="absolute -left-[2.15rem] top-5 w-3 h-3 rounded-full bg-primary border-2 border-white shadow-sm" />
+              {/* Timeline dot and line for mobile */}
+              <div className="md:hidden absolute left-0 top-2 w-3 h-3 bg-primary rounded-full border-2 border-dark-900 z-10"></div>
+              <div className="md:hidden absolute left-1.5 top-5 bottom-[-3rem] w-px bg-gray-300 group-last:bg-transparent"></div>
 
-              <div className="glass-card p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h3 className="text-gray-900 font-bold text-xl">
-                      {exp.role} <span className="text-primary">@ {exp.company}</span>
-                    </h3>
-                    <div className="flex items-center gap-3 mt-1">
-                      <span className="text-gray-400 font-mono text-xs">{exp.period}</span>
-                      <span className="text-[10px] font-mono font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-full uppercase">
-                        {exp.type}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <ul className="space-y-3">
-                  {exp.achievements.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-500 text-sm leading-relaxed">
-                      <span className="text-primary mt-1 flex-shrink-0 text-xs">▹</span>
-                      {item}
+              {/* Period for Desktop */}
+              <div className="hidden md:block w-1/4 pt-1 text-right text-gray-500 font-mono text-sm">
+                {exp.period}
+              </div>
+
+              {/* Timeline line for Desktop */}
+              <div className="hidden md:flex flex-col items-center relative">
+                <div className="w-3 h-3 bg-primary rounded-full border-2 border-dark-900 z-10 mt-1.5"></div>
+                <div className="absolute top-4 bottom-[-3rem] w-px bg-gray-300 group-last:bg-transparent left-1.5"></div>
+              </div>
+
+              {/* Content */}
+              <div className="md:w-3/4 glass-card p-8 rounded-2xl">
+                <h3 className="text-xl font-bold text-gray-900 flex flex-col sm:flex-row sm:items-center sm:gap-2">
+                  {exp.role} 
+                  <span className="text-primary hidden sm:inline">@</span> 
+                  <span className="text-primary block sm:inline">{exp.company}</span>
+                </h3>
+                <p className="md:hidden text-gray-500 font-mono text-xs mb-4 mt-1">{exp.period}</p>
+                
+                <ul className="mt-6 space-y-3">
+                  {exp.description.map((desc, dIdx) => (
+                    <li key={dIdx} className="text-gray-700 flex items-start text-sm sm:text-base">
+                      <span className="text-primary mr-3 mt-1.5 opacity-70">▹</span>
+                      {desc}
                     </li>
                   ))}
                 </ul>
@@ -84,9 +83,10 @@ const Experience = () => (
             </motion.div>
           ))}
         </div>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Experience;

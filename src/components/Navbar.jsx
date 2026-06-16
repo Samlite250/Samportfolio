@@ -1,91 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Network } from 'lucide-react';
+import { Menu, X, Home, User, Code, Layers, Briefcase, Mail, Sun, Moon } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Home',       href: '#home'       },
-  { name: 'About',      href: '#about'      },
-  { name: 'Skills',     href: '#skills'     },
-  { name: 'Services',   href: '#services'   },
-  { name: 'Projects',   href: '#projects'   },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact',    href: '#contact'    },
+  { name: 'Home', href: '#home', icon: Home },
+  { name: 'About', href: '#about', icon: User },
+  { name: 'Skills', href: '#skills', icon: Code },
+  { name: 'Services', href: '#services', icon: Briefcase },
+  { name: 'Projects', href: '#projects', icon: Layers },
+  { name: 'Experience', href: '#experience', icon: Briefcase },
+  { name: 'Contact', href: '#contact', icon: Mail },
 ];
 
 const Navbar = () => {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
-  const [active,    setActive]    = useState('#home');
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  );
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <>
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded">
-        Skip to main content
-      </a>
+    <header className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-300 bg-white dark:bg-dark-900 ${scrolled ? 'shadow-md dark:shadow-dark-900/50' : 'border-b border-gray-100 dark:border-dark-800'}`}>
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-      <header className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-200 ${
-        scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/80 backdrop-blur-md'
-      }`}>
-        <div className="max-w-6xl mx-auto px-6 h-[60px] flex items-center justify-between">
+        {/* Logo */}
+        <a href="#home" className="text-2xl font-extrabold text-gray-900 dark:text-white">
+          Sam<span className="text-primary">.dev</span>
+        </a>
 
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(14,99,189,0.1)', border: '1px solid rgba(14,99,189,0.2)' }}>
-              <Network size={15} style={{ color: '#0e63bd' }} />
-            </div>
-            <span className="font-mono font-bold text-gray-900 text-sm">
-              fab<span style={{ color: '#0e63bd' }}>.cisco</span>
-            </span>
+        {/* Desktop links */}
+        <nav className="hidden md:flex items-center gap-7">
+          {navLinks.map(({ name, href, icon: Icon }) => (
+            <a
+              key={name}
+              href={href}
+              className="group flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-semibold text-sm uppercase tracking-wide transition-colors relative"
+            >
+              <Icon size={14} />
+              {name}
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-primary rounded transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 ml-2 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+            aria-label="Toggle Dark Mode"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          <a
+            href="#contact"
+            className="ml-2 px-5 py-2 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all"
+          >
+            Hire Me
           </a>
+        </nav>
 
-          {/* Desktop nav */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-0.5">
-            {navLinks.map(({ name, href }) => (
-              <a key={name} href={href} onClick={() => setActive(href)}
-                className="px-3.5 py-2 text-xs font-semibold uppercase tracking-wider font-mono rounded-lg transition-colors duration-150"
-                style={{
-                  color: active === href ? '#0e63bd' : '#6b7280',
-                  background: active === href ? 'rgba(14,99,189,0.08)' : 'transparent',
-                }}
-              >
-                {name}
-              </a>
-            ))}
-            <a href="#contact" className="ml-3 btn-primary text-xs font-mono uppercase tracking-wider"
-              style={{ padding: '0.5rem 1.25rem', borderRadius: '0.5rem' }}>
+        {/* Hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden flex items-center gap-4"
+          aria-label="Toggle menu"
+        >
+          <div onClick={(e) => { e.stopPropagation(); toggleTheme(); }} className="p-2 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </div>
+          <div className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile dropdown — sits directly under the navbar, solid white */}
+      {menuOpen && (
+        <div className="md:hidden bg-white dark:bg-dark-900 border-t border-gray-200 dark:border-dark-800 shadow-lg">
+          {navLinks.map(({ name, href, icon: Icon }) => (
+            <a
+              key={name}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 px-6 py-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-dark-800 font-semibold text-base border-b border-gray-100 dark:border-dark-800 transition-colors"
+            >
+              <Icon size={18} className="text-primary" />
+              {name}
+            </a>
+          ))}
+          <div className="px-6 py-4 w-full">
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center w-full py-3 text-center bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-opacity"
+            >
               Hire Me
             </a>
-          </nav>
-
-          {/* Mobile hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 text-gray-500" aria-label="Toggle menu">
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-
-        {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-            {navLinks.map(({ name, href }) => (
-              <a key={name} href={href} onClick={() => { setMenuOpen(false); setActive(href); }}
-                className="flex items-center px-6 py-3.5 text-sm font-semibold font-mono text-gray-600 hover:text-primary border-b border-gray-50 transition-colors"
-                style={active === href ? { color: '#0e63bd', background: 'rgba(14,99,189,0.05)' } : {}}>
-                <span className="mr-3 text-xs" style={{ color: '#0e63bd' }}>▸</span>{name}
-              </a>
-            ))}
-            <div className="px-6 py-4">
-              <a href="#contact" onClick={() => setMenuOpen(false)} className="block w-full py-3 text-center btn-primary font-mono text-sm">
-                Hire Me
-              </a>
-            </div>
           </div>
-        )}
-      </header>
-    </>
+        </div>
+      )}
+    </header>
   );
 };
 

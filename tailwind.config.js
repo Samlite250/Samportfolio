@@ -1,31 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        primary:   'rgb(var(--color-primary) / <alpha-value>)',
-        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
-        accent:    'rgb(var(--color-accent)   / <alpha-value>)',
+        primary: {
+          DEFAULT: '#0F8251',
+          light: '#14a366',
+          dark: '#0a5c39',
+        },
+        secondary: '#FFD700',
+        accent: '#06946e',
+        dark: {
+          950: '#050505',
+          900: '#0a0a0a',
+          800: '#141414',
+          700: '#1f1f1f',
+          600: '#2d2d2d',
+        }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
-      },
-      fontSize: {
-        '2xs': ['0.65rem', { lineHeight: '1rem' }],
-      },
-      keyframes: {
-        blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
-        float: {
-          '0%,100%': { transform: 'translateY(0px)' },
-          '50%':     { transform: 'translateY(-7px)' },
-        },
+        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        blink: 'blink 1s step-end infinite',
-        float: 'float 4s ease-in-out infinite',
-      },
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      }
     },
   },
   plugins: [],

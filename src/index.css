@@ -4,164 +4,103 @@
 
 @layer base {
   :root {
-    --color-primary:   14 99 189;    /* #0e63bd — professional blue  */
-    --color-secondary: 217 83 0;     /* #d95300 — warm Cisco orange  */
-    --color-accent:    6 148 110;    /* #06946e — teal               */
+    --primary: 15 130 81;
+    /* #0F8251 */
+    --primary-rgb: 15, 130, 81;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    background-color: #ffffff;
-    color: #111827;                  /* gray-900 — strong readable   */
+    @apply bg-white text-gray-800 antialiased transition-colors duration-300;
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Tight, confident headings */
-  h1, h2, h3 {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: #111827;
+  .dark body {
+    @apply bg-dark-900 text-gray-300;
   }
 
-  h4, h5 {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    font-weight: 700;
-    color: #1f2937;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-900 font-bold tracking-tight;
   }
 
-  p {
-    line-height: 1.75;
-    color: #4b5563;                  /* gray-600 — comfortable reading */
-  }
-
-  /* Mono font for code/labels */
-  .font-mono, code, pre {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-white;
   }
 }
 
-@layer utilities {
-  /* Cards — clean, not glassy */
-  .card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-  }
-  .card:hover {
-    border-color: rgba(14,99,189,0.3);
-    box-shadow: 0 4px 20px rgba(14,99,189,0.08);
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-gray-200;
   }
 
-  /* On colored (tinted) section backgrounds */
-  .card-on-tint {
-    background: #ffffff;
-    border: 1px solid rgba(14,99,189,0.12);
-    border-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(14,99,189,0.06);
-    transition: border-color 0.2s, box-shadow 0.2s;
+  .dark .glass {
+    @apply bg-dark-800/40 border-white/5;
   }
-  .card-on-tint:hover {
-    border-color: rgba(14,99,189,0.28);
-    box-shadow: 0 6px 20px rgba(14,99,189,0.1);
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-gray-100 shadow-xl hover:border-primary/30 transition-all duration-300;
+  }
+
+  .dark .glass-card {
+    @apply bg-dark-800/60 border-white/5 shadow-2xl;
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #0e63bd 0%, #d95300 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light;
   }
 
-  .btn-primary {
-    background-color: #0e63bd;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.15s, box-shadow 0.15s, transform 0.15s;
-    box-shadow: 0 4px 12px rgba(14,99,189,0.3);
-  }
-  .btn-primary:hover {
-    background-color: #0b54a3;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(14,99,189,0.35);
-  }
-
-  .btn-outline {
-    border: 1.5px solid #d1d5db;
-    color: #374151;
-    font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .btn-outline:hover {
-    border-color: #0e63bd;
-    color: #0e63bd;
-  }
-
-  .terminal-box {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 0.75rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* Section label: "01 — About" */
   .section-label {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #0e63bd;
-    margin-bottom: 0.75rem;
+    @apply flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-4;
   }
-
-  .badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-  }
-
-  .badge-blue  { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-  .badge-orange{ background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
-  .badge-teal  { background: #f0fdf9; color: #0f766e; border: 1px solid #99f6e4; }
-  .badge-gray  { background: #f9fafb; color: #6b7280; border: 1px solid #e5e7eb; }
 }
 
-/* Scrollbar */
-::-webkit-scrollbar       { width: 4px; }
-::-webkit-scrollbar-track { background: #f9fafb; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #0e63bd; }
-
-::selection { background: rgba(14,99,189,0.15); color: #111827; }
-
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-7px); }
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-blink { animation: blink 1s step-end infinite; }
+::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 5px;
+  border: 2px solid #f7f7f7;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border: 2px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0F8251;
+}
+
+::selection {
+  background: rgba(15, 130, 81, 0.2);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(15, 130, 81, 0.3);
+  color: white;
+}
