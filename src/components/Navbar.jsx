@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-300 bg-white dark:bg-dark-900 ${scrolled ? 'shadow-md dark:shadow-dark-900/50' : 'border-b border-gray-100 dark:border-dark-800'}`}>
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
         <a href="#home" className="text-2xl font-extrabold text-gray-900 dark:text-white">
@@ -54,7 +54,7 @@ const Navbar = () => {
             <a
               key={name}
               href={href}
-              className="group flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-semibold text-sm uppercase tracking-wide transition-colors relative"
+              className="group flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-semibold text-xs uppercase tracking-wide transition-colors relative whitespace-nowrap"
             >
               <Icon size={14} />
               {name}

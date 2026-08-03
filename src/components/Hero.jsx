@@ -42,8 +42,8 @@ const TypewriterText = ({ texts }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-[85vh] flex items-center justify-center pt-16 pb-10">
-      <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+    <section id="home" className="min-h-[85vh] flex items-center justify-center pt-20 pb-12 px-4">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
         {/* Text Content */}
         <motion.div
@@ -53,17 +53,17 @@ const Hero = () => {
           className="order-2 md:order-1"
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
             Sam <span className="text-primary">Dev</span>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
+          <h2 className="text-lg sm:text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[2.5rem] md:min-h-[4rem]">
             I'm a <TypewriterText texts={['Front-End Developer', 'Back-End Developer', 'Web Designer', 'Database Manager']} />
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
             I'm a Full-Stack Developer based in Kigali, Rwanda, specializing in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
 
-          <div className="flex flex-row gap-4 items-center">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 items-center">
             <a href="#projects" className="px-6 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap">
               View Projects <ArrowRight size={18} />
             </a>
@@ -95,7 +95,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <div className="relative group w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
+          <div className="relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
             {/* Background decoration */}
             <div className="absolute inset-x-0 inset-y-0 translate-x-4 translate-y-4 border-2 border-primary rounded-2xl group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
 

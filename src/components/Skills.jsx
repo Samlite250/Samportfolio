@@ -17,17 +17,17 @@ const Skills = () => {
     },
     {
       title: 'Professional Tools',
-      skills: ['Git & GitHub', 'Figma', 'AI Skills', 'Microsoft Office 365']
+      skills: ['Git & GitHub', 'Figma', 'Prompt Engineering', 'Microsoft Office 365']
     }
   ];
 
   return (
     <section id="skills" className="py-24 bg-gray-50/10">
       <div className="container mx-auto px-6 md:px-12">
-        
+
         <div className="flex items-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mr-6">
-            <span className="text-primary font-mono text-xl mr-2">02.</span> 
+            <span className="text-primary font-mono text-xl mr-2">02.</span>
             Technical Expertise
           </h2>
           <div className="h-px bg-gray-300 flex-grow max-w-xs"></div>
@@ -35,7 +35,7 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

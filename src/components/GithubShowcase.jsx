@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Star, GitFork, BookOpen, Code2, ExternalLink, Activity, ShieldCheck, Trophy, Layers } from 'lucide-react';
+import { Github, Star, GitFork, BookOpen, Code2, ExternalLink, Activity, Trophy, Layers } from 'lucide-react';
 
 const FEATURED_REPOS = [
     {
@@ -105,24 +105,21 @@ const GithubShowcase = () => {
                     <div className="h-px bg-gray-200 dark:bg-dark-700 flex-grow max-w-xs"></div>
                 </div>
 
-                {/* Security & Read-Only Badge */}
+                {/* GitHub Profile CTA Banner */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-10 p-4 rounded-xl bg-gray-50 dark:bg-dark-800 border border-gray-200 dark:border-dark-700 flex flex-col md:flex-row items-center justify-between gap-4"
+                    className="mb-10 p-4 rounded-xl bg-gray-50 dark:bg-dark-800 border border-gray-200 dark:border-dark-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                            <ShieldCheck size={24} />
+                        <div className="p-2.5 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <Github size={22} />
                         </div>
                         <div>
-                            <h4 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                Display-Only GitHub Integration
-                                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono uppercase tracking-wider">Verified Read-Only</span>
-                            </h4>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                                This section provides a secure, read-only view of repository stats, coding distribution, and public activity without requiring external authorization.
+                            <h4 className="text-sm font-bold text-gray-900 dark:text-white">Open Source Contributions</h4>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+                                Explore my public repositories, commit history, and project contributions on GitHub.
                             </p>
                         </div>
                     </div>
@@ -130,10 +127,10 @@ const GithubShowcase = () => {
                         href="https://github.com/Samlite250"
                         target="_blank"
                         rel="noreferrer"
-                        className="px-5 py-2.5 bg-primary text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-primary/90 transition-all flex items-center gap-2 shrink-0"
+                        className="px-5 py-2.5 bg-primary text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-primary/90 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap"
                     >
                         <Github size={16} />
-                        Visit Profile @Samlite250
+                        View Profile
                         <ExternalLink size={14} />
                     </a>
                 </motion.div>
