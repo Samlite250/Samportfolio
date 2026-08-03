@@ -76,7 +76,7 @@ const About = () => {
           <div className="hidden lg:block h-24 w-px bg-gray-200"></div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Detailed Narrative */}
           <motion.div

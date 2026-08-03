@@ -106,7 +106,7 @@ const Contact = () => {
           Let's Start a <span className="text-primary italic">Conversation.</span>
         </h2>
 
-        <div className="grid lg:grid-cols-5 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
           <div className="lg:col-span-2 space-y-10">
             <p className="text-gray-600 dark:text-gray-400 text-xl leading-relaxed">
@@ -117,22 +117,22 @@ const Contact = () => {
               {contactInfo.map((item, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-6 p-6 rounded-2xl bg-white/60 dark:bg-dark-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-lg shadow-gray-200/50 dark:shadow-black/30 hover:border-primary/60 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                  className="group flex items-center gap-4 md:gap-6 p-5 md:p-6 rounded-2xl bg-white/60 dark:bg-dark-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-lg shadow-gray-200/50 dark:shadow-black/30 hover:border-primary/60 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-6 flex-1 min-w-0"
+                    className="flex items-center gap-4 md:gap-6 flex-1 min-w-0"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0">
-                      <item.icon size={26} />
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0">
+                      <item.icon size={22} />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-bold mb-1">
                         {item.label}
                       </p>
-                      <p className="text-lg text-gray-900 dark:text-white font-bold truncate">{item.value}</p>
+                      <p className="text-base md:text-lg text-gray-900 dark:text-white font-bold truncate">{item.value}</p>
                     </div>
                   </a>
 
@@ -166,7 +166,7 @@ const Contact = () => {
             className="lg:col-span-3 relative rounded-3xl bg-white/60 dark:bg-dark-900/50 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-xl shadow-gray-200/60 dark:shadow-black/40 p-8 md:p-12"
           >
             <form onSubmit={handleSubmit} className="space-y-8" noValidate>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label htmlFor="name" className="block text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
                     Full Name
