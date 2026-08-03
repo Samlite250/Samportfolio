@@ -13,7 +13,7 @@ export default {
           light: '#14a366',
           dark: '#0a5c39',
         },
-        secondary: '#FFD700',
+        secondary: '#4285F4',
         accent: '#06946e',
         dark: {
           950: '#050505',
