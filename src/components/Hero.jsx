@@ -63,11 +63,11 @@ const Hero = () => {
             I'm a Full-Stack Developer based in Kigali, Rwanda, specializing in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
 
-          <div className="flex flex-wrap gap-4 items-center">
-            <a href="#projects" className="px-8 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2">
+          <div className="flex flex-row gap-4 items-center">
+            <a href="#projects" className="px-6 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap">
               View Projects <ArrowRight size={18} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 border border-gray-400 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2">
+            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-6 py-3 border border-gray-400 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap">
               Download CV <Download size={18} />
             </a>
           </div>

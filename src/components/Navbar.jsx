@@ -73,7 +73,7 @@ const Navbar = () => {
 
           <a
             href="#contact"
-            className="ml-2 px-5 py-2 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all"
+            className="ml-2 px-5 py-2 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all whitespace-nowrap"
           >
             Hire Me
           </a>
