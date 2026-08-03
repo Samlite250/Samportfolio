@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   try {
     if (!supabase) {
       console.error('Supabase client not configured');
-      return res.status(500).json({ error: 'Message storage unavailable' });
+      return res.status(503).json({ error: 'Message storage is not configured yet.' });
     }
 
     const { error } = await supabase.from('contacts').insert([{ name, email, message }]);

@@ -17,18 +17,26 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://formsubmit.co/ajax/samlite250@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New message from ${formData.name} via portfolio`,
+          _template: 'table',
+          _captcha: 'false'
+        })
       });
       const data = await res.json().catch(() => ({}));
+      const ok = res.ok && (data.success === true || data.success === 'true');
 
-      if (res.ok && data.success) {
+      if (ok) {
         setStatus({ type: 'success', message: 'Thank you for your message! I will get back to you shortly.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again or email me directly.' });
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again or email me directly at samlite250@gmail.com.' });
       }
     } catch (err) {
       setStatus({ type: 'error', message: 'Could not reach the server. Please email me directly at samlite250@gmail.com.' });
