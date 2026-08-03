@@ -59,7 +59,7 @@ const realProjects = [
     description:
       'A modern, high-conversion travel agency and tour booking platform offering destination discovery, interactive booking workflows, and responsive itinerary showcases.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Vercel', 'Framer Motion', 'Node.js'],
-    image_url: '/images/projects/travelium.png',
+    image_url: '/images/projects/traveliumgrobal.jpg',
     live_url: 'https://traveliumgrobal.vercel.app',
     github_url: 'https://github.com/Samlite250/Traveliumgrobal.git',
     caseStudy: {
@@ -75,7 +75,7 @@ const realProjects = [
     description:
       'An end-to-end coffee factory management platform (TFMS) for tracking cherry collection, farmer registrations, batch processing, and automated transactional email notifications.',
     tech_stack: ['React.js', 'Supabase', 'Nodemailer', 'Tailwind CSS', 'PostgreSQL'],
-    image_url: '/images/projects/mahembe.png',
+    image_url: '/images/projects/mahembecoffee.jpg',
     live_url: 'https://mahembefactory.vercel.app',
     github_url: 'https://github.com/Samlite250/tfms.git',
     caseStudy: {
@@ -108,7 +108,7 @@ const realProjects = [
     description:
       'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
     tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
-    image_url: '/images/projects/gisenyi_gadgets.png',
+    image_url: '/images/projects/gisenyigadgets.jpeg',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/Gisenyi-Gadgets.git',
     status: 'In Development',
