@@ -12,7 +12,6 @@ import Footer from './components/Footer';
 import Stats from './components/Stats';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import CursorGlow from './components/CursorGlow';
-import FloatingDock from './components/FloatingDock';
 
 function App() {
   return (
@@ -44,9 +43,6 @@ function App() {
         </main>
         <Footer />
       </div>
-
-      {/* Floating Dock Navigation */}
-      <FloatingDock />
     </div>
   );
 }
