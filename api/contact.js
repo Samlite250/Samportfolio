@@ -63,6 +63,7 @@ export default async function handler(req, res) {
         })
       });
       const formData = await formRes.json().catch(() => ({}));
+      console.log('FormSubmit response', formRes.status, JSON.stringify(formData));
       emailed = formData.success === true || formData.success === 'true';
     } catch (e) {
       console.error('FormSubmit forwarding failed:', e);
