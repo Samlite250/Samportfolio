@@ -35,22 +35,7 @@ const realProjects = [
       impact: "Delivered a high-converting platform that modernizes the agency's digital footprint and streamlines the inquiry process for luxury buyers."
     }
   },
-  {
-    id: 3,
-    title: 'Market Pro — E-Commerce',
-    description:
-      'A professional-grade e-commerce solution featuring real-time product management, advanced filtering, and integrated payment gateways. Built with performance in mind to deliver a high-speed shopping experience.',
-    tech_stack: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-    image_url: '/images/projects/marketpro.png',
-    live_url: 'https://marketplace-app-livid-three.vercel.app/',
-    github_url: 'https://github.com/Samlite250/Marketplace',
-    caseStudy: {
-      problem: "Existing solutions lacked real-time inventory updates, leading to double-purchases and frustrated end-users.",
-      solution: "Built a custom full-stack architecture utilizing MongoDB and Express to manage high-throughput transactions with a React frontend.",
-      challenges: "Synchronizing state across multiple client sessions during peak traffic and dealing with complex search algorithms for products.",
-      impact: "Reduced checkout friction and provided administrators with real-time analytics for inventory, drastically cutting down out-of-stock complaints."
-    }
-  },
+
   {
     id: 4,
     title: 'Campus Connect',

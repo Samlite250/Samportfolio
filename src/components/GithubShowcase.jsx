@@ -24,14 +24,14 @@ const FEATURED_REPOS = [
         topics: ['react', 'supabase', 'postgresql', 'real-estate']
     },
     {
-        name: 'Marketplace',
-        description: 'Full-stack e-commerce engine with real-time inventory updates, product search filters, and checkout flow integrations.',
+        name: 'tfms (Mahembe Coffee)',
+        description: 'Coffee factory management system for tracking cherry collection, farmer registrations, batch processing, and automated emails.',
         language: 'JavaScript',
         languageColor: '#f7df1e',
-        stars: 15,
-        forks: 5,
-        url: 'https://github.com/Samlite250/Marketplace',
-        topics: ['react', 'express', 'mongodb', 'node-js', 'ecommerce']
+        stars: 14,
+        forks: 4,
+        url: 'https://github.com/Samlite250/tfms',
+        topics: ['react', 'supabase', 'postgresql', 'nodemailer']
     },
     {
         name: 'Campus-connect',
