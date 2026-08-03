@@ -91,7 +91,7 @@ const realProjects = [
     description:
       'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
     tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
-    image_url: '/images/projects/digitalplus.jpeg',
+    image_url: '/images/projects/digitalplus.png',
     objectFit: 'contain',
     imageBg: 'bg-gray-900',
     live_url: '#',
@@ -110,7 +110,7 @@ const realProjects = [
     description:
       'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
     tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
-    image_url: '/images/projects/gisenyigadgets.jpeg',
+    image_url: '/images/projects/gisenyigadgets.png',
     objectFit: 'contain',
     imageBg: 'bg-white dark:bg-dark-900',
     live_url: '#',
