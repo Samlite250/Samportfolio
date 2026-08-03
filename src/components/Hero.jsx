@@ -32,7 +32,7 @@ const TypewriterText = ({ texts }) => {
   }, [currentText, isDeleting, currentIndex, texts]);
 
   return (
-    <span className="text-primary">
+    <span className="text-secondary">
       {currentText}
       <span className="animate-pulse text-gray-900 dark:text-white">|</span>
     </span>
