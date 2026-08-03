@@ -105,7 +105,7 @@ const realProjects = [
     description:
       'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
     tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
-    image_url: '/images/projects/digitalplus.png',
+    image_url: '/images/projects/digitalplus.jpeg',
     objectFit: 'contain',
     imagePosition: 'object-center',
     imageBg: 'bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900',
@@ -126,7 +126,7 @@ const realProjects = [
     description:
       'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
     tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
-    image_url: '/images/projects/gisenyigadgets.png',
+    image_url: '/images/projects/gisenyigadgets.jpeg',
     objectFit: 'contain',
     imagePosition: 'object-center',
     imageBg: 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950',
@@ -207,8 +207,8 @@ const Projects = () => {
                       alt={project.title}
                       loading="lazy"
                       className={`w-full h-full ${project.objectFit === 'contain'
-                          ? 'object-contain p-3 md:p-4'
-                          : 'object-cover'
+                        ? 'object-contain p-3 md:p-4'
+                        : 'object-cover'
                         } ${project.imagePosition || 'object-top'} group-hover:scale-105 transition-transform duration-700 z-10`}
                       onError={(e) => {
                         e.target.style.opacity = '0';
@@ -320,8 +320,8 @@ const Projects = () => {
                   src={activeProject.image_url}
                   alt={activeProject.title}
                   className={`w-full h-full ${activeProject.objectFit === 'contain'
-                      ? 'object-contain p-6'
-                      : 'object-cover'
+                    ? 'object-contain p-6'
+                    : 'object-cover'
                     } ${activeProject.modalFit || activeProject.imagePosition || 'object-top'}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-dark-900/40 to-transparent"></div>
