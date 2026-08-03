@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, ArrowRight, Download } from 'lucide-react';
 
 const TypewriterText = ({ texts }) => {
   const [currentText, setCurrentText] = useState('');
@@ -76,8 +76,11 @@ const Hero = () => {
             <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+            <a href="https://www.linkedin.com/in/sam-dev-230a27416" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Linkedin size={24} />
+            </a>
+            <a href="https://x.com/Samlite254" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
+              <Twitter size={24} />
             </a>
             <a href="mailto:samcodings@gmail.com" className="text-gray-500 hover:text-secondary transition-colors hover:-translate-y-1">
               <Mail size={24} />

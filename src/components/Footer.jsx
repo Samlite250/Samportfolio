@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ChevronUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, ChevronUp } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -22,8 +22,11 @@ const Footer = () => {
             <a href="https://github.com/Samlite250" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-all">
               <Github size={16} />
             </a>
-            <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-all">
+            <a href="https://www.linkedin.com/in/sam-dev-230a27416" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-all">
               <Linkedin size={16} />
+            </a>
+            <a href="https://x.com/Samlite254" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-all">
+              <Twitter size={16} />
             </a>
             <a href="mailto:samcodings@gmail.com" className="text-gray-400 hover:text-primary transition-all">
               <Mail size={16} />
