@@ -1,6 +1,7 @@
 import { supabase } from './config/supabase.js';
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'samlite250@gmail.com';
+const SITE_URL = process.env.SITE_URL || 'https://samdeveloper.vercel.app/';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,13 +17,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  let body;
   try {
-    const { name, email, message } = req.body || {};
+    body = req.body || {};
+  } catch {
+    return res.status(400).json({ error: 'Invalid request body' });
+  }
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: 'Please provide name, email, and message' });
-    }
+  const { name, email, message } = body;
 
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Please provide name, email, and message' });
+  }
+
+  try {
     let savedToDb = false;
     let emailed = false;
 
@@ -40,7 +48,11 @@ export default async function handler(req, res) {
     try {
       const formRes = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Referer: SITE_URL
+        },
         body: JSON.stringify({
           name,
           email,
@@ -50,7 +62,8 @@ export default async function handler(req, res) {
           _captcha: 'false'
         })
       });
-      emailed = formRes.ok;
+      const formData = await formRes.json().catch(() => ({}));
+      emailed = formData.success === true || formData.success === 'true';
     } catch (e) {
       console.error('FormSubmit forwarding failed:', e);
     }
