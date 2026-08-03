@@ -1,20 +1,52 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin } from 'lucide-react';
+import { Send, Mail, Phone, MapPin, User, MessageSquare, Check, Copy, ChevronRight } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
+  const [honey, setHoney] = useState('');
+  const [copied, setCopied] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
+  const validate = () => {
+    const next = {};
+    if (formData.name.trim().length < 2) next.name = 'Please enter your full name.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) next.email = 'Please enter a valid email address.';
+    if (formData.message.trim().length < 10) next.message = 'Message must be at least 10 characters.';
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const copyToClipboard = async (value, label) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(label);
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setStatus({ type: '', message: '' });
+
+    if (honey) return;
+
+    if (!validate()) {
+      setStatus({ type: 'error', message: 'Please fix the highlighted fields and try again.' });
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const res = await fetch('https://formsubmit.co/ajax/samlite250@gmail.com', {
@@ -26,7 +58,8 @@ const Contact = () => {
           message: formData.message,
           _subject: `New message from ${formData.name} via portfolio`,
           _template: 'table',
-          _captcha: 'false'
+          _captcha: 'false',
+          _honey: honey
         })
       });
       const data = await res.json().catch(() => ({}));
@@ -46,10 +79,15 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'samlite250@gmail.com', href: 'mailto:samlite250@gmail.com' },
-    { icon: Phone, label: 'WhatsApp', value: '+250 790 268 691', href: 'https://wa.me/250790268691' },
-    { icon: MapPin, label: 'Location', value: 'Kigali, Rwanda', href: '#' },
+    { icon: Mail, label: 'Email', value: 'samlite250@gmail.com', href: 'mailto:samlite250@gmail.com', copy: true },
+    { icon: Phone, label: 'WhatsApp', value: '+250 790 268 691', href: 'https://wa.me/250790268691', copy: true },
+    { icon: MapPin, label: 'Location', value: 'Kigali, Rwanda', href: 'https://maps.google.com/?q=Kigali,+Rwanda' },
   ];
+
+  const inputClass = (hasError) =>
+    `w-full bg-gray-50 dark:bg-dark-950 border rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-gray-400 dark:placeholder:text-gray-500 ${
+      hasError ? 'border-red-500/60' : 'border-gray-100 dark:border-white/10 focus:border-primary'
+    }`;
 
   return (
     <section id="contact" className="py-24 relative bg-gray-50 dark:bg-dark-950 transition-colors duration-300">
@@ -73,21 +111,46 @@ const Contact = () => {
 
             <div className="space-y-6">
               {contactInfo.map((item, i) => (
-                <a
+                <div
                   key={i}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-6 p-6 bg-white dark:bg-dark-900 rounded-2xl group hover:border-primary/50 transition-all border border-gray-100 dark:border-white/5 shadow-sm"
+                  className="group flex items-center gap-6 p-6 bg-white dark:bg-dark-900 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm hover:border-primary/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <item.icon size={26} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-bold mb-1">{item.label}</p>
-                    <p className="text-lg text-gray-900 dark:text-white font-bold">{item.value}</p>
-                  </div>
-                </a>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-6 flex-1 min-w-0"
+                  >
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0">
+                      <item.icon size={26} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-bold mb-1">
+                        {item.label}
+                      </p>
+                      <p className="text-lg text-gray-900 dark:text-white font-bold truncate">{item.value}</p>
+                    </div>
+                  </a>
+
+                  {item.copy ? (
+                    <button
+                      onClick={() => copyToClipboard(item.value, item.label)}
+                      className="p-2.5 rounded-lg text-gray-400 hover:text-primary hover:bg-primary/10 transition-colors shrink-0"
+                      aria-label={`Copy ${item.label}`}
+                    >
+                      {copied === item.label ? (
+                        <Check size={18} className="text-primary" />
+                      ) : (
+                        <Copy size={18} />
+                      )}
+                    </button>
+                  ) : (
+                    <ChevronRight
+                      size={18}
+                      className="text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0"
+                    />
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -98,46 +161,75 @@ const Contact = () => {
             viewport={{ once: true }}
             className="lg:col-span-3 bg-white dark:bg-dark-900 p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/10 shadow-xl"
           >
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8" noValidate>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your name"
-                    className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg"
-                  />
+                  <label htmlFor="name" className="block text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                    Full Name
+                  </label>
+                  <div className="relative">
+                    <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                      className={inputClass(errors.name)}
+                    />
+                  </div>
+                  {errors.name && <p className="text-xs text-red-500 font-medium">{errors.name}</p>}
                 </div>
                 <div className="space-y-3">
-                  <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="name@company.com"
-                    className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg"
-                  />
+                  <label htmlFor="email" className="block text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="name@company.com"
+                      className={inputClass(errors.email)}
+                    />
+                  </div>
+                  {errors.email && <p className="text-xs text-red-500 font-medium">{errors.email}</p>}
                 </div>
               </div>
 
               <div className="space-y-3">
-                <label className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">Project Details</label>
-                <textarea
-                  name="message"
-                  rows="6"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tell me about your project or just say hello..."
-                  className="w-full bg-gray-50 dark:bg-dark-950 border border-gray-100 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors text-lg resize-none"
-                ></textarea>
+                <label htmlFor="message" className="block text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                  Project Details
+                </label>
+                <div className="relative">
+                  <MessageSquare size={18} className="absolute left-4 top-5 text-gray-400 pointer-events-none" />
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project or just say hello..."
+                    className={`${inputClass(errors.message)} resize-none`}
+                  ></textarea>
+                </div>
+                {errors.message && <p className="text-xs text-red-500 font-medium">{errors.message}</p>}
               </div>
+
+              <input
+                type="text"
+                name="_honey"
+                value={honey}
+                onChange={(e) => setHoney(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
 
               {status.message && (
                 <div className={`p-4 rounded-xl text-sm font-bold flex items-center gap-3 ${status.type === 'success' ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
@@ -148,14 +240,24 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full group px-8 py-5 bg-primary text-white font-black rounded-xl hover:scale-[1.02] active:scale-100 transition-all flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs shadow-lg shadow-primary/20"
+                className="w-full group px-8 py-5 bg-primary text-white font-black rounded-xl hover:bg-primary/90 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs shadow-lg shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
-                  <span className="w-6 h-6 border-2 border-white/30 border-t-white animate-spin rounded-full"></span>
+                  <>
+                    <span className="w-6 h-6 border-2 border-white/30 border-t-white animate-spin rounded-full"></span>
+                    Sending...
+                  </>
                 ) : (
                   <>Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></>
                 )}
               </button>
+
+              <p className="text-center text-xs text-gray-400 dark:text-gray-500">
+                Prefer email? Write to me directly at{' '}
+                <a href="mailto:samlite250@gmail.com" className="text-primary font-semibold hover:underline">
+                  samlite250@gmail.com
+                </a>
+              </p>
             </form>
           </motion.div>
 
