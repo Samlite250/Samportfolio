@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     let emailed = false;
 
     // 1) Save to Supabase if configured (optional)
-    if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
+    if (supabase) {
       const { error } = await supabase
         .from('contacts')
         .insert([{ name, email, message }]);
