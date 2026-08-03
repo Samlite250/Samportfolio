@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Hammer, X, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { Github, ExternalLink, Hammer, X, BookOpen, Filter } from 'lucide-react';
+
+const CATEGORIES = ['All', 'Full-Stack Web', 'Mobile App', 'E-Commerce', 'Backend'];
 
 const realProjects = [
   {
     id: 1,
+    category: 'Full-Stack Web',
     title: 'Personal Portfolio',
     description:
       'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
@@ -24,6 +27,7 @@ const realProjects = [
   },
   {
     id: 2,
+    category: 'Full-Stack Web',
     title: 'Burikantu Real Estate',
     description:
       'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
@@ -43,6 +47,7 @@ const realProjects = [
   },
   {
     id: 4,
+    category: 'Full-Stack Web',
     title: 'Campus Connect',
     description:
       'A university and campus social platform that connects students, facilitates campus event discovery, resource sharing, and inter-campus networking. Features university listings, event management, and a clean intuitive dashboard for students.',
@@ -63,6 +68,7 @@ const realProjects = [
   },
   {
     id: 5,
+    category: 'Full-Stack Web',
     title: 'Traveliumgrobal — Global Travel Agency',
     description:
       'A modern, high-conversion travel agency and tour booking platform offering destination discovery, interactive booking workflows, and responsive itinerary showcases.',
@@ -82,6 +88,7 @@ const realProjects = [
   },
   {
     id: 6,
+    category: 'Backend',
     title: 'Mahembe Coffee Industry — Factory Management',
     description:
       'An end-to-end coffee factory management platform (TFMS) for tracking cherry collection, farmer registrations, batch processing, and automated transactional email notifications.',
@@ -101,6 +108,7 @@ const realProjects = [
   },
   {
     id: 7,
+    category: 'Mobile App',
     title: 'Digital+ — Mobile Services & App',
     description:
       'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
@@ -122,6 +130,7 @@ const realProjects = [
   },
   {
     id: 8,
+    category: 'E-Commerce',
     title: 'Gisenyi Gadgets — Electronics Marketplace',
     description:
       'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
@@ -145,6 +154,7 @@ const realProjects = [
 
 const Projects = () => {
   const [activeProject, setActiveProject] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('All');
 
   React.useEffect(() => {
     if (activeProject) {
@@ -154,11 +164,15 @@ const Projects = () => {
     }
   }, [activeProject]);
 
+  const filtered = activeCategory === 'All'
+    ? realProjects
+    : realProjects.filter(p => p.category === activeCategory);
+
   return (
     <section id="projects" className="py-24 relative bg-gray-50 dark:bg-dark-950 transition-colors duration-300">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-        <div className="flex items-center mb-16">
+        <div className="flex items-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mr-6 text-gray-900 dark:text-white">
             <span className="text-primary font-mono text-xl mr-2">03.</span>
             Featured Projects
@@ -166,124 +180,155 @@ const Projects = () => {
           <div className="h-px bg-gray-200 dark:bg-dark-700 flex-grow max-w-xs"></div>
         </div>
 
-        <div className="space-y-24">
-          {realProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
-            >
-              {/* Project Image Viewport Container */}
-              <div
-                className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 cursor-pointer shadow-2xl transition-all duration-300 hover:border-primary/40"
-                onClick={() => setActiveProject(project)}
+        {/* Category Filter Tabs */}
+        <LayoutGroup>
+          <div className="flex flex-wrap items-center gap-2 mb-14">
+            <Filter size={14} className="text-primary shrink-0" />
+            {CATEGORIES.map((cat) => (
+              <motion.button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                layout
+                className={`relative px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${activeCategory === cat
+                  ? 'text-white'
+                  : 'text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-dark-800 hover:text-primary hover:bg-primary/10'
+                  }`}
               >
-                {/* Simulated Browser Bar Header for Web/App Viewports */}
-                <div className="absolute top-0 inset-x-0 h-7 bg-gray-200/90 dark:bg-dark-900/90 backdrop-blur-md z-30 flex items-center justify-between px-3 border-b border-gray-300/50 dark:border-white/5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80 inline-block"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-400/80 inline-block"></span>
-                  </div>
-                  <span className="text-[10px] font-mono text-gray-500 dark:text-gray-400 truncate max-w-[200px]">
-                    {project.live_url !== '#' ? project.live_url.replace('https://', '') : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '')}.app`}
-                  </span>
-                  <div className="w-8"></div>
-                </div>
-
-                {/* Background Placeholder */}
-                <div className={`absolute inset-0 pt-7 flex items-center justify-center ${project.imageBg || 'bg-gray-100 dark:bg-dark-800'}`}>
-                  <span className="text-gray-400 dark:text-gray-600 font-mono text-xs">{project.title}</span>
-                </div>
-
-                {/* Screenshot Image */}
-                {project.image_url && (
-                  <div className="absolute inset-0 pt-7 overflow-hidden">
-                    <img
-                      src={project.image_url}
-                      alt={project.title}
-                      loading="lazy"
-                      className={`w-full h-full ${project.objectFit === 'contain'
-                        ? 'object-contain p-3 md:p-4'
-                        : 'object-cover'
-                        } ${project.imagePosition || 'object-top'} group-hover:scale-105 transition-transform duration-700 z-10`}
-                      onError={(e) => {
-                        e.target.style.opacity = '0';
-                      }}
-                    />
-                  </div>
+                {activeCategory === cat && (
+                  <motion.span
+                    layoutId="activePill"
+                    className="absolute inset-0 rounded-full bg-primary"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
                 )}
+                <span className="relative z-10">{cat}</span>
+              </motion.button>
+            ))}
+          </div>
+        </LayoutGroup>
 
-                {/* Status Badge */}
-                {project.status && (
-                  <div className="absolute top-9 left-4 z-30">
-                    <span className="px-3 py-1 bg-white/95 dark:bg-dark-900/95 backdrop-blur-md text-gray-900 dark:text-white text-[10px] font-bold uppercase tracking-widest rounded-md border border-gray-200 dark:border-white/10 shadow-md flex items-center gap-2">
-                      <Hammer size={12} className="text-primary" />
-                      {project.status}
-                    </span>
-                  </div>
-                )}
+        <AnimatePresence mode="popLayout">
+          <div className="space-y-24">
+            {filtered.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30, scale: 0.96 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
 
-                {/* Non-Obscuring Gradient Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-end p-6">
-                  <div className="flex items-center justify-between text-white">
-                    <span className="font-bold text-base md:text-lg flex items-center gap-2 drop-shadow-md">
-                      <BookOpen size={20} className="text-primary" /> Explore Case Study
-                    </span>
-                    <span className="text-xs font-mono uppercase bg-primary px-3 py-1 rounded-full text-white font-semibold">
-                      View Details &rarr;
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div className={`w-full md:w-2/5 flex flex-col ${idx % 2 !== 0 ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
-                <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
-                <h3
-                  className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 hover:text-primary transition-colors cursor-pointer"
+                className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              >
+                {/* Project Image Viewport Container */}
+                <div
+                  className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 cursor-pointer shadow-2xl transition-all duration-300 hover:border-primary/40"
                   onClick={() => setActiveProject(project)}
                 >
-                  {project.title}
-                </h3>
+                  {/* Simulated Browser Bar Header for Web/App Viewports */}
+                  <div className="absolute top-0 inset-x-0 h-7 bg-gray-200/90 dark:bg-dark-900/90 backdrop-blur-md z-30 flex items-center justify-between px-3 border-b border-gray-300/50 dark:border-white/5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80 inline-block"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-400/80 inline-block"></span>
+                    </div>
+                    <span className="text-[10px] font-mono text-gray-500 dark:text-gray-400 truncate max-w-[200px]">
+                      {project.live_url !== '#' ? project.live_url.replace('https://', '') : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '')}.app`}
+                    </span>
+                    <div className="w-8"></div>
+                  </div>
 
-                <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 dark:text-gray-300 z-20 shadow-lg border border-gray-100 dark:border-white/5 ${idx % 2 !== 0 ? 'md:-mr-8' : 'md:-ml-8'}`}>
-                  <p>{project.description}</p>
-                </div>
+                  {/* Background Placeholder */}
+                  <div className={`absolute inset-0 pt-7 flex items-center justify-center ${project.imageBg || 'bg-gray-100 dark:bg-dark-800'}`}>
+                    <span className="text-gray-400 dark:text-gray-600 font-mono text-xs">{project.title}</span>
+                  </div>
 
-                <ul className={`flex flex-wrap gap-3 text-xs font-mono text-gray-500 dark:text-gray-400 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
-                  {project.tech_stack.map((tech, tIdx) => (
-                    <li key={tIdx} className="bg-primary/10 text-primary px-2.5 py-1 rounded-md font-medium">{tech}</li>
-                  ))}
-                </ul>
+                  {/* Screenshot Image */}
+                  {project.image_url && (
+                    <div className="absolute inset-0 pt-7 overflow-hidden">
+                      <img
+                        src={project.image_url}
+                        alt={project.title}
+                        loading="lazy"
+                        className={`w-full h-full ${project.objectFit === 'contain'
+                          ? 'object-contain p-3 md:p-4'
+                          : 'object-cover'
+                          } ${project.imagePosition || 'object-top'} group-hover:scale-105 transition-transform duration-700 z-10`}
+                        onError={(e) => {
+                          e.target.style.opacity = '0';
+                        }}
+                      />
+                    </div>
+                  )}
 
-                <div className={`flex flex-wrap gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
-                  <button
-                    onClick={() => setActiveProject(project)}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-xs shadow-sm"
-                  >
-                    <BookOpen size={18} />
-                    <span>Case Study</span>
-                  </button>
+                  {/* Status Badge */}
+                  {project.status && (
+                    <div className="absolute top-9 left-4 z-30">
+                      <span className="px-3 py-1 bg-white/95 dark:bg-dark-900/95 backdrop-blur-md text-gray-900 dark:text-white text-[10px] font-bold uppercase tracking-widest rounded-md border border-gray-200 dark:border-white/10 shadow-md flex items-center gap-2">
+                        <Hammer size={12} className="text-primary" />
+                        {project.status}
+                      </span>
+                    </div>
+                  )}
 
-                  <div className="flex gap-4 items-center pl-2">
-                    <a href={project.github_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Code">
-                      <Github size={22} />
-                    </a>
-                    {project.live_url !== '#' && (
-                      <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Website">
-                        <ExternalLink size={22} />
-                      </a>
-                    )}
+                  {/* Non-Obscuring Gradient Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-end p-6">
+                    <div className="flex items-center justify-between text-white">
+                      <span className="font-bold text-base md:text-lg flex items-center gap-2 drop-shadow-md">
+                        <BookOpen size={20} className="text-primary" /> Explore Case Study
+                      </span>
+                      <span className="text-xs font-mono uppercase bg-primary px-3 py-1 rounded-full text-white font-semibold">
+                        View Details &rarr;
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
+                {/* Project Info */}
+                <div className={`w-full md:w-2/5 flex flex-col ${idx % 2 !== 0 ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
+                  <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
+                  <h3
+                    className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 hover:text-primary transition-colors cursor-pointer"
+                    onClick={() => setActiveProject(project)}
+                  >
+                    {project.title}
+                  </h3>
+
+                  <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 dark:text-gray-300 z-20 shadow-lg border border-gray-100 dark:border-white/5 ${idx % 2 !== 0 ? 'md:-mr-8' : 'md:-ml-8'}`}>
+                    <p>{project.description}</p>
+                  </div>
+
+                  <ul className={`flex flex-wrap gap-3 text-xs font-mono text-gray-500 dark:text-gray-400 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
+                    {project.tech_stack.map((tech, tIdx) => (
+                      <li key={tIdx} className="bg-primary/10 text-primary px-2.5 py-1 rounded-md font-medium">{tech}</li>
+                    ))}
+                  </ul>
+
+                  <div className={`flex flex-wrap gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
+                    <button
+                      onClick={() => setActiveProject(project)}
+                      className="flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-xs shadow-sm"
+                    >
+                      <BookOpen size={18} />
+                      <span>Case Study</span>
+                    </button>
+
+                    <div className="flex gap-4 items-center pl-2">
+                      <a href={project.github_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Code">
+                        <Github size={22} />
+                      </a>
+                      {project.live_url !== '#' && (
+                        <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors duration-300" aria-label="View Website">
+                          <ExternalLink size={22} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </AnimatePresence>
       </div>
 
       {/* Case Study Modal */}

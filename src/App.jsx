@@ -10,10 +10,19 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Stats from './components/Stats';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import CursorGlow from './components/CursorGlow';
+import FloatingDock from './components/FloatingDock';
 
 function App() {
   return (
     <div className="relative min-h-screen bg-white dark:bg-dark-900 transition-colors duration-300">
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* Cursor Glow (dark mode only) */}
+      <CursorGlow />
+
       {/* Background blobs */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 dark:bg-primary/10 blur-[120px] rounded-full"></div>
@@ -35,8 +44,12 @@ function App() {
         </main>
         <Footer />
       </div>
+
+      {/* Floating Dock Navigation */}
+      <FloatingDock />
     </div>
   );
 }
 
 export default App;
+
