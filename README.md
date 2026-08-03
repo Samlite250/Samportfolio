@@ -2,7 +2,7 @@
 
 A modern, fully-responsive Full-Stack Software Engineer portfolio built with React, Vite, and Tailwind CSS. Features dark/light mode, smooth Framer Motion animations, a Supabase-powered contact system, and a full suite of SEO optimizations.
 
-**Live URL:** [https://samportfolio-psi.vercel.app](https://samportfolio-psi.vercel.app)
+**Live URL:** [https://samdeveloper.vercel.app](https://samdeveloper.vercel.app)
 
 ---
 

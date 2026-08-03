@@ -4,23 +4,22 @@ import { motion } from 'framer-motion';
 const Experience = () => {
   const experiences = [
     {
-      role: 'Full-Stack Developer Intern',
-      company: 'Tech Solutions Inc.',
-      period: 'Jan 2023 - Present',
+      role: 'Freelance Web Developer',
+      company: 'Self-Employed',
+      period: 'Jun 2021 - Present',
       description: [
-        'Developed and maintained scalable web applications using React and Node.js.',
-        'Collaborated with cross-functional teams to design and implement new features.',
-        'Optimized database queries in PostgreSQL, reducing load times by 30%.'
+        'Built Burikantu Real Estate, a property platform with admin dashboard and inquiry handling, for a Kigali real-estate agency.',
+        'Developed Market Pro, a full-stack e-commerce store with real-time inventory management and integrated payments.',
+        'Delivered brand sites and digital assets for local businesses including Gisenyi Gadgets and JETRA Services.'
       ]
     },
     {
-      role: 'Freelance Web Developer',
-      company: 'Self-Employed',
-      period: 'Jun 2021 - Dec 2022',
+      role: 'Software Engineering Student',
+      company: 'Kigali Independent University (ULK)',
+      period: '2023 - Present',
       description: [
-        'Built custom portfolio and e-commerce websites for small businesses.',
-        'Implemented responsive designs and modern UI/UX principles.',
-        'Integrated third-party APIs and payment gateways (Stripe, PayPal).'
+        'Pursuing a BSc in Software Engineering with a focus on distributed systems and scalable web architectures.',
+        'Building Campus Connect, a university event discovery and networking platform using React and Supabase.'
       ]
     }
   ];

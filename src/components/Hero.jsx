@@ -54,13 +54,13 @@ const Hero = () => {
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
-            Sam <br />
+            Sam <span className="text-primary">Dev</span>
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
             I'm a <TypewriterText texts={['Front-End Developer', 'Back-End Developer', 'Web Designer', 'Database Manager']} />
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
-            I specialize in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
+            I'm a Full-Stack Developer based in Kigali, Rwanda, specializing in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
 
           <div className="flex flex-wrap gap-4 items-center">
@@ -99,10 +99,9 @@ const Hero = () => {
             {/* Image container */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
               <img
-                src="/images/profile.png"
-                alt="Sam"
+                src="/images/profile-opt.jpg"
+                alt="Samuel Ndayambaje - Full-Stack Software Engineer"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 relative z-20"
-                onError={(e) => { e.target.src = '/images/profile.jpg' }}
               />
               <div className="absolute inset-0 bg-primary/20 z-10 group-hover:bg-transparent transition-colors duration-300"></div>
             </div>

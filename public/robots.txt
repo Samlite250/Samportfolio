@@ -11,4 +11,4 @@ User-agent: CCBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://samportfolio-beta.vercel.app/sitemap.xml
+Sitemap: https://samdeveloper.vercel.app/sitemap.xml

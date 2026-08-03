@@ -16,11 +16,25 @@ const Contact = () => {
     setLoading(true);
     setStatus({ type: '', message: '' });
 
-    setTimeout(() => {
-      setStatus({ type: 'success', message: 'Thank you for your message! I will get back to you shortly.' });
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        setStatus({ type: 'success', message: 'Thank you for your message! I will get back to you shortly.' });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again or email me directly.' });
+      }
+    } catch (err) {
+      setStatus({ type: 'error', message: 'Could not reach the server. Please email me directly at samlite250@gmail.com.' });
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [

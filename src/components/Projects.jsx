@@ -10,7 +10,7 @@ const realProjects = [
       'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Node.js'],
     image_url: '/images/projects/portfolio_new.png',
-    live_url: 'https://samportfolio-beta.vercel.app',
+    live_url: 'https://samdeveloper.vercel.app',
     github_url: 'https://github.com/Samlite250/Samportfolio.git',
     caseStudy: {
       problem: "I needed a professional, highly-performant space to showcase my work that moved beyond traditional template designs and stood out to recruiters.",

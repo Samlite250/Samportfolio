@@ -13,7 +13,7 @@ const Footer = () => {
               Sam<span className="text-primary">.dev</span>
             </a>
             <p className="text-gray-900 text-[9px] font-bold uppercase tracking-[0.15em] leading-none">
-              &copy; 2026 All rights reserved by Samcodings Acc.
+              &copy; 2026 All rights reserved by Sam Dev.
             </p>
           </div>
 
