@@ -91,7 +91,7 @@ const realProjects = [
     description:
       'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
     tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
-    image_url: '/images/projects/digitalplus.png',
+    image_url: '/images/projects/digitalplus.jpeg',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/samora_app.git',
     status: 'Mobile App',
