@@ -63,12 +63,12 @@ const Hero = () => {
             I'm a Full-Stack Developer based in Kigali, Rwanda, specializing in building exceptional digital experiences and scalable web platforms. Welcome to my portfolio.
           </p>
 
-          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 items-center">
-            <a href="#projects" className="px-6 py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap">
-              View Projects <ArrowRight size={18} />
+          <div className="flex flex-row gap-3 items-center">
+            <a href="#projects" className="px-4 py-2.5 sm:px-6 sm:py-3 bg-primary text-white font-bold rounded hover:bg-primary/90 hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap text-sm sm:text-base">
+              View Projects <ArrowRight size={16} />
             </a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-6 py-3 border border-gray-400 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap">
-              Download CV <Download size={18} />
+            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="px-4 py-2.5 sm:px-6 sm:py-3 border border-gray-400 text-gray-700 dark:text-gray-300 rounded hover:border-secondary hover:text-secondary hover:-translate-y-1 transition-all flex items-center gap-2 whitespace-nowrap text-sm sm:text-base">
+              Download CV <Download size={16} />
             </a>
           </div>
 
@@ -95,7 +95,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <div className="relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
+          <div className="relative group w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
             {/* Background decoration */}
             <div className="absolute inset-x-0 inset-y-0 translate-x-4 translate-y-4 border-2 border-primary rounded-2xl group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
 
