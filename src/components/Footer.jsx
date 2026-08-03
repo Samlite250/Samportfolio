@@ -25,7 +25,7 @@ const Footer = () => {
             <a href="https://linkedin.com/in/SamuelNdayambaje" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-all">
               <Linkedin size={16} />
             </a>
-            <a href="mailto:samlite250@gmail.com" className="text-gray-400 hover:text-primary transition-all">
+            <a href="mailto:samcodings@gmail.com" className="text-gray-400 hover:text-primary transition-all">
               <Mail size={16} />
             </a>
           </div>

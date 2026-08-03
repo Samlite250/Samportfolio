@@ -49,7 +49,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/samlite250@gmail.com', {
+      const res = await fetch('https://formsubmit.co/ajax/samcodings@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -69,17 +69,17 @@ const Contact = () => {
         setStatus({ type: 'success', message: 'Thank you for your message! I will get back to you shortly.' });
         setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: 'Something went wrong. Please try again or email me directly at samlite250@gmail.com.' });
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again or email me directly at samcodings@gmail.com.' });
       }
     } catch (err) {
-      setStatus({ type: 'error', message: 'Could not reach the server. Please email me directly at samlite250@gmail.com.' });
+      setStatus({ type: 'error', message: 'Could not reach the server. Please email me directly at samcodings@gmail.com.' });
     } finally {
       setLoading(false);
     }
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'samlite250@gmail.com', href: 'mailto:samlite250@gmail.com', copy: true },
+    { icon: Mail, label: 'Email', value: 'samcodings@gmail.com', href: 'mailto:samcodings@gmail.com', copy: true },
     { icon: Phone, label: 'WhatsApp', value: '+250 790 268 691', href: 'https://wa.me/250790268691', copy: true },
     { icon: MapPin, label: 'Location', value: 'Kigali, Rwanda', href: 'https://maps.google.com/?q=Kigali,+Rwanda' },
   ];
@@ -258,8 +258,8 @@ const Contact = () => {
 
               <p className="text-center text-xs text-gray-400 dark:text-gray-500">
                 Prefer email? Write to me directly at{' '}
-                <a href="mailto:samlite250@gmail.com" className="text-primary font-semibold hover:underline">
-                  samlite250@gmail.com
+                <a href="mailto:samcodings@gmail.com" className="text-primary font-semibold hover:underline">
+                  samcodings@gmail.com
                 </a>
               </p>
             </form>
