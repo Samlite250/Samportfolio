@@ -92,6 +92,8 @@ const realProjects = [
       'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
     tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
     image_url: '/images/projects/digitalplus.jpeg',
+    objectFit: 'contain',
+    imageBg: 'bg-gray-900',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/samora_app.git',
     status: 'Mobile App',
@@ -109,6 +111,8 @@ const realProjects = [
       'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
     tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
     image_url: '/images/projects/gisenyigadgets.jpeg',
+    objectFit: 'contain',
+    imageBg: 'bg-white dark:bg-dark-900',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/Gisenyi-Gadgets.git',
     status: 'In Development',
@@ -159,7 +163,7 @@ const Projects = () => {
                 className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl border border-gray-100 dark:border-white/5 cursor-pointer shadow-xl"
                 onClick={() => setActiveProject(project)}
               >
-                <div className="absolute inset-0 bg-gray-100 dark:bg-dark-800 flex items-center justify-center">
+                <div className={`absolute inset-0 flex items-center justify-center ${project.imageBg || 'bg-gray-100 dark:bg-dark-800'}`}>
                   <span className="text-gray-400 dark:text-gray-600 font-mono text-sm">{project.title}</span>
                 </div>
                 {project.image_url && (
@@ -167,7 +171,7 @@ const Projects = () => {
                     src={project.image_url}
                     alt={project.title}
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-all duration-700 z-0"
+                    className={`absolute inset-0 w-full h-full ${project.objectFit === 'contain' ? 'object-contain p-4' : 'object-cover'} transition-all duration-700 z-0`}
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />
                 )}
