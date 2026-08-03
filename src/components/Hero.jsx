@@ -53,10 +53,10 @@ const Hero = () => {
           className="order-2 md:order-1"
         >
           <p className="text-primary font-medium tracking-widest mb-4 uppercase">Hi, my name is</p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
             Sam <span className="text-primary">Dev</span>
           </h1>
-          <h2 className="text-lg sm:text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[2.5rem] md:min-h-[4rem]">
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-widest min-h-[3rem] md:min-h-[4rem]">
             I'm a <TypewriterText texts={['Front-End Developer', 'Back-End Developer', 'Web Designer', 'Database Manager']} />
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">

@@ -66,9 +66,9 @@ const About = () => {
               className="flex items-center gap-6 mb-6"
             >
               <div className="h-1.5 w-32 bg-primary rounded-full"></div>
-              <span className="text-primary font-mono font-bold tracking-[0.15em] sm:tracking-[0.3em] text-base sm:text-xl md:text-2xl uppercase">01. My Professional Bio</span>
+              <span className="text-primary font-mono font-black tracking-[0.3em] text-xl md:text-2xl uppercase">01. My Professional Bio</span>
             </motion.div>
-            <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
               Crafting Digital Solutions <br />
               <span className="text-primary underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
             </h2>

@@ -54,7 +54,7 @@ const Navbar = () => {
             <a
               key={name}
               href={href}
-              className="group flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-semibold text-xs uppercase tracking-wide transition-colors relative whitespace-nowrap"
+              className="group flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-semibold text-sm uppercase tracking-wide transition-colors relative"
             >
               <Icon size={14} />
               {name}
