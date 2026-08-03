@@ -68,6 +68,72 @@ const realProjects = [
       impact: "Anticipated to launch next semester to an initial beta testing group of 500 students, focusing first on high-engagement features like event discovery."
     }
   },
+  {
+    id: 5,
+    title: 'Traveliumgrobal — Global Travel Agency',
+    description:
+      'A modern, high-conversion travel agency and tour booking platform offering destination discovery, interactive booking workflows, and responsive itinerary showcases.',
+    tech_stack: ['React.js', 'Tailwind CSS', 'Vercel', 'Framer Motion', 'Node.js'],
+    image_url: '/images/projects/travelium.png',
+    live_url: 'https://traveliumgrobal.vercel.app',
+    github_url: 'https://github.com/Samlite250/Traveliumgrobal.git',
+    caseStudy: {
+      problem: "Travel agencies needed an elegant, fast-loading digital portal to present global tour packages without confusing multi-step booking bottlenecks.",
+      solution: "Designed a lightweight, visually striking single-page React app with interactive destination filtering and clean inquiry forms.",
+      challenges: "Optimizing high-resolution imagery and maintaining silky navigation transitions across desktop and mobile devices.",
+      impact: "Elevated brand presence and simplified customer travel booking inquiries."
+    }
+  },
+  {
+    id: 6,
+    title: 'Mahembe Coffee Industry — Factory Management',
+    description:
+      'An end-to-end coffee factory management platform (TFMS) for tracking cherry collection, farmer registrations, batch processing, and automated transactional email notifications.',
+    tech_stack: ['React.js', 'Supabase', 'Nodemailer', 'Tailwind CSS', 'PostgreSQL'],
+    image_url: '/images/projects/mahembe.png',
+    live_url: 'https://mahembefactory.vercel.app',
+    github_url: 'https://github.com/Samlite250/tfms.git',
+    caseStudy: {
+      problem: "Coffee factories relied on manual paper logs for tracking cherry deliveries from hundreds of registered farmers, creating accounting delays.",
+      solution: "Built a centralized web portal backed by Supabase and serverless Nodemailer notifications to log harvests, verify farmer profiles, and trigger instant payout alerts.",
+      challenges: "Implementing real-time data sync for high-volume harvest arrivals and ensuring serverless email delivery reliability via Vercel.",
+      impact: "Streamlined daily factory operations, reduced processing errors, and improved financial transparency for local farmers."
+    }
+  },
+  {
+    id: 7,
+    title: 'Digital+ — Mobile Services & App',
+    description:
+      'A cross-platform React Native / Expo mobile application built for Digital+ to handle digital services, user onboarding, account wallet balances, and rapid mobile transactions.',
+    tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
+    image_url: '/images/projects/digitalplus.png',
+    live_url: '#',
+    github_url: 'https://github.com/Samlite250/samora_app.git',
+    status: 'Mobile App',
+    caseStudy: {
+      problem: "Users needed a dedicated, secure mobile interface to access digital utility services and manage account transactions on Android and iOS.",
+      solution: "Architected a native mobile experience using React Native, Expo, and TypeScript, featuring smooth UI transitions and secure API state handlers.",
+      challenges: "Resolving native Hermes engine startup lifecycles and ensuring cross-platform component stability across various Android device SDKs.",
+      impact: "Delivered a production-ready mobile application APK foundation with robust offline guards and instant user authentication."
+    }
+  },
+  {
+    id: 8,
+    title: 'Gisenyi Gadgets — Electronics Marketplace',
+    description:
+      'An e-commerce mobile & web platform designed for tech enthusiasts in Gisenyi to explore, order, and track orders for smartphones, laptops, and gadget accessories.',
+    tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
+    image_url: '/images/projects/gisenyi_gadgets.png',
+    live_url: '#',
+    github_url: 'https://github.com/Samlite250/Gisenyi-Gadgets.git',
+    status: 'In Development',
+    caseStudy: {
+      problem: "Local electronics buyers lacked a trusted, localized mobile marketplace to order genuine gadgets with transparent local delivery options.",
+      solution: "Building a hybrid mobile and web e-commerce storefront allowing customers to browse device specifications, place direct orders, and contact support.",
+      challenges: "Structuring dynamic product catalog filters for diverse gadget categories and crafting responsive cart management hooks.",
+      impact: "Positioned to launch as the primary digital tech store serving the Gisenyi region with seamless order placement."
+    }
+  }
 ];
 
 const Projects = () => {
