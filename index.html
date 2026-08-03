@@ -5,6 +5,16 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>Sam Dev | Full-Stack Developer in Rwanda - Samuel Ndayambaje</title>
   <meta name="description"
     content="Sam Dev (Samuel Ndayambaje) - Full-Stack Developer in Rwanda specializing in React, Node.js, PostgreSQL and scalable web platforms. Browse projects, skills and experience." />
@@ -38,10 +48,10 @@
   <meta property="og:title" content="Sam Dev | Full-Stack Developer in Rwanda - Samuel Ndayambaje" />
   <meta property="og:description"
     content="Sam Dev (Samuel Ndayambaje) - Full-Stack Developer in Rwanda specializing in React, Node.js, PostgreSQL and scalable web platforms." />
-  <meta property="og:image" content="https://samdeveloper.vercel.app/images/projects/portfolio_new.png" />
-  <meta property="og:image:width" content="1917" />
-  <meta property="og:image:height" content="939" />
-  <meta property="og:image:alt" content="Preview of Sam Dev's portfolio website" />
+  <meta property="og:image" content="https://samdeveloper.vercel.app/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sam Dev - Full-Stack Developer in Rwanda, Samuel Ndayambaje" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
@@ -49,7 +59,7 @@
   <meta name="twitter:title" content="Sam Dev | Full-Stack Developer in Rwanda" />
   <meta name="twitter:description"
     content="Sam Dev (Samuel Ndayambaje) - Full-Stack Developer in Rwanda specializing in React, Node.js, PostgreSQL and scalable web platforms." />
-  <meta name="twitter:image" content="https://samdeveloper.vercel.app/images/projects/portfolio_new.png" />
+  <meta name="twitter:image" content="https://samdeveloper.vercel.app/images/og-image.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -87,6 +97,36 @@
     "name": "Sam Dev - Full-Stack Developer in Rwanda",
     "alternateName": "Sam Dev Portfolio",
     "url": "https://samdeveloper.vercel.app/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Sam Dev - Samuel Ndayambaje",
+    "url": "https://samdeveloper.vercel.app/",
+    "image": "https://samdeveloper.vercel.app/images/profile-opt.jpg",
+    "areaServed": { "@type": "Country", "name": "Rwanda" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kigali",
+      "addressRegion": "Kigali City",
+      "addressCountry": "RW"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Applications" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Backend & API Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Database Design" } }
+      ]
+    },
+    "sameAs": [
+      "https://github.com/Samlite250",
+      "https://linkedin.com/in/SamuelNdayambaje"
+    ]
   }
   </script>
 </head>

@@ -17,6 +17,21 @@
     scroll-margin-top: 4.5rem;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   body {
     @apply bg-white text-gray-800 antialiased transition-colors duration-300;
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;

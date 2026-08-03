@@ -101,6 +101,8 @@ const Hero = () => {
               <img
                 src="/images/profile-opt.jpg"
                 alt="Samuel Ndayambaje - Full-Stack Software Engineer"
+                width="800"
+                height="800"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 relative z-20"
               />
               <div className="absolute inset-0 bg-primary/20 z-10 group-hover:bg-transparent transition-colors duration-300"></div>
