@@ -46,7 +46,7 @@ const Services = () => {
           </motion.div>
           <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
             Comprehensive Digital <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Solutions & Engineering</span>
+            <span className="text-primary">Solutions & Engineering</span>
           </h2>
         </div>
 

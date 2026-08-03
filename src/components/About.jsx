@@ -70,7 +70,7 @@ const About = () => {
             </motion.div>
             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
               Crafting Digital Solutions <br />
-              <span className="text-gradient underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
+              <span className="text-primary underline decoration-primary/20 underline-offset-8">With Purpose & Precision</span>
             </h2>
           </div>
           <div className="hidden lg:block h-24 w-px bg-gray-200"></div>

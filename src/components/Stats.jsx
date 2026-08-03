@@ -7,29 +7,25 @@ const stats = [
     label: 'Projects Completed',
     value: 10,
     suffix: '+',
-    icon: <Rocket size={20} />,
-    gradient: 'from-primary to-secondary'
+    icon: <Rocket size={20} />
   },
   {
     label: 'Technical Skills',
     value: 15,
     suffix: '+',
-    icon: <ShieldCheck size={20} />,
-    gradient: 'from-secondary to-primary'
+    icon: <ShieldCheck size={20} />
   },
   {
     label: 'Languages Spoken',
     value: 3,
     suffix: '+',
-    icon: <Globe2 size={20} />,
-    gradient: 'from-primary to-secondary'
+    icon: <Globe2 size={20} />
   },
   {
     label: 'Coding Passion',
     value: 100,
     suffix: '%',
-    icon: <Heart size={20} />,
-    gradient: 'from-secondary to-primary'
+    icon: <Heart size={20} />
   }
 ];
 
@@ -84,7 +80,7 @@ const Stats = () => {
               className="bg-white dark:bg-dark-900 px-6 py-10 flex flex-col items-center justify-center text-center group hover:bg-gray-50 dark:hover:bg-dark-800 transition-colors"
             >
               <div
-                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.gradient} text-white flex items-center justify-center mb-4 shadow-lg shadow-primary/10 group-hover:scale-110 transition-transform duration-300`}
+                className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-4 shadow-lg shadow-primary/10 group-hover:scale-110 transition-transform duration-300"
               >
                 {stat.icon}
               </div>
