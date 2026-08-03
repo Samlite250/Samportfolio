@@ -1,8 +1,5 @@
 import { supabase } from './config/supabase.js';
 
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'samlite250@gmail.com';
-const SITE_URL = process.env.SITE_URL || 'https://samdeveloper.vercel.app/';
-
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -31,46 +28,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    let savedToDb = false;
-    let emailed = false;
-
-    // 1) Save to Supabase if configured (optional)
-    if (supabase) {
-      const { error } = await supabase
-        .from('contacts')
-        .insert([{ name, email, message }]);
-
-      if (!error) savedToDb = true;
+    if (!supabase) {
+      console.error('Supabase client not configured');
+      return res.status(500).json({ error: 'Message storage unavailable' });
     }
 
-    // 2) Forward via FormSubmit.co so an email is always delivered.
-    //    First submission triggers a one-time verification email to CONTACT_EMAIL.
-    try {
-      const formRes = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Referer: SITE_URL
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          _subject: `New message from ${name} via portfolio`,
-          _template: 'table',
-          _captcha: 'false'
-        })
-      });
-      const formData = await formRes.json().catch(() => ({}));
-      console.log('FormSubmit response', formRes.status, JSON.stringify(formData));
-      emailed = formData.success === true || formData.success === 'true';
-    } catch (e) {
-      console.error('FormSubmit forwarding failed:', e);
-    }
+    const { error } = await supabase.from('contacts').insert([{ name, email, message }]);
 
-    if (!savedToDb && !emailed) {
-      return res.status(500).json({ error: 'Message could not be delivered. Please email me directly.' });
+    if (error) {
+      console.error('Supabase insert error:', error);
+      return res.status(500).json({ error: 'Message could not be saved' });
     }
 
     res.status(200).json({ success: true, message: 'Message received' });
