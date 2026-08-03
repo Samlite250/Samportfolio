@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Code, Layers, Briefcase, Mail, Sun, Moon } from 'lucide-react';
+import { Menu, X, Home, User, Code, Layers, Briefcase, Mail, Sun, Moon, Github } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: Home },
@@ -7,6 +7,7 @@ const navLinks = [
   { name: 'Skills', href: '#skills', icon: Code },
   { name: 'Services', href: '#services', icon: Briefcase },
   { name: 'Projects', href: '#projects', icon: Layers },
+  { name: 'GitHub', href: '#github', icon: Github },
   { name: 'Experience', href: '#experience', icon: Briefcase },
   { name: 'Contact', href: '#contact', icon: Mail },
 ];
