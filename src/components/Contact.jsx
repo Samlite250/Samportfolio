@@ -85,13 +85,17 @@ const Contact = () => {
   ];
 
   const inputClass = (hasError) =>
-    `w-full bg-gray-50 dark:bg-dark-950 border rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-gray-400 dark:placeholder:text-gray-500 ${
-      hasError ? 'border-red-500/60' : 'border-gray-100 dark:border-white/10 focus:border-primary'
+    `w-full bg-white/60 dark:bg-dark-950/40 backdrop-blur-md border rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-gray-400 dark:placeholder:text-gray-500 ${
+      hasError ? 'border-red-500/60' : 'border-gray-200 dark:border-white/10 focus:border-primary'
     }`;
 
   return (
-    <section id="contact" className="py-24 relative bg-gray-50 dark:bg-dark-950 transition-colors duration-300">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+    <section id="contact" className="py-24 relative bg-gray-50 dark:bg-dark-950 overflow-hidden transition-colors duration-300">
+      <div className="absolute -top-24 left-1/3 w-96 h-96 bg-primary/15 dark:bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 -right-24 w-[28rem] h-[28rem] bg-secondary/15 dark:bg-secondary/20 rounded-full blur-[130px] pointer-events-none"></div>
+      <div className="absolute top-1/2 -left-24 w-80 h-80 bg-primary/10 rounded-full blur-[110px] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl relative z-10">
 
         <div className="section-label justify-center">
           <span className="w-8 h-px bg-primary"></span>
@@ -113,7 +117,7 @@ const Contact = () => {
               {contactInfo.map((item, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-6 p-6 bg-white dark:bg-dark-900 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm hover:border-primary/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                  className="group flex items-center gap-6 p-6 rounded-2xl bg-white/60 dark:bg-dark-900/50 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-lg shadow-gray-200/50 dark:shadow-black/30 hover:border-primary/60 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <a
                     href={item.href}
@@ -159,7 +163,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 bg-white dark:bg-dark-900 p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/10 shadow-xl"
+            className="lg:col-span-3 relative rounded-3xl bg-white/60 dark:bg-dark-900/50 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-xl shadow-gray-200/60 dark:shadow-black/40 p-8 md:p-12"
           >
             <form onSubmit={handleSubmit} className="space-y-8" noValidate>
               <div className="grid md:grid-cols-2 gap-8">
