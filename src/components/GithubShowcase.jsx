@@ -139,19 +139,19 @@ const GithubShowcase = () => {
                 </motion.div>
 
                 {/* Metrics Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex items-center gap-4"
+                        className="p-4 sm:p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
                     >
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                            <BookOpen size={24} />
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+                            <BookOpen size={22} className="sm:w-6 sm:h-6" />
                         </div>
-                        <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">{profile.public_repos}+</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-mono">Repositories</p>
+                        <div className="min-w-0">
+                            <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{profile.public_repos}+</p>
+                            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-mono truncate">Repositories</p>
                         </div>
                     </motion.div>
 
@@ -160,14 +160,14 @@ const GithubShowcase = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex items-center gap-4"
+                        className="p-4 sm:p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
                     >
-                        <div className="p-3 rounded-xl bg-amber-500/10 text-amber-500">
-                            <Star size={24} />
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-amber-500/10 text-amber-500 shrink-0">
+                            <Star size={22} className="sm:w-6 sm:h-6" />
                         </div>
-                        <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">50+</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-mono">Stars Earned</p>
+                        <div className="min-w-0">
+                            <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">50+</p>
+                            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-mono truncate">Stars Earned</p>
                         </div>
                     </motion.div>
 
@@ -176,14 +176,14 @@ const GithubShowcase = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex items-center gap-4"
+                        className="p-4 sm:p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
                     >
-                        <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-500">
-                            <Activity size={24} />
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-emerald-500/10 text-emerald-500 shrink-0">
+                            <Activity size={22} className="sm:w-6 sm:h-6" />
                         </div>
-                        <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">500+</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-mono">Commits / Year</p>
+                        <div className="min-w-0">
+                            <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">500+</p>
+                            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-mono truncate">Commits / Year</p>
                         </div>
                     </motion.div>
 
@@ -192,14 +192,14 @@ const GithubShowcase = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex items-center gap-4"
+                        className="p-4 sm:p-6 rounded-2xl bg-gray-50 dark:bg-dark-800 border border-gray-100 dark:border-white/5 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
                     >
-                        <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500">
-                            <Trophy size={24} />
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-purple-500/10 text-purple-500 shrink-0">
+                            <Trophy size={22} className="sm:w-6 sm:h-6" />
                         </div>
-                        <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">Top 10%</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-mono">Dev Activity</p>
+                        <div className="min-w-0">
+                            <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Top 10%</p>
+                            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-mono truncate">Dev Activity</p>
                         </div>
                     </motion.div>
                 </div>

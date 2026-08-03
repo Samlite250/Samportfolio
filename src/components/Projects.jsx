@@ -10,6 +10,9 @@ const realProjects = [
       'A modern, fully responsive developer portfolio built with React and Tailwind CSS. Features an animated hero section, Supabase-powered projects API, contact form with email integration, and smooth Framer Motion animations throughout.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Node.js'],
     image_url: '/images/projects/portfolio_new.png',
+    objectFit: 'cover',
+    imagePosition: 'object-top',
+    modalFit: 'object-top',
     live_url: 'https://samdeveloper.vercel.app',
     github_url: 'https://github.com/Samlite250/Samportfolio.git',
     caseStudy: {
@@ -26,6 +29,9 @@ const realProjects = [
       'A full-featured real estate platform where users can browse, filter, and inquire about properties. Features an admin dashboard for managing listings, user authentication, CRUD operations via Supabase, and a polished premium UI with gold accents.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Vercel', 'PostgreSQL'],
     image_url: '/images/projects/burikantu.jpeg',
+    objectFit: 'cover',
+    imagePosition: 'object-top',
+    modalFit: 'object-top',
     live_url: 'https://burikantu-real-estate.vercel.app',
     github_url: 'https://github.com/Samlite250/Burikantu-Real-Estate.git',
     caseStudy: {
@@ -35,7 +41,6 @@ const realProjects = [
       impact: "Delivered a high-converting platform that modernizes the agency's digital footprint and streamlines the inquiry process for luxury buyers."
     }
   },
-
   {
     id: 4,
     title: 'Campus Connect',
@@ -43,6 +48,9 @@ const realProjects = [
       'A university and campus social platform that connects students, facilitates campus event discovery, resource sharing, and inter-campus networking. Features university listings, event management, and a clean intuitive dashboard for students.',
     tech_stack: ['React.js', 'Supabase', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL'],
     image_url: '/images/projects/campus-connect.webp',
+    objectFit: 'cover',
+    imagePosition: 'object-center',
+    modalFit: 'object-center',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/Campus-connect',
     status: 'In Development',
@@ -60,6 +68,9 @@ const realProjects = [
       'A modern, high-conversion travel agency and tour booking platform offering destination discovery, interactive booking workflows, and responsive itinerary showcases.',
     tech_stack: ['React.js', 'Tailwind CSS', 'Vercel', 'Framer Motion', 'Node.js'],
     image_url: '/images/projects/traveliumgrobal.jpg',
+    objectFit: 'cover',
+    imagePosition: 'object-top',
+    modalFit: 'object-top',
     live_url: 'https://traveliumgrobal.vercel.app',
     github_url: 'https://github.com/Samlite250/Traveliumgrobal.git',
     caseStudy: {
@@ -76,6 +87,9 @@ const realProjects = [
       'An end-to-end coffee factory management platform (TFMS) for tracking cherry collection, farmer registrations, batch processing, and automated transactional email notifications.',
     tech_stack: ['React.js', 'Supabase', 'Nodemailer', 'Tailwind CSS', 'PostgreSQL'],
     image_url: '/images/projects/mahembecoffee.jpg',
+    objectFit: 'cover',
+    imagePosition: 'object-top',
+    modalFit: 'object-top',
     live_url: 'https://mahembefactory.vercel.app',
     github_url: 'https://github.com/Samlite250/tfms.git',
     caseStudy: {
@@ -93,7 +107,9 @@ const realProjects = [
     tech_stack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'Tailwind'],
     image_url: '/images/projects/digitalplus.png',
     objectFit: 'contain',
-    imageBg: 'bg-gray-900',
+    imagePosition: 'object-center',
+    imageBg: 'bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900',
+    modalFit: 'object-contain',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/samora_app.git',
     status: 'Mobile App',
@@ -112,7 +128,9 @@ const realProjects = [
     tech_stack: ['React.js', 'React Native', 'Node.js', 'Tailwind CSS', 'MongoDB'],
     image_url: '/images/projects/gisenyigadgets.png',
     objectFit: 'contain',
-    imageBg: 'bg-white dark:bg-dark-900',
+    imagePosition: 'object-center',
+    imageBg: 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950',
+    modalFit: 'object-contain',
     live_url: '#',
     github_url: 'https://github.com/Samlite250/Gisenyi-Gadgets.git',
     status: 'In Development',
@@ -158,61 +176,94 @@ const Projects = () => {
               transition={{ duration: 0.6 }}
               className={`flex flex-col md:flex-row gap-8 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
-              {/* Project Image */}
+              {/* Project Image Viewport Container */}
               <div
-                className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl border border-gray-100 dark:border-white/5 cursor-pointer shadow-xl"
+                className="w-full md:w-3/5 aspect-video relative group overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 cursor-pointer shadow-2xl transition-all duration-300 hover:border-primary/40"
                 onClick={() => setActiveProject(project)}
               >
-                <div className={`absolute inset-0 flex items-center justify-center ${project.imageBg || 'bg-gray-100 dark:bg-dark-800'}`}>
-                  <span className="text-gray-400 dark:text-gray-600 font-mono text-sm">{project.title}</span>
+                {/* Simulated Browser Bar Header for Web/App Viewports */}
+                <div className="absolute top-0 inset-x-0 h-7 bg-gray-200/90 dark:bg-dark-900/90 backdrop-blur-md z-30 flex items-center justify-between px-3 border-b border-gray-300/50 dark:border-white/5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-400/80 inline-block"></span>
+                  </div>
+                  <span className="text-[10px] font-mono text-gray-500 dark:text-gray-400 truncate max-w-[200px]">
+                    {project.live_url !== '#' ? project.live_url.replace('https://', '') : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '')}.app`}
+                  </span>
+                  <div className="w-8"></div>
                 </div>
+
+                {/* Background Placeholder */}
+                <div className={`absolute inset-0 pt-7 flex items-center justify-center ${project.imageBg || 'bg-gray-100 dark:bg-dark-800'}`}>
+                  <span className="text-gray-400 dark:text-gray-600 font-mono text-xs">{project.title}</span>
+                </div>
+
+                {/* Screenshot Image */}
                 {project.image_url && (
-                  <img
-                    src={project.image_url}
-                    alt={project.title}
-                    loading="lazy"
-                    className={`absolute inset-0 w-full h-full ${project.objectFit === 'contain' ? 'object-contain p-4' : 'object-cover'} transition-all duration-700 z-0`}
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
+                  <div className="absolute inset-0 pt-7 overflow-hidden">
+                    <img
+                      src={project.image_url}
+                      alt={project.title}
+                      loading="lazy"
+                      className={`w-full h-full ${project.objectFit === 'contain'
+                          ? 'object-contain p-3 md:p-4'
+                          : 'object-cover'
+                        } ${project.imagePosition || 'object-top'} group-hover:scale-105 transition-transform duration-700 z-10`}
+                      onError={(e) => {
+                        e.target.style.opacity = '0';
+                      }}
+                    />
+                  </div>
                 )}
+
+                {/* Status Badge */}
                 {project.status && (
-                  <div className="absolute top-4 left-4 z-30">
-                    <span className="px-3 py-1.5 bg-white/90 dark:bg-dark-900/90 backdrop-blur-sm text-gray-900 dark:text-white text-[10px] font-bold uppercase tracking-widest rounded-lg border border-gray-100 dark:border-white/10 shadow-lg flex items-center gap-2">
+                  <div className="absolute top-9 left-4 z-30">
+                    <span className="px-3 py-1 bg-white/95 dark:bg-dark-900/95 backdrop-blur-md text-gray-900 dark:text-white text-[10px] font-bold uppercase tracking-widest rounded-md border border-gray-200 dark:border-white/10 shadow-md flex items-center gap-2">
                       <Hammer size={12} className="text-primary" />
                       {project.status}
                     </span>
                   </div>
                 )}
 
-                {/* View Case Study Overlay */}
-                <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg flex items-center gap-2">
-                    <BookOpen size={24} /> View Case Study
-                  </span>
+                {/* Non-Obscuring Gradient Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col justify-end p-6">
+                  <div className="flex items-center justify-between text-white">
+                    <span className="font-bold text-base md:text-lg flex items-center gap-2 drop-shadow-md">
+                      <BookOpen size={20} className="text-primary" /> Explore Case Study
+                    </span>
+                    <span className="text-xs font-mono uppercase bg-primary px-3 py-1 rounded-full text-white font-semibold">
+                      View Details &rarr;
+                    </span>
+                  </div>
                 </div>
               </div>
 
               {/* Project Info */}
               <div className={`w-full md:w-2/5 flex flex-col ${idx % 2 !== 0 ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
                 <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 hover:text-primary transition-colors cursor-pointer" onClick={() => setActiveProject(project)}>
+                <h3
+                  className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 hover:text-primary transition-colors cursor-pointer"
+                  onClick={() => setActiveProject(project)}
+                >
                   {project.title}
                 </h3>
 
-                <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 dark:text-gray-300 z-20 shadow-lg border border-gray-100 dark:border-white/5 ${idx % 2 !== 0 ? 'md:-mr-12' : 'md:-ml-12'}`}>
+                <div className={`glass-card p-6 rounded-xl mb-6 text-gray-600 dark:text-gray-300 z-20 shadow-lg border border-gray-100 dark:border-white/5 ${idx % 2 !== 0 ? 'md:-mr-8' : 'md:-ml-8'}`}>
                   <p>{project.description}</p>
                 </div>
 
-                <ul className={`flex flex-wrap gap-4 text-sm font-mono text-gray-500 dark:text-gray-400 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
+                <ul className={`flex flex-wrap gap-3 text-xs font-mono text-gray-500 dark:text-gray-400 mb-8 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
                   {project.tech_stack.map((tech, tIdx) => (
-                    <li key={tIdx} className="bg-primary/10 text-primary px-2 py-0.5 rounded">{tech}</li>
+                    <li key={tIdx} className="bg-primary/10 text-primary px-2.5 py-1 rounded-md font-medium">{tech}</li>
                   ))}
                 </ul>
 
                 <div className={`flex flex-wrap gap-4 ${idx % 2 !== 0 ? 'justify-start' : 'justify-end'}`}>
                   <button
                     onClick={() => setActiveProject(project)}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-xs"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-xs shadow-sm"
                   >
                     <BookOpen size={18} />
                     <span>Case Study</span>
@@ -245,40 +296,47 @@ const Projects = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveProject(null)}
-              className="fixed inset-0 bg-gray-900/60 dark:bg-dark-950/90 backdrop-blur-sm"
+              className="fixed inset-0 bg-gray-900/70 dark:bg-dark-950/90 backdrop-blur-md"
             />
 
             {/* Modal Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 100 }}
+              initial={{ opacity: 0, scale: 0.95, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 100 }}
-              className="relative w-full max-w-5xl bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden my-auto"
+              exit={{ opacity: 0, scale: 0.95, y: 50 }}
+              className="relative w-full max-w-5xl bg-white dark:bg-dark-900 border border-gray-100 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col"
             >
               <button
                 onClick={() => setActiveProject(null)}
-                className="absolute top-6 right-6 z-50 p-2 bg-white/80 dark:bg-dark-800/80 hover:bg-primary/20 text-gray-900 dark:text-white rounded-full backdrop-blur-md border border-gray-200 dark:border-white/10 transition-colors"
+                className="absolute top-6 right-6 z-50 p-2 bg-white/80 dark:bg-dark-800/80 hover:bg-primary hover:text-white text-gray-900 dark:text-white rounded-full backdrop-blur-md border border-gray-200 dark:border-white/10 transition-colors shadow-lg"
                 aria-label="Close modal"
               >
                 <X size={24} />
               </button>
 
               {/* Image Header */}
-              <div className="h-[300px] md:h-[450px] relative">
-                <img src={activeProject.image_url} alt={activeProject.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-transparent to-transparent"></div>
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    {activeProject.tech_stack.slice(0, 3).map((t, i) => (
+              <div className={`h-[280px] md:h-[400px] relative shrink-0 ${activeProject.imageBg || 'bg-dark-950'}`}>
+                <img
+                  src={activeProject.image_url}
+                  alt={activeProject.title}
+                  className={`w-full h-full ${activeProject.objectFit === 'contain'
+                      ? 'object-contain p-6'
+                      : 'object-cover'
+                    } ${activeProject.modalFit || activeProject.imagePosition || 'object-top'}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-dark-900/40 to-transparent"></div>
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    {activeProject.tech_stack.slice(0, 4).map((t, i) => (
                       <span key={i} className="px-3 py-1 bg-primary/20 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-widest rounded-full border border-primary/30">{t}</span>
                     ))}
                   </div>
-                  <h3 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white">{activeProject.title}</h3>
+                  <h3 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white drop-shadow-sm">{activeProject.title}</h3>
                 </div>
               </div>
 
-              {/* Content Grid */}
-              <div className="p-8 md:p-12">
+              {/* Content Grid (Scrollable) */}
+              <div className="p-8 md:p-12 overflow-y-auto">
                 <div className="grid md:grid-cols-2 gap-12 mb-12">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 mb-4">
